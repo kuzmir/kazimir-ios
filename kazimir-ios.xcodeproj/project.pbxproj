@@ -7,12 +7,37 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		202451B11AE2850D000D8022 /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 202451B01AE2850D000D8022 /* ListViewController.swift */; };
+		202451B31AE2931C000D8022 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 202451B21AE2931C000D8022 /* MapViewController.swift */; };
+		202451BC1AE296B0000D8022 /* GoogleMaps.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 202451BA1AE296A3000D8022 /* GoogleMaps.framework */; };
+		202451BE1AE29787000D8022 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 202451BD1AE29787000D8022 /* AVFoundation.framework */; };
+		202451C01AE29793000D8022 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 202451BF1AE29793000D8022 /* CoreData.framework */; };
+		202451C21AE297BA000D8022 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 202451C11AE297BA000D8022 /* CoreLocation.framework */; };
+		202451C41AE297BF000D8022 /* GLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 202451C31AE297BF000D8022 /* GLKit.framework */; };
+		202451C61AE297C9000D8022 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 202451C51AE297C9000D8022 /* CoreText.framework */; };
+		202451C81AE297D3000D8022 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 202451C71AE297D3000D8022 /* ImageIO.framework */; };
+		202451CA1AE297E1000D8022 /* libc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 202451C91AE297E1000D8022 /* libc++.dylib */; };
+		202451CC1AE297EB000D8022 /* libicucore.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 202451CB1AE297EB000D8022 /* libicucore.dylib */; };
+		202451CE1AE297F5000D8022 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 202451CD1AE297F5000D8022 /* libz.dylib */; };
+		202451D01AE297FD000D8022 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 202451CF1AE297FD000D8022 /* OpenGLES.framework */; };
+		202451D21AE29806000D8022 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 202451D11AE29806000D8022 /* QuartzCore.framework */; };
+		202451D41AE29812000D8022 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 202451D31AE29812000D8022 /* SystemConfiguration.framework */; };
+		202451DB1AE29AD6000D8022 /* GoogleMaps.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 202451DA1AE29AD6000D8022 /* GoogleMaps.bundle */; };
 		20738B591AE259B80000C808 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20738B581AE259B80000C808 /* AppDelegate.swift */; };
-		20738B5B1AE259B80000C808 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20738B5A1AE259B80000C808 /* ViewController.swift */; };
 		20738B5E1AE259B80000C808 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 20738B5C1AE259B80000C808 /* Main.storyboard */; };
 		20738B601AE259B80000C808 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 20738B5F1AE259B80000C808 /* Images.xcassets */; };
 		20738B631AE259B80000C808 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 20738B611AE259B80000C808 /* LaunchScreen.xib */; };
 		20738B6F1AE259B80000C808 /* kazimir_iosTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20738B6E1AE259B80000C808 /* kazimir_iosTests.swift */; };
+		20738B831AE25D0B0000C808 /* OpenSans-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 20738B791AE25D0B0000C808 /* OpenSans-Bold.ttf */; };
+		20738B841AE25D0B0000C808 /* OpenSans-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 20738B7A1AE25D0B0000C808 /* OpenSans-BoldItalic.ttf */; };
+		20738B851AE25D0B0000C808 /* OpenSans-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 20738B7B1AE25D0B0000C808 /* OpenSans-ExtraBold.ttf */; };
+		20738B861AE25D0B0000C808 /* OpenSans-ExtraBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 20738B7C1AE25D0B0000C808 /* OpenSans-ExtraBoldItalic.ttf */; };
+		20738B871AE25D0B0000C808 /* OpenSans-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 20738B7D1AE25D0B0000C808 /* OpenSans-Italic.ttf */; };
+		20738B881AE25D0B0000C808 /* OpenSans-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 20738B7E1AE25D0B0000C808 /* OpenSans-Light.ttf */; };
+		20738B891AE25D0B0000C808 /* OpenSans-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 20738B7F1AE25D0B0000C808 /* OpenSans-LightItalic.ttf */; };
+		20738B8A1AE25D0B0000C808 /* OpenSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 20738B801AE25D0B0000C808 /* OpenSans-Regular.ttf */; };
+		20738B8B1AE25D0B0000C808 /* OpenSans-Semibold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 20738B811AE25D0B0000C808 /* OpenSans-Semibold.ttf */; };
+		20738B8C1AE25D0B0000C808 /* OpenSans-SemiboldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 20738B821AE25D0B0000C808 /* OpenSans-SemiboldItalic.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -26,16 +51,43 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		202451B01AE2850D000D8022 /* ListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
+		202451B21AE2931C000D8022 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		202451BA1AE296A3000D8022 /* GoogleMaps.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleMaps.framework; sourceTree = "<group>"; };
+		202451BD1AE29787000D8022 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		202451BF1AE29793000D8022 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		202451C11AE297BA000D8022 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		202451C31AE297BF000D8022 /* GLKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLKit.framework; path = System/Library/Frameworks/GLKit.framework; sourceTree = SDKROOT; };
+		202451C51AE297C9000D8022 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
+		202451C71AE297D3000D8022 /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
+		202451C91AE297E1000D8022 /* libc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libc++.dylib"; path = "usr/lib/libc++.dylib"; sourceTree = SDKROOT; };
+		202451CB1AE297EB000D8022 /* libicucore.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libicucore.dylib; path = usr/lib/libicucore.dylib; sourceTree = SDKROOT; };
+		202451CD1AE297F5000D8022 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
+		202451CF1AE297FD000D8022 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
+		202451D11AE29806000D8022 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		202451D31AE29812000D8022 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		202451D51AE2982C000D8022 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
+		202451D71AE299A2000D8022 /* kazimir-ios-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "kazimir-ios-Bridging-Header.h"; sourceTree = "<group>"; };
+		202451DA1AE29AD6000D8022 /* GoogleMaps.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = GoogleMaps.bundle; path = GoogleMaps.framework/Versions/A/Resources/GoogleMaps.bundle; sourceTree = "<group>"; };
 		20738B531AE259B80000C808 /* kazimir-ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "kazimir-ios.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		20738B571AE259B80000C808 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		20738B581AE259B80000C808 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		20738B5A1AE259B80000C808 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		20738B5D1AE259B80000C808 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		20738B5F1AE259B80000C808 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		20738B621AE259B80000C808 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		20738B681AE259B80000C808 /* kazimir-iosTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "kazimir-iosTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		20738B6D1AE259B80000C808 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		20738B6E1AE259B80000C808 /* kazimir_iosTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = kazimir_iosTests.swift; sourceTree = "<group>"; };
+		20738B791AE25D0B0000C808 /* OpenSans-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "OpenSans-Bold.ttf"; path = "open-sans/OpenSans-Bold.ttf"; sourceTree = "<group>"; };
+		20738B7A1AE25D0B0000C808 /* OpenSans-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "OpenSans-BoldItalic.ttf"; path = "open-sans/OpenSans-BoldItalic.ttf"; sourceTree = "<group>"; };
+		20738B7B1AE25D0B0000C808 /* OpenSans-ExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "OpenSans-ExtraBold.ttf"; path = "open-sans/OpenSans-ExtraBold.ttf"; sourceTree = "<group>"; };
+		20738B7C1AE25D0B0000C808 /* OpenSans-ExtraBoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "OpenSans-ExtraBoldItalic.ttf"; path = "open-sans/OpenSans-ExtraBoldItalic.ttf"; sourceTree = "<group>"; };
+		20738B7D1AE25D0B0000C808 /* OpenSans-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "OpenSans-Italic.ttf"; path = "open-sans/OpenSans-Italic.ttf"; sourceTree = "<group>"; };
+		20738B7E1AE25D0B0000C808 /* OpenSans-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "OpenSans-Light.ttf"; path = "open-sans/OpenSans-Light.ttf"; sourceTree = "<group>"; };
+		20738B7F1AE25D0B0000C808 /* OpenSans-LightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "OpenSans-LightItalic.ttf"; path = "open-sans/OpenSans-LightItalic.ttf"; sourceTree = "<group>"; };
+		20738B801AE25D0B0000C808 /* OpenSans-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "OpenSans-Regular.ttf"; path = "open-sans/OpenSans-Regular.ttf"; sourceTree = "<group>"; };
+		20738B811AE25D0B0000C808 /* OpenSans-Semibold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "OpenSans-Semibold.ttf"; path = "open-sans/OpenSans-Semibold.ttf"; sourceTree = "<group>"; };
+		20738B821AE25D0B0000C808 /* OpenSans-SemiboldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "OpenSans-SemiboldItalic.ttf"; path = "open-sans/OpenSans-SemiboldItalic.ttf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -43,6 +95,19 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				202451D41AE29812000D8022 /* SystemConfiguration.framework in Frameworks */,
+				202451D21AE29806000D8022 /* QuartzCore.framework in Frameworks */,
+				202451D01AE297FD000D8022 /* OpenGLES.framework in Frameworks */,
+				202451CE1AE297F5000D8022 /* libz.dylib in Frameworks */,
+				202451CC1AE297EB000D8022 /* libicucore.dylib in Frameworks */,
+				202451CA1AE297E1000D8022 /* libc++.dylib in Frameworks */,
+				202451C81AE297D3000D8022 /* ImageIO.framework in Frameworks */,
+				202451C61AE297C9000D8022 /* CoreText.framework in Frameworks */,
+				202451C41AE297BF000D8022 /* GLKit.framework in Frameworks */,
+				202451C21AE297BA000D8022 /* CoreLocation.framework in Frameworks */,
+				202451C01AE29793000D8022 /* CoreData.framework in Frameworks */,
+				202451BE1AE29787000D8022 /* AVFoundation.framework in Frameworks */,
+				202451BC1AE296B0000D8022 /* GoogleMaps.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -56,12 +121,35 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		202451B91AE2968D000D8022 /* frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				202451D51AE2982C000D8022 /* CoreMedia.framework */,
+				202451D31AE29812000D8022 /* SystemConfiguration.framework */,
+				202451D11AE29806000D8022 /* QuartzCore.framework */,
+				202451CF1AE297FD000D8022 /* OpenGLES.framework */,
+				202451CD1AE297F5000D8022 /* libz.dylib */,
+				202451CB1AE297EB000D8022 /* libicucore.dylib */,
+				202451C91AE297E1000D8022 /* libc++.dylib */,
+				202451C71AE297D3000D8022 /* ImageIO.framework */,
+				202451C51AE297C9000D8022 /* CoreText.framework */,
+				202451C31AE297BF000D8022 /* GLKit.framework */,
+				202451C11AE297BA000D8022 /* CoreLocation.framework */,
+				202451BF1AE29793000D8022 /* CoreData.framework */,
+				202451BD1AE29787000D8022 /* AVFoundation.framework */,
+				202451BA1AE296A3000D8022 /* GoogleMaps.framework */,
+				202451DA1AE29AD6000D8022 /* GoogleMaps.bundle */,
+			);
+			path = frameworks;
+			sourceTree = "<group>";
+		};
 		20738B4A1AE259B80000C808 = {
 			isa = PBXGroup;
 			children = (
 				20738B551AE259B80000C808 /* kazimir-ios */,
 				20738B6B1AE259B80000C808 /* kazimir-iosTests */,
 				20738B541AE259B80000C808 /* Products */,
+				202451B91AE2968D000D8022 /* frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -78,10 +166,13 @@
 			isa = PBXGroup;
 			children = (
 				20738B581AE259B80000C808 /* AppDelegate.swift */,
-				20738B5A1AE259B80000C808 /* ViewController.swift */,
+				202451B21AE2931C000D8022 /* MapViewController.swift */,
+				202451B01AE2850D000D8022 /* ListViewController.swift */,
+				202451D71AE299A2000D8022 /* kazimir-ios-Bridging-Header.h */,
+				20738B611AE259B80000C808 /* LaunchScreen.xib */,
 				20738B5C1AE259B80000C808 /* Main.storyboard */,
 				20738B5F1AE259B80000C808 /* Images.xcassets */,
-				20738B611AE259B80000C808 /* LaunchScreen.xib */,
+				20738B781AE25CDE0000C808 /* fonts */,
 				20738B561AE259B80000C808 /* Supporting Files */,
 			);
 			path = "kazimir-ios";
@@ -110,6 +201,23 @@
 				20738B6D1AE259B80000C808 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		20738B781AE25CDE0000C808 /* fonts */ = {
+			isa = PBXGroup;
+			children = (
+				20738B791AE25D0B0000C808 /* OpenSans-Bold.ttf */,
+				20738B7A1AE25D0B0000C808 /* OpenSans-BoldItalic.ttf */,
+				20738B7B1AE25D0B0000C808 /* OpenSans-ExtraBold.ttf */,
+				20738B7C1AE25D0B0000C808 /* OpenSans-ExtraBoldItalic.ttf */,
+				20738B7D1AE25D0B0000C808 /* OpenSans-Italic.ttf */,
+				20738B7E1AE25D0B0000C808 /* OpenSans-Light.ttf */,
+				20738B7F1AE25D0B0000C808 /* OpenSans-LightItalic.ttf */,
+				20738B801AE25D0B0000C808 /* OpenSans-Regular.ttf */,
+				20738B811AE25D0B0000C808 /* OpenSans-Semibold.ttf */,
+				20738B821AE25D0B0000C808 /* OpenSans-SemiboldItalic.ttf */,
+			);
+			path = fonts;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -192,9 +300,20 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				20738B8B1AE25D0B0000C808 /* OpenSans-Semibold.ttf in Resources */,
+				20738B8C1AE25D0B0000C808 /* OpenSans-SemiboldItalic.ttf in Resources */,
 				20738B5E1AE259B80000C808 /* Main.storyboard in Resources */,
+				20738B8A1AE25D0B0000C808 /* OpenSans-Regular.ttf in Resources */,
+				20738B871AE25D0B0000C808 /* OpenSans-Italic.ttf in Resources */,
+				20738B861AE25D0B0000C808 /* OpenSans-ExtraBoldItalic.ttf in Resources */,
 				20738B631AE259B80000C808 /* LaunchScreen.xib in Resources */,
+				20738B891AE25D0B0000C808 /* OpenSans-LightItalic.ttf in Resources */,
+				20738B831AE25D0B0000C808 /* OpenSans-Bold.ttf in Resources */,
 				20738B601AE259B80000C808 /* Images.xcassets in Resources */,
+				20738B881AE25D0B0000C808 /* OpenSans-Light.ttf in Resources */,
+				20738B841AE25D0B0000C808 /* OpenSans-BoldItalic.ttf in Resources */,
+				20738B851AE25D0B0000C808 /* OpenSans-ExtraBold.ttf in Resources */,
+				202451DB1AE29AD6000D8022 /* GoogleMaps.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -212,8 +331,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				20738B5B1AE259B80000C808 /* ViewController.swift in Sources */,
 				20738B591AE259B80000C808 /* AppDelegate.swift in Sources */,
+				202451B11AE2850D000D8022 /* ListViewController.swift in Sources */,
+				202451B31AE2931C000D8022 /* MapViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -294,6 +414,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				OTHER_LDFLAGS = "-ObjC";
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -331,6 +452,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "-ObjC";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -340,9 +462,17 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/external",
+					"$(PROJECT_DIR)/frameworks",
+				);
 				INFOPLIST_FILE = "kazimir-ios/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "kazimir-ios/kazimir-ios-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
@@ -350,9 +480,16 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/external",
+					"$(PROJECT_DIR)/frameworks",
+				);
 				INFOPLIST_FILE = "kazimir-ios/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "kazimir-ios/kazimir-ios-Bridging-Header.h";
 			};
 			name = Release;
 		};
@@ -409,6 +546,7 @@
 				20738B741AE259B80000C808 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		20738B751AE259B80000C808 /* Build configuration list for PBXNativeTarget "kazimir-iosTests" */ = {
 			isa = XCConfigurationList;
@@ -417,6 +555,7 @@
 				20738B771AE259B80000C808 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
