@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2002DF451AF15956008DFC85 /* SlideTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2002DF441AF15956008DFC85 /* SlideTransition.swift */; };
 		202451B11AE2850D000D8022 /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 202451B01AE2850D000D8022 /* ListViewController.swift */; };
 		202451B31AE2931C000D8022 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 202451B21AE2931C000D8022 /* MapViewController.swift */; };
 		202451BC1AE296B0000D8022 /* GoogleMaps.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 202451BA1AE296A3000D8022 /* GoogleMaps.framework */; };
@@ -23,6 +24,7 @@
 		202451D21AE29806000D8022 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 202451D11AE29806000D8022 /* QuartzCore.framework */; };
 		202451D41AE29812000D8022 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 202451D31AE29812000D8022 /* SystemConfiguration.framework */; };
 		202451DB1AE29AD6000D8022 /* GoogleMaps.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 202451DA1AE29AD6000D8022 /* GoogleMaps.bundle */; };
+		206721321AF40D83009F68F1 /* FlipTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 206721311AF40D83009F68F1 /* FlipTransition.swift */; };
 		20738B591AE259B80000C808 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20738B581AE259B80000C808 /* AppDelegate.swift */; };
 		20738B5E1AE259B80000C808 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 20738B5C1AE259B80000C808 /* Main.storyboard */; };
 		20738B601AE259B80000C808 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 20738B5F1AE259B80000C808 /* Images.xcassets */; };
@@ -38,6 +40,11 @@
 		20738B8A1AE25D0B0000C808 /* OpenSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 20738B801AE25D0B0000C808 /* OpenSans-Regular.ttf */; };
 		20738B8B1AE25D0B0000C808 /* OpenSans-Semibold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 20738B811AE25D0B0000C808 /* OpenSans-Semibold.ttf */; };
 		20738B8C1AE25D0B0000C808 /* OpenSans-SemiboldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 20738B821AE25D0B0000C808 /* OpenSans-SemiboldItalic.ttf */; };
+		209EA3691AED980600820D4D /* Appearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 209EA3681AED980600820D4D /* Appearance.swift */; };
+		20D051CE1AED81FE00BBA3BC /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D051CD1AED81FE00BBA3BC /* WelcomeViewController.swift */; };
+		20D051D01AED856200BBA3BC /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D051CF1AED856200BBA3BC /* NavigationController.swift */; };
+		20EF81E01AED89C200B03F87 /* FadeTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20EF81DF1AED89C200B03F87 /* FadeTransition.swift */; };
+		20EF81E21AED8E6B00B03F87 /* ItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20EF81E11AED8E6B00B03F87 /* ItemViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +58,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2002DF441AF15956008DFC85 /* SlideTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlideTransition.swift; sourceTree = "<group>"; };
 		202451B01AE2850D000D8022 /* ListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
 		202451B21AE2931C000D8022 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		202451BA1AE296A3000D8022 /* GoogleMaps.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleMaps.framework; sourceTree = "<group>"; };
@@ -69,6 +77,7 @@
 		202451D51AE2982C000D8022 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
 		202451D71AE299A2000D8022 /* kazimir-ios-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "kazimir-ios-Bridging-Header.h"; sourceTree = "<group>"; };
 		202451DA1AE29AD6000D8022 /* GoogleMaps.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = GoogleMaps.bundle; path = GoogleMaps.framework/Versions/A/Resources/GoogleMaps.bundle; sourceTree = "<group>"; };
+		206721311AF40D83009F68F1 /* FlipTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlipTransition.swift; sourceTree = "<group>"; };
 		20738B531AE259B80000C808 /* kazimir-ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "kazimir-ios.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		20738B571AE259B80000C808 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		20738B581AE259B80000C808 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -88,6 +97,11 @@
 		20738B801AE25D0B0000C808 /* OpenSans-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "OpenSans-Regular.ttf"; path = "open-sans/OpenSans-Regular.ttf"; sourceTree = "<group>"; };
 		20738B811AE25D0B0000C808 /* OpenSans-Semibold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "OpenSans-Semibold.ttf"; path = "open-sans/OpenSans-Semibold.ttf"; sourceTree = "<group>"; };
 		20738B821AE25D0B0000C808 /* OpenSans-SemiboldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "OpenSans-SemiboldItalic.ttf"; path = "open-sans/OpenSans-SemiboldItalic.ttf"; sourceTree = "<group>"; };
+		209EA3681AED980600820D4D /* Appearance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Appearance.swift; sourceTree = "<group>"; };
+		20D051CD1AED81FE00BBA3BC /* WelcomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
+		20D051CF1AED856200BBA3BC /* NavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
+		20EF81DF1AED89C200B03F87 /* FadeTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FadeTransition.swift; sourceTree = "<group>"; };
+		20EF81E11AED8E6B00B03F87 /* ItemViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -165,14 +179,18 @@
 		20738B551AE259B80000C808 /* kazimir-ios */ = {
 			isa = PBXGroup;
 			children = (
+				209EA3681AED980600820D4D /* Appearance.swift */,
 				20738B581AE259B80000C808 /* AppDelegate.swift */,
+				20EF81E11AED8E6B00B03F87 /* ItemViewController.swift */,
 				202451B21AE2931C000D8022 /* MapViewController.swift */,
 				202451B01AE2850D000D8022 /* ListViewController.swift */,
-				202451D71AE299A2000D8022 /* kazimir-ios-Bridging-Header.h */,
+				20D051CD1AED81FE00BBA3BC /* WelcomeViewController.swift */,
 				20738B611AE259B80000C808 /* LaunchScreen.xib */,
 				20738B5C1AE259B80000C808 /* Main.storyboard */,
 				20738B5F1AE259B80000C808 /* Images.xcassets */,
-				20738B781AE25CDE0000C808 /* fonts */,
+				20D051D11AED85EA00BBA3BC /* Navigation */,
+				20738B781AE25CDE0000C808 /* Fonts */,
+				20EF81E81AED936E00B03F87 /* ObjectiveC */,
 				20738B561AE259B80000C808 /* Supporting Files */,
 			);
 			path = "kazimir-ios";
@@ -203,7 +221,7 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		20738B781AE25CDE0000C808 /* fonts */ = {
+		20738B781AE25CDE0000C808 /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
 				20738B791AE25D0B0000C808 /* OpenSans-Bold.ttf */,
@@ -217,7 +235,26 @@
 				20738B811AE25D0B0000C808 /* OpenSans-Semibold.ttf */,
 				20738B821AE25D0B0000C808 /* OpenSans-SemiboldItalic.ttf */,
 			);
-			path = fonts;
+			path = Fonts;
+			sourceTree = "<group>";
+		};
+		20D051D11AED85EA00BBA3BC /* Navigation */ = {
+			isa = PBXGroup;
+			children = (
+				20EF81DF1AED89C200B03F87 /* FadeTransition.swift */,
+				206721311AF40D83009F68F1 /* FlipTransition.swift */,
+				20D051CF1AED856200BBA3BC /* NavigationController.swift */,
+				2002DF441AF15956008DFC85 /* SlideTransition.swift */,
+			);
+			path = Navigation;
+			sourceTree = "<group>";
+		};
+		20EF81E81AED936E00B03F87 /* ObjectiveC */ = {
+			isa = PBXGroup;
+			children = (
+				202451D71AE299A2000D8022 /* kazimir-ios-Bridging-Header.h */,
+			);
+			path = ObjectiveC;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -331,9 +368,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2002DF451AF15956008DFC85 /* SlideTransition.swift in Sources */,
+				20EF81E21AED8E6B00B03F87 /* ItemViewController.swift in Sources */,
+				209EA3691AED980600820D4D /* Appearance.swift in Sources */,
+				20D051D01AED856200BBA3BC /* NavigationController.swift in Sources */,
 				20738B591AE259B80000C808 /* AppDelegate.swift in Sources */,
+				20D051CE1AED81FE00BBA3BC /* WelcomeViewController.swift in Sources */,
 				202451B11AE2850D000D8022 /* ListViewController.swift in Sources */,
+				20EF81E01AED89C200B03F87 /* FadeTransition.swift in Sources */,
 				202451B31AE2931C000D8022 /* MapViewController.swift in Sources */,
+				206721321AF40D83009F68F1 /* FlipTransition.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -465,13 +509,12 @@
 				CLANG_ENABLE_MODULES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/external",
 					"$(PROJECT_DIR)/frameworks",
 				);
 				INFOPLIST_FILE = "kazimir-ios/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "kazimir-ios/kazimir-ios-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "kazimir-ios/ObjectiveC/kazimir-ios-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
@@ -483,13 +526,12 @@
 				CLANG_ENABLE_MODULES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/external",
 					"$(PROJECT_DIR)/frameworks",
 				);
 				INFOPLIST_FILE = "kazimir-ios/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "kazimir-ios/kazimir-ios-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "kazimir-ios/ObjectiveC/kazimir-ios-Bridging-Header.h";
 			};
 			name = Release;
 		};

@@ -13,10 +13,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
-        GMSServices.provideAPIKey("AIzaSyDYz04VOan5pJY5HhQeWiVap0a7UjUba4A")
+        GMSServices.provideAPIKey("AIzaSyCfiPBS-0-8EqHlX72TiKU0pEwi24-dLDo")
+        Appearance.apply()
         return true
     }
 
