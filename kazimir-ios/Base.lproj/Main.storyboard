@@ -335,7 +335,7 @@
         <scene sceneID="zCd-ts-vJa">
             <objects>
                 <tableViewController id="tKz-Rt-72t" customClass="ListViewController" customModule="kazimir_ios" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="200" sectionHeaderHeight="22" sectionFooterHeight="22" id="wof-Df-ZhM">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="200" sectionHeaderHeight="22" sectionFooterHeight="22" id="wof-Df-ZhM">
                         <rect key="frame" x="0.0" y="64" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -345,8 +345,8 @@
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="x2Z-Uo-eb8" id="Nts-9d-t1x">
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" tag="1" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="foto_PlacNowy" translatesAutoresizingMaskIntoConstraints="NO" id="fKQ-h5-Uwj">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="199"/>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" tag="1" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="foto_PlacNowy" translatesAutoresizingMaskIntoConstraints="NO" id="fKQ-h5-Uwj">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="200"/>
                                             <gestureRecognizers/>
                                         </imageView>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="chevron_left" translatesAutoresizingMaskIntoConstraints="NO" id="9nj-vR-rqQ">
@@ -430,12 +430,66 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SVh-bO-Xh9" customClass="GMSMapView">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jzC-zb-dDU">
+                                <rect key="frame" x="0.0" y="500" width="600" height="100"/>
+                                <subviews>
+                                    <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ek0-dv-34n">
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="100"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="FJH-rV-Ly1">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="100"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                        </view>
+                                        <blurEffect style="light"/>
+                                    </visualEffectView>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GLz-P4-09w">
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="1"/>
+                                        <color key="backgroundColor" white="0.84888111888111883" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="1" id="129-TR-1Eq"/>
+                                        </constraints>
+                                    </view>
+                                    <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jng-jd-xDN">
+                                        <rect key="frame" x="0.0" y="-31" width="600" height="162"/>
+                                        <connections>
+                                            <outlet property="dataSource" destination="nmj-32-qdN" id="3aT-f4-Bjl"/>
+                                            <outlet property="delegate" destination="nmj-32-qdN" id="kNv-pU-DJs"/>
+                                        </connections>
+                                    </pickerView>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="chevron_dark_right" translatesAutoresizingMaskIntoConstraints="NO" id="7xk-4I-1g4">
+                                        <rect key="frame" x="585" y="44" width="7" height="12"/>
+                                    </imageView>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="chevron_dark_left" translatesAutoresizingMaskIntoConstraints="NO" id="Oss-Kw-JsA">
+                                        <rect key="frame" x="8" y="44" width="7" height="12"/>
+                                    </imageView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="ek0-dv-34n" firstAttribute="leading" secondItem="jzC-zb-dDU" secondAttribute="leading" id="5jJ-52-oMg"/>
+                                    <constraint firstAttribute="trailing" secondItem="GLz-P4-09w" secondAttribute="trailing" id="5q6-6e-X8K"/>
+                                    <constraint firstItem="GLz-P4-09w" firstAttribute="leading" secondItem="jzC-zb-dDU" secondAttribute="leading" id="9f2-ei-58t"/>
+                                    <constraint firstAttribute="centerY" secondItem="7xk-4I-1g4" secondAttribute="centerY" id="BRp-CV-yBQ"/>
+                                    <constraint firstAttribute="trailing" secondItem="ek0-dv-34n" secondAttribute="trailing" id="Iie-ow-kFu"/>
+                                    <constraint firstAttribute="bottom" secondItem="jng-jd-xDN" secondAttribute="bottom" id="Kk7-u6-XyP"/>
+                                    <constraint firstItem="ek0-dv-34n" firstAttribute="top" secondItem="jzC-zb-dDU" secondAttribute="top" id="Rry-30-cGl"/>
+                                    <constraint firstItem="Oss-Kw-JsA" firstAttribute="leading" secondItem="jzC-zb-dDU" secondAttribute="leadingMargin" id="gag-27-oar"/>
+                                    <constraint firstAttribute="height" constant="100" id="gxA-om-5DP"/>
+                                    <constraint firstAttribute="bottom" secondItem="ek0-dv-34n" secondAttribute="bottom" id="hAl-Z9-by0"/>
+                                    <constraint firstItem="jng-jd-xDN" firstAttribute="leading" secondItem="jzC-zb-dDU" secondAttribute="leading" id="sfq-pH-TMN"/>
+                                    <constraint firstAttribute="trailing" secondItem="jng-jd-xDN" secondAttribute="trailing" id="uEJ-ya-R7k"/>
+                                    <constraint firstAttribute="trailingMargin" secondItem="7xk-4I-1g4" secondAttribute="trailing" id="xVI-ns-rTU"/>
+                                    <constraint firstItem="GLz-P4-09w" firstAttribute="bottom" secondItem="jng-jd-xDN" secondAttribute="top" id="yg8-Na-fyp"/>
+                                    <constraint firstItem="GLz-P4-09w" firstAttribute="top" secondItem="jzC-zb-dDU" secondAttribute="top" id="zhp-N6-vGE"/>
+                                    <constraint firstAttribute="centerY" secondItem="Oss-Kw-JsA" secondAttribute="centerY" id="zmW-h2-HUx"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="SVh-bO-Xh9" firstAttribute="top" secondItem="lBW-VG-6vC" secondAttribute="top" id="6MU-iw-WMu"/>
+                            <constraint firstAttribute="trailing" secondItem="jzC-zb-dDU" secondAttribute="trailing" id="Ny6-bJ-ydg"/>
                             <constraint firstItem="SVh-bO-Xh9" firstAttribute="leading" secondItem="lBW-VG-6vC" secondAttribute="leading" id="aSK-qf-M4l"/>
+                            <constraint firstItem="jzC-zb-dDU" firstAttribute="leading" secondItem="lBW-VG-6vC" secondAttribute="leading" id="f8E-qo-zZe"/>
                             <constraint firstAttribute="trailing" secondItem="SVh-bO-Xh9" secondAttribute="trailing" id="nh5-iY-juZ"/>
+                            <constraint firstItem="2fS-4N-BY6" firstAttribute="top" secondItem="jzC-zb-dDU" secondAttribute="bottom" id="u8N-vL-mS0"/>
                             <constraint firstItem="2fS-4N-BY6" firstAttribute="top" secondItem="SVh-bO-Xh9" secondAttribute="bottom" id="y8P-0F-ivU"/>
                         </constraints>
                     </view>
@@ -456,6 +510,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="mapView" destination="SVh-bO-Xh9" id="x8k-hl-rKo"/>
+                        <outlet property="pickerView" destination="jng-jd-xDN" id="vO1-TN-QGw"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MUm-Um-5EB" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -576,6 +631,8 @@
         <image name="arrow_left" width="28" height="16"/>
         <image name="arrow_right" width="28" height="16"/>
         <image name="chevron_blue" width="10" height="17"/>
+        <image name="chevron_dark_left" width="7" height="12"/>
+        <image name="chevron_dark_right" width="7" height="12"/>
         <image name="chevron_left" width="7" height="12"/>
         <image name="chevron_right" width="7" height="12"/>
         <image name="chevron_yellow" width="10" height="17"/>
