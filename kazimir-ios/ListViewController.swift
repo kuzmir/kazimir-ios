@@ -10,7 +10,8 @@ import UIKit
 
 class ListViewController: UITableViewController {
     
-    private var transitionDirection: SlideTransitionDirection?
+    var slideTransitionHandler: SlideTransitionHandler?
+    
     private var segueIdentifierOld = "pushItemViewControllerOld"
     private var segueIdentifierNew = "pushItemViewControllerNew"
     
@@ -19,42 +20,20 @@ class ListViewController: UITableViewController {
     }
     
     @IBAction func panGestureRecognized(sender: UIPanGestureRecognizer) {
-        let interactionTransition = (self.navigationController as? NavigationController)?.interactionTransition
-        let gestureDirection: SlideTransitionDirection = sender.velocityInView(sender.view).x > 0 ? .Right : .Left
-        
         switch (sender.state) {
         case .Began:
-            transitionDirection = gestureDirection
-            switch (transitionDirection!) {
-            case .Left:
-                self.performSegueWithIdentifier(segueIdentifierNew, sender: self)
-            case .Right:
-                self.performSegueWithIdentifier(segueIdentifierOld, sender: self)
-            }
-        case .Changed:
-            var progress: CGFloat
-            switch (transitionDirection!) {
-            case .Right:
-                progress = sender.translationInView(self.view).x / self.view.bounds.size.width
-            case .Left:
-                progress = -sender.translationInView(self.view).x / self.view.bounds.size.width
-            }
-            interactionTransition?.updateInteractiveTransition(progress)
-        case .Ended, .Cancelled:
-            switch ((transitionDirection, gestureDirection)) {
-            case let (transitionDirection, gestureDirection) where transitionDirection == gestureDirection:
-                interactionTransition?.finishInteractiveTransition()
-            default:
-                interactionTransition?.cancelInteractiveTransition()
-            }
-        default: break
+            slideTransitionHandler = SlideTransitionHandler()
+            slideTransitionHandler!.delegate = self
+            fallthrough
+        default:
+            slideTransitionHandler!.handleSlideTransitionWithinViewController(self, gestureRecognizer: sender)
         }
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         super.prepareForSegue(segue, sender: sender)
         if let itemViewController = segue.destinationViewController as? ItemViewController {
-            itemViewController.context = ItemContext(rawValue: transitionDirection!.rawValue)
+            itemViewController.context = ItemContext(rawValue: slideTransitionHandler!.transitionDirection.rawValue)
         }
     }
     
@@ -82,6 +61,23 @@ extension ListViewController: UIGestureRecognizerDelegate {
         }
         return false;
     }
+}
+
+extension ListViewController: SlideTransitionHandlerDelegate {
+    
+    func slideTransitionHandler(slideTransitionHandler: SlideTransitionHandler, didFinishTransition canceled: Bool) {
+        self.slideTransitionHandler = nil
+    }
+    
+    func slideTransitionHandler(slideTransitionHandler: SlideTransitionHandler, segueIdentifierForDirection direction: SlideTransitionDirection) -> String {
+        switch (direction) {
+        case .Left:
+            return segueIdentifierOld
+        case .Right:
+            return segueIdentifierNew
+        }
+    }
+    
 }
 
 extension ListViewController: BarTintColorChanging {

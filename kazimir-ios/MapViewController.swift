@@ -13,6 +13,11 @@ class MapViewController: UIViewController {
     @IBOutlet weak var mapView: GMSMapView!
     @IBOutlet weak var pickerView: UIPickerView!
     
+    var slideTransitionHandler: SlideTransitionHandler?
+    
+    private var segueIdentifierOld = "pushItemViewControllerOld"
+    private var segueIdentifierNew = "pushItemViewControllerNew"
+    
     @IBAction func mapButtonTapped(sender: AnyObject) {
         self.navigationController?.popViewControllerAnimated(true)
     }
@@ -21,9 +26,21 @@ class MapViewController: UIViewController {
         self.navigationController?.popToRootViewControllerAnimated(true)
     }
     
+    @IBAction func panGestureRecognized(sender: UIPanGestureRecognizer) {
+        switch (sender.state) {
+        case .Began:
+            slideTransitionHandler = SlideTransitionHandler()
+            slideTransitionHandler!.delegate = self
+            fallthrough
+        default:
+            slideTransitionHandler!.handleSlideTransitionWithinViewController(self, gestureRecognizer: sender)
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        mapView.padding = UIEdgeInsetsMake(100, 0, 100, 0)
         pickerView.transform = CGAffineTransformMakeScale(1, 0.6)
         
         var camera = GMSCameraPosition.cameraWithLatitude(-33.86, longitude: 151.20, zoom: 6)
@@ -35,8 +52,13 @@ class MapViewController: UIViewController {
         marker.title = "Sydney"
         marker.snippet = "Australia"
         marker.map = mapView
-        
-        mapView.padding = UIEdgeInsetsMake(100, 0, 100, 0)
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        super.prepareForSegue(segue, sender: sender)
+        if let itemViewController = segue.destinationViewController as? ItemViewController {
+            itemViewController.context = ItemContext(rawValue: slideTransitionHandler!.transitionDirection.rawValue)
+        }
     }
 }
 
@@ -69,6 +91,34 @@ extension MapViewController: UIPickerViewDelegate {
         label.textAlignment = .Center
         label.transform = CGAffineTransformMakeScale(1, 1 / 0.6)
         return label
+    }
+    
+}
+
+extension MapViewController: UIGestureRecognizerDelegate {
+    
+    func gestureRecognizerShouldBegin(gestureRecognizer:UIGestureRecognizer) -> Bool {
+        if let panGestureRecognizer = gestureRecognizer as? UIPanGestureRecognizer {
+            let velocity = panGestureRecognizer.velocityInView(panGestureRecognizer.view)
+            return abs(velocity.x) > abs(velocity.y)
+        }
+        return false;
+    }
+}
+
+extension MapViewController: SlideTransitionHandlerDelegate {
+    
+    func slideTransitionHandler(slideTransitionHandler: SlideTransitionHandler, didFinishTransition canceled: Bool) {
+        self.slideTransitionHandler = nil
+    }
+    
+    func slideTransitionHandler(slideTransitionHandler: SlideTransitionHandler, segueIdentifierForDirection direction: SlideTransitionDirection) -> String {
+        switch (direction) {
+        case .Left:
+            return segueIdentifierOld
+        case .Right:
+            return segueIdentifierNew
+        }
     }
     
 }

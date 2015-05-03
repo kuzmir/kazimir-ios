@@ -41,6 +41,7 @@
 		20738B8B1AE25D0B0000C808 /* OpenSans-Semibold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 20738B811AE25D0B0000C808 /* OpenSans-Semibold.ttf */; };
 		20738B8C1AE25D0B0000C808 /* OpenSans-SemiboldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 20738B821AE25D0B0000C808 /* OpenSans-SemiboldItalic.ttf */; };
 		209EA3691AED980600820D4D /* Appearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 209EA3681AED980600820D4D /* Appearance.swift */; };
+		20BC07ED1AF69FC800711A49 /* SlideTransitionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20BC07EC1AF69FC800711A49 /* SlideTransitionHandler.swift */; };
 		20D051CE1AED81FE00BBA3BC /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D051CD1AED81FE00BBA3BC /* WelcomeViewController.swift */; };
 		20D051D01AED856200BBA3BC /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D051CF1AED856200BBA3BC /* NavigationController.swift */; };
 		20EF81E01AED89C200B03F87 /* FadeTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20EF81DF1AED89C200B03F87 /* FadeTransition.swift */; };
@@ -98,6 +99,7 @@
 		20738B811AE25D0B0000C808 /* OpenSans-Semibold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "OpenSans-Semibold.ttf"; path = "open-sans/OpenSans-Semibold.ttf"; sourceTree = "<group>"; };
 		20738B821AE25D0B0000C808 /* OpenSans-SemiboldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "OpenSans-SemiboldItalic.ttf"; path = "open-sans/OpenSans-SemiboldItalic.ttf"; sourceTree = "<group>"; };
 		209EA3681AED980600820D4D /* Appearance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Appearance.swift; sourceTree = "<group>"; };
+		20BC07EC1AF69FC800711A49 /* SlideTransitionHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlideTransitionHandler.swift; sourceTree = "<group>"; };
 		20D051CD1AED81FE00BBA3BC /* WelcomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
 		20D051CF1AED856200BBA3BC /* NavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
 		20EF81DF1AED89C200B03F87 /* FadeTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FadeTransition.swift; sourceTree = "<group>"; };
@@ -245,6 +247,7 @@
 				206721311AF40D83009F68F1 /* FlipTransition.swift */,
 				20D051CF1AED856200BBA3BC /* NavigationController.swift */,
 				2002DF441AF15956008DFC85 /* SlideTransition.swift */,
+				20BC07EC1AF69FC800711A49 /* SlideTransitionHandler.swift */,
 			);
 			path = Navigation;
 			sourceTree = "<group>";
@@ -377,6 +380,7 @@
 				202451B11AE2850D000D8022 /* ListViewController.swift in Sources */,
 				20EF81E01AED89C200B03F87 /* FadeTransition.swift in Sources */,
 				202451B31AE2931C000D8022 /* MapViewController.swift in Sources */,
+				20BC07ED1AF69FC800711A49 /* SlideTransitionHandler.swift in Sources */,
 				206721321AF40D83009F68F1 /* FlipTransition.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

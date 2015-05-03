@@ -450,9 +450,11 @@
                                     </view>
                                     <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jng-jd-xDN">
                                         <rect key="frame" x="0.0" y="-31" width="600" height="162"/>
+                                        <gestureRecognizers/>
                                         <connections>
                                             <outlet property="dataSource" destination="nmj-32-qdN" id="3aT-f4-Bjl"/>
                                             <outlet property="delegate" destination="nmj-32-qdN" id="kNv-pU-DJs"/>
+                                            <outletCollection property="gestureRecognizers" destination="YG3-SO-iJI" appends="YES" id="cy0-Co-hAp"/>
                                         </connections>
                                     </pickerView>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="chevron_dark_right" translatesAutoresizingMaskIntoConstraints="NO" id="7xk-4I-1g4">
@@ -511,9 +513,17 @@
                     <connections>
                         <outlet property="mapView" destination="SVh-bO-Xh9" id="x8k-hl-rKo"/>
                         <outlet property="pickerView" destination="jng-jd-xDN" id="vO1-TN-QGw"/>
+                        <segue destination="vJ8-ha-L9m" kind="show" identifier="pushItemViewControllerOld" id="XJN-eH-rXu"/>
+                        <segue destination="vJ8-ha-L9m" kind="show" identifier="pushItemViewControllerNew" id="6t6-Kg-VJz"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MUm-Um-5EB" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <panGestureRecognizer minimumNumberOfTouches="1" id="YG3-SO-iJI">
+                    <connections>
+                        <action selector="panGestureRecognized:" destination="nmj-32-qdN" id="XIc-Hh-z5V"/>
+                        <outlet property="delegate" destination="nmj-32-qdN" id="2Yo-SN-OMs"/>
+                    </connections>
+                </panGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1544" y="206"/>
         </scene>
@@ -624,7 +634,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Y2k-DX-bl9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="832" y="970"/>
+            <point key="canvasLocation" x="1195" y="1072"/>
         </scene>
     </scenes>
     <resources>
@@ -647,7 +657,7 @@
         <image name="shop_icon_new" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="RLK-pK-5Jg"/>
+        <segue reference="XJN-eH-rXu"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.20784313976764679" green="0.60392159223556519" blue="0.68235296010971069" alpha="1" colorSpace="calibratedRGB"/>
 </document>
