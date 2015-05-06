@@ -11,6 +11,10 @@ import UIKit
 enum SlideTransitionDirection: Int {
     case Left
     case Right
+    
+    func getOtherDirection() -> SlideTransitionDirection {
+        return self == .Left ? .Right : .Left
+    }
 }
 
 class SlideTransition: NSObject {
@@ -74,10 +78,10 @@ extension SlideTransition: UIViewControllerAnimatedTransitioning {
         UIView.animateWithDuration(duration, animations: { () -> Void in
             fromView.frame = self.finalFrameForViewWithKey(UITransitionContextFromViewKey, withTransitionContext: transitionContext)
             toView.frame = self.finalFrameForViewWithKey(UITransitionContextToViewKey, withTransitionContext: transitionContext)
-            toViewController.navigationController?.navigationBar.barTintColor = (toViewController as! BarTintColorChanging).barTintColor()
+            toViewController.navigationController?.navigationBar.barTintColor = (toViewController as! BarTintColorChanging).getBarTintColor()
         }) { (finished) -> Void in
             if (transitionContext.transitionWasCancelled()) {
-                fromViewController.navigationController?.navigationBar.barTintColor = (fromViewController as! BarTintColorChanging).barTintColor()
+                fromViewController.navigationController?.navigationBar.barTintColor = (fromViewController as! BarTintColorChanging).getBarTintColor()
             }
             transitionContext.completeTransition(!transitionContext.transitionWasCancelled())
         }

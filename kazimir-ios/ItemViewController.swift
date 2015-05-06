@@ -11,14 +11,18 @@ import UIKit
 enum ItemContext: Int {
     case Old
     case New
+    
+    func getOtherContext() -> ItemContext {
+        return self == .Old ? .New : .Old
+    }
 }
 
-class ItemViewController: UITableViewController {
+class ItemViewController: UIViewController {
     
     var context: ItemContext!
     
     var popDirection: SlideTransitionDirection {
-        return SlideTransitionDirection(rawValue: (context.rawValue + 1) % 2)!
+        return SlideTransitionDirection(rawValue: context.getOtherContext().rawValue)!
     }
     
     var pushDirection: SlideTransitionDirection {
@@ -27,6 +31,11 @@ class ItemViewController: UITableViewController {
     
     @IBAction func backButtonTapped(sender: AnyObject) {
         self.navigationController?.popViewControllerAnimated(true);
+    }
+    
+    @IBAction func flipButtonTapped(sender: AnyObject) {
+        let duoViewController = self.parentViewController as! DuoViewController
+        duoViewController.switchViews()
     }
     
     override func viewDidLoad() {
@@ -44,7 +53,7 @@ class ItemViewController: UITableViewController {
 
 extension ItemViewController: BarTintColorChanging {
     
-    func barTintColor() -> UIColor {
+    func getBarTintColor() -> UIColor {
         return context == .Old ? Appearance.oldColor : Appearance.newColor
     }
     

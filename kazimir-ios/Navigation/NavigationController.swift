@@ -1,5 +1,5 @@
 //
-//  NavigationControllerViewController.swift
+//  NavigationController.swift
 //  kazimir-ios
 //
 //  Created by Krzysiek on 26/04/15.
@@ -23,14 +23,14 @@ extension NavigationController: UINavigationControllerDelegate {
     
     func navigationController(navigationController: UINavigationController, animationControllerForOperation operation: UINavigationControllerOperation, fromViewController fromVC: UIViewController, toViewController toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         switch ((fromVC, toVC)) {
-        case let (fromVC as ItemViewController, toVC as ItemViewController):
-            return FlipTransition()
-        case let (_, toVC as ItemViewController):
-            return SlideTransition(direction: toVC.pushDirection, interactive: true)
-        case let (fromVC as ItemViewController, _):
-            return SlideTransition(direction: fromVC.popDirection, interactive: false)
+        case let (_, toVC as DuoViewController) where toVC.visibleViewController is ItemViewController:
+            let itemViewController = toVC.visibleViewController as! ItemViewController
+            return SlideTransition(direction: itemViewController.pushDirection, interactive: true)
+        case let (fromVC as DuoViewController, _) where fromVC.visibleViewController is ItemViewController:
+            let itemViewController = fromVC.visibleViewController as! ItemViewController
+            return SlideTransition(direction: itemViewController.popDirection, interactive: false)
         default:
-            return FadeTransition()
+            return nil
         }
     }
     

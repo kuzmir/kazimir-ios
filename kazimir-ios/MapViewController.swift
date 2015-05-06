@@ -19,7 +19,8 @@ class MapViewController: UIViewController {
     private var segueIdentifierNew = "pushItemViewControllerNew"
     
     @IBAction func mapButtonTapped(sender: AnyObject) {
-        self.navigationController?.popViewControllerAnimated(true)
+        let duoViewController = self.parentViewController as! DuoViewController
+        duoViewController.switchViews()
     }
     
     @IBAction func kazimirButtonTapped(sender: AnyObject) {
@@ -33,7 +34,7 @@ class MapViewController: UIViewController {
             slideTransitionHandler!.delegate = self
             fallthrough
         default:
-            slideTransitionHandler!.handleSlideTransitionWithinViewController(self, gestureRecognizer: sender)
+            slideTransitionHandler!.handleSlideTransitionWithinViewController(self.parentViewController!, gestureRecognizer: sender)
         }
     }
     
@@ -56,9 +57,11 @@ class MapViewController: UIViewController {
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         super.prepareForSegue(segue, sender: sender)
-        if let itemViewController = segue.destinationViewController as? ItemViewController {
-            itemViewController.context = ItemContext(rawValue: slideTransitionHandler!.transitionDirection.rawValue)
-        }
+        let duoViewController = segue.destinationViewController as! DuoViewController
+        let firstItemViewController = duoViewController.embededViewControllers[0] as! ItemViewController
+        firstItemViewController.context = ItemContext(rawValue: slideTransitionHandler!.transitionDirection.rawValue)
+        let secondItemViewController = duoViewController.embededViewControllers[1] as! ItemViewController
+        secondItemViewController.context = ItemContext(rawValue: slideTransitionHandler!.transitionDirection.getOtherDirection().rawValue)
     }
 }
 
@@ -125,7 +128,7 @@ extension MapViewController: SlideTransitionHandlerDelegate {
 
 extension MapViewController: BarTintColorChanging {
     
-    func barTintColor() -> UIColor {
+    func getBarTintColor() -> UIColor {
         return UIColor.whiteColor()
     }
     

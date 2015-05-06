@@ -10,7 +10,7 @@ import UIKit
 
 protocol BarTintColorChanging {
     
-    func barTintColor() -> UIColor
+    func getBarTintColor() -> UIColor
     
 }
 
