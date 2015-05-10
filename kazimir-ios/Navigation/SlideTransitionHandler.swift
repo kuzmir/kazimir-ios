@@ -10,7 +10,7 @@ import UIKit
 
 protocol SlideTransitionHandlerDelegate {
     
-    func slideTransitionHandler(slideTransitionHandler: SlideTransitionHandler, didFinishTransition canceled: Bool)
+    func viewControllerForSlideTransitionHandler(slideTransitionHandler: SlideTransitionHandler) -> UIViewController
     func slideTransitionHandler(slideTransitionHandler: SlideTransitionHandler, segueIdentifierForDirection direction: SlideTransitionDirection) -> String
     
 }
@@ -20,17 +20,18 @@ class SlideTransitionHandler: NSObject {
     var delegate: SlideTransitionHandlerDelegate!
     var transitionDirection: SlideTransitionDirection!
     
-    func handleSlideTransitionWithinViewController(viewController: UIViewController, gestureRecognizer: UIPanGestureRecognizer) {
+    @IBAction func panGestureRecognized(sender: UIPanGestureRecognizer) {
+        let viewController = delegate.viewControllerForSlideTransitionHandler(self)
         let interactionTransition = (viewController.navigationController as? NavigationController)?.interactionTransition
-        let gestureDirection: SlideTransitionDirection = gestureRecognizer.velocityInView(gestureRecognizer.view).x > 0 ? .Right : .Left
+        let gestureDirection: SlideTransitionDirection = sender.velocityInView(sender.view).x > 0 ? .Right : .Left
         
-        switch (gestureRecognizer.state) {
+        switch (sender.state) {
         case .Began:
             transitionDirection = gestureDirection
             let segueIdentifier = delegate.slideTransitionHandler(self, segueIdentifierForDirection: transitionDirection!)
             viewController.performSegueWithIdentifier(segueIdentifier, sender: viewController)
         case .Changed:
-            var progress = gestureRecognizer.translationInView(viewController.view).x / viewController.view.bounds.size.width
+            var progress = sender.translationInView(viewController.view).x / viewController.view.bounds.size.width
             if (transitionDirection! == .Left) {
                 progress = -progress
             }
@@ -46,4 +47,15 @@ class SlideTransitionHandler: NSObject {
         }
     }
    
+}
+
+extension SlideTransitionHandler: UIGestureRecognizerDelegate {
+    
+    func gestureRecognizerShouldBegin(gestureRecognizer:UIGestureRecognizer) -> Bool {
+        if let panGestureRecognizer = gestureRecognizer as? UIPanGestureRecognizer {
+            let velocity = panGestureRecognizer.velocityInView(panGestureRecognizer.view)
+            return abs(velocity.x) > abs(velocity.y)
+        }
+        return false;
+    }
 }

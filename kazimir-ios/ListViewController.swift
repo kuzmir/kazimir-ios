@@ -7,13 +7,13 @@
 //
 
 import UIKit
+import CoreData
 
 class ListViewController: UITableViewController {
     
-    var slideTransitionHandler: SlideTransitionHandler?
+    @IBOutlet weak var slideTransitionHandler: SlideTransitionHandler!
     
-    private var segueIdentifierOld = "pushItemViewControllerOld"
-    private var segueIdentifierNew = "pushItemViewControllerNew"
+    var streetsFetchedResultsController: NSFetchedResultsController = Storage.sharedInstance.getStreetsFetchedResultsController()
     
     @IBAction func kazimirButtonTapped(sender: AnyObject) {
         self.navigationController?.popToRootViewControllerAnimated(true);
@@ -24,15 +24,10 @@ class ListViewController: UITableViewController {
         duoViewController.switchViews()
     }
     
-    @IBAction func panGestureRecognized(sender: UIPanGestureRecognizer) {
-        switch (sender.state) {
-        case .Began:
-            slideTransitionHandler = SlideTransitionHandler()
-            slideTransitionHandler!.delegate = self
-            fallthrough
-        default:
-            slideTransitionHandler!.handleSlideTransitionWithinViewController(self.parentViewController!, gestureRecognizer: sender)
-        }
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        slideTransitionHandler.delegate = self
+        streetsFetchedResultsController.performFetch(nil)
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -49,39 +44,37 @@ class ListViewController: UITableViewController {
 extension ListViewController: UITableViewDataSource {
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        let sectionInfo = streetsFetchedResultsController.sections![0] as! NSFetchedResultsSectionInfo
+        return sectionInfo.numberOfObjects
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let street = streetsFetchedResultsController.objectAtIndexPath(indexPath) as! Street
+        let place = street.places[0] as! Place
+        let photo = place.photos[0] as! Photo
+        
         let cell = tableView.dequeueReusableCellWithIdentifier("listViewCell") as! UITableViewCell
+        let imageView = cell.viewWithTag(1) as! UIImageView
+        imageView.image = UIImage(data: photo.dataMedium)
+        let nameLabel = cell.viewWithTag(2) as! UILabel
+        nameLabel.text = street.name
         return cell
     }
     
 }
 
-extension ListViewController: UIGestureRecognizerDelegate {
-    
-    func gestureRecognizerShouldBegin(gestureRecognizer:UIGestureRecognizer) -> Bool {
-        if let panGestureRecognizer = gestureRecognizer as? UIPanGestureRecognizer {
-            let velocity = panGestureRecognizer.velocityInView(panGestureRecognizer.view)
-            return abs(velocity.x) > abs(velocity.y)
-        }
-        return false;
-    }
-}
-
 extension ListViewController: SlideTransitionHandlerDelegate {
     
-    func slideTransitionHandler(slideTransitionHandler: SlideTransitionHandler, didFinishTransition canceled: Bool) {
-        self.slideTransitionHandler = nil
+    func viewControllerForSlideTransitionHandler(slideTransitionHandler: SlideTransitionHandler) -> UIViewController {
+        return self.parentViewController!
     }
     
     func slideTransitionHandler(slideTransitionHandler: SlideTransitionHandler, segueIdentifierForDirection direction: SlideTransitionDirection) -> String {
         switch (direction) {
         case .Left:
-            return segueIdentifierOld
+            return SegueIdentifier.Old.rawValue
         case .Right:
-            return segueIdentifierNew
+            return SegueIdentifier.New.rawValue
         }
     }
     

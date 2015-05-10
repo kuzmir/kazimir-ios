@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		20024FEA1AFFAFAC0013DC4D /* Client.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20024FE91AFFAFAC0013DC4D /* Client.swift */; };
+		20024FEE1AFFBD1C0013DC4D /* Kazimir.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 20024FEC1AFFBD1C0013DC4D /* Kazimir.xcdatamodeld */; };
+		2002500B1AFFC57B0013DC4D /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2002500A1AFFC57B0013DC4D /* Storage.swift */; };
+		200250A51B0010730013DC4D /* Place.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200250A41B0010730013DC4D /* Place.swift */; };
+		200250A71B0010740013DC4D /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200250A61B0010740013DC4D /* Photo.swift */; };
+		200250AB1B0024C90013DC4D /* Street.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200250AA1B0024C90013DC4D /* Street.swift */; };
 		2002DF451AF15956008DFC85 /* SlideTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2002DF441AF15956008DFC85 /* SlideTransition.swift */; };
 		202451B11AE2850D000D8022 /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 202451B01AE2850D000D8022 /* ListViewController.swift */; };
 		202451B31AE2931C000D8022 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 202451B21AE2931C000D8022 /* MapViewController.swift */; };
@@ -62,6 +68,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		20024FE91AFFAFAC0013DC4D /* Client.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Client.swift; sourceTree = "<group>"; };
+		20024FED1AFFBD1C0013DC4D /* Kazimir.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Kazimir.xcdatamodel; sourceTree = "<group>"; };
+		2002500A1AFFC57B0013DC4D /* Storage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
+		200250A41B0010730013DC4D /* Place.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Place.swift; sourceTree = "<group>"; };
+		200250A61B0010740013DC4D /* Photo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
+		200250AA1B0024C90013DC4D /* Street.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Street.swift; sourceTree = "<group>"; };
 		2002DF441AF15956008DFC85 /* SlideTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlideTransition.swift; sourceTree = "<group>"; };
 		2011D7391AF6ADDA00B86462 /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		2011D73A1AF6ADDA00B86462 /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/Main.strings; sourceTree = "<group>"; };
@@ -147,6 +159,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		20024FEB1AFFBCA90013DC4D /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				20024FEC1AFFBD1C0013DC4D /* Kazimir.xcdatamodeld */,
+				200250A61B0010740013DC4D /* Photo.swift */,
+				200250A41B0010730013DC4D /* Place.swift */,
+				200250AA1B0024C90013DC4D /* Street.swift */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
 		202451B91AE2968D000D8022 /* frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -210,11 +233,14 @@
 		20738B551AE259B80000C808 /* kazimir-ios */ = {
 			isa = PBXGroup;
 			children = (
+				20024FEB1AFFBCA90013DC4D /* Data */,
 				209EA3681AED980600820D4D /* Appearance.swift */,
 				20738B581AE259B80000C808 /* AppDelegate.swift */,
+				20024FE91AFFAFAC0013DC4D /* Client.swift */,
 				20EF81E11AED8E6B00B03F87 /* ItemViewController.swift */,
 				202451B21AE2931C000D8022 /* MapViewController.swift */,
 				202451B01AE2850D000D8022 /* ListViewController.swift */,
+				2002500A1AFFC57B0013DC4D /* Storage.swift */,
 				20D051CD1AED81FE00BBA3BC /* WelcomeViewController.swift */,
 				20738B611AE259B80000C808 /* LaunchScreen.xib */,
 				20738B5C1AE259B80000C808 /* Main.storyboard */,
@@ -401,18 +427,24 @@
 			buildActionMask = 2147483647;
 			files = (
 				2002DF451AF15956008DFC85 /* SlideTransition.swift in Sources */,
+				2002500B1AFFC57B0013DC4D /* Storage.swift in Sources */,
 				20EF81E21AED8E6B00B03F87 /* ItemViewController.swift in Sources */,
 				209EA3691AED980600820D4D /* Appearance.swift in Sources */,
+				20024FEE1AFFBD1C0013DC4D /* Kazimir.xcdatamodeld in Sources */,
 				20B5CA131AF8E68A0011B2F6 /* DuoViewController.swift in Sources */,
 				20D051D01AED856200BBA3BC /* NavigationController.swift in Sources */,
 				20738B591AE259B80000C808 /* AppDelegate.swift in Sources */,
 				20D051CE1AED81FE00BBA3BC /* WelcomeViewController.swift in Sources */,
 				20B5CA151AF8EA440011B2F6 /* EmbedSegue.swift in Sources */,
+				20024FEA1AFFAFAC0013DC4D /* Client.swift in Sources */,
 				202451B11AE2850D000D8022 /* ListViewController.swift in Sources */,
+				200250A71B0010740013DC4D /* Photo.swift in Sources */,
 				20EF81E01AED89C200B03F87 /* FadeAnimator.swift in Sources */,
 				202451B31AE2931C000D8022 /* MapViewController.swift in Sources */,
 				20BC07ED1AF69FC800711A49 /* SlideTransitionHandler.swift in Sources */,
+				200250A51B0010730013DC4D /* Place.swift in Sources */,
 				203302351AFAB6E200E738BC /* Animator.swift in Sources */,
+				200250AB1B0024C90013DC4D /* Street.swift in Sources */,
 				206721321AF40D83009F68F1 /* FlipAnimator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -640,6 +672,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		20024FEC1AFFBD1C0013DC4D /* Kazimir.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				20024FED1AFFBD1C0013DC4D /* Kazimir.xcdatamodel */,
+			);
+			currentVersion = 20024FED1AFFBD1C0013DC4D /* Kazimir.xcdatamodel */;
+			path = Kazimir.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 20738B4B1AE259B80000C808 /* Project object */;
 }

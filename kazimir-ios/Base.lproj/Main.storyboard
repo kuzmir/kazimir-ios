@@ -344,9 +344,6 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <userDefinedRuntimeAttributes>
-                        <userDefinedRuntimeAttribute type="boolean" keyPath="keyPath" value="NO"/>
-                    </userDefinedRuntimeAttributes>
                     <connections>
                         <outlet property="animator" destination="2dt-xK-5FK" id="SPQ-4P-YkD"/>
                         <segue destination="nmj-32-qdN" kind="custom" identifier="embedSeagueIdentifierSecond" customClass="EmbedSegue" customModule="kazimir_ios" customModuleProvider="target" id="Nfg-BL-1G5"/>
@@ -393,7 +390,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="listViewCell" id="x2Z-Uo-eb8">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="listViewCell" id="x2Z-Uo-eb8">
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="x2Z-Uo-eb8" id="Nts-9d-t1x">
                                     <autoresizingMask key="autoresizingMask"/>
@@ -405,7 +402,7 @@
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="chevron_left" translatesAutoresizingMaskIntoConstraints="NO" id="9nj-vR-rqQ">
                                             <rect key="frame" x="8" y="94" width="7" height="12"/>
                                         </imageView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PLAC NOWY" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k5O-yX-1vi">
+                                        <label opaque="NO" userInteractionEnabled="NO" tag="2" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PLAC NOWY" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k5O-yX-1vi">
                                             <rect key="frame" x="241" y="86" width="119" height="28"/>
                                             <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="20"/>
                                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -453,12 +450,16 @@
                         </barButtonItem>
                     </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <connections>
+                        <outlet property="slideTransitionHandler" destination="kd0-2p-3hI" id="SBt-Qf-24c"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="z8H-HV-VeE" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <customObject id="kd0-2p-3hI" customClass="SlideTransitionHandler" customModule="kazimir_ios" customModuleProvider="target"/>
                 <panGestureRecognizer minimumNumberOfTouches="1" id="j8X-az-VRu">
                     <connections>
-                        <action selector="panGestureRecognized:" destination="tKz-Rt-72t" id="G58-Oc-3Qz"/>
-                        <outlet property="delegate" destination="tKz-Rt-72t" id="oIQ-B2-j6J"/>
+                        <action selector="panGestureRecognized:" destination="kd0-2p-3hI" id="Jgc-3M-lZr"/>
+                        <outlet property="delegate" destination="kd0-2p-3hI" id="Kak-b8-FRZ"/>
                     </connections>
                 </panGestureRecognizer>
             </objects>
@@ -563,13 +564,15 @@
                     <connections>
                         <outlet property="mapView" destination="SVh-bO-Xh9" id="x8k-hl-rKo"/>
                         <outlet property="pickerView" destination="jng-jd-xDN" id="vO1-TN-QGw"/>
+                        <outlet property="slideTransitionHandler" destination="INb-Hy-Nel" id="WXi-Xn-TrQ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MUm-Um-5EB" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <customObject id="INb-Hy-Nel" customClass="SlideTransitionHandler" customModule="kazimir_ios" customModuleProvider="target"/>
                 <panGestureRecognizer minimumNumberOfTouches="1" id="YG3-SO-iJI">
                     <connections>
-                        <action selector="panGestureRecognized:" destination="nmj-32-qdN" id="XIc-Hh-z5V"/>
-                        <outlet property="delegate" destination="nmj-32-qdN" id="2Yo-SN-OMs"/>
+                        <action selector="panGestureRecognized:" destination="INb-Hy-Nel" id="KqA-DC-yFQ"/>
+                        <outlet property="delegate" destination="INb-Hy-Nel" id="muu-ex-9KF"/>
                     </connections>
                 </panGestureRecognizer>
             </objects>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model userDefinedModelVersionIdentifier="v1" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="7549" systemVersion="14D136" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="Photo" representedClassName="kazimir_ios.Photo" syncable="YES">
+        <attribute name="dataLarge" optional="YES" attributeType="Binary" syncable="YES"/>
+        <attribute name="dataMedium" optional="YES" attributeType="Binary" syncable="YES"/>
+        <attribute name="dataSmall" optional="YES" attributeType="Binary" syncable="YES"/>
+        <attribute name="dataThumb" optional="YES" attributeType="Binary" syncable="YES"/>
+        <attribute name="dataTiny" optional="YES" attributeType="Binary" syncable="YES"/>
+        <attribute name="details" optional="YES" attributeType="Transformable" valueTransformerName="" syncable="YES"/>
+        <attribute name="id" attributeType="Integer 32" indexed="YES" syncable="YES"/>
+        <relationship name="place" maxCount="1" deletionRule="Nullify" destinationEntity="Place" inverseName="photos" inverseEntity="Place" syncable="YES"/>
+    </entity>
+    <entity name="Place" representedClassName="kazimir_ios.Place" syncable="YES">
+        <attribute name="details" optional="YES" attributeType="Transformable" valueTransformerName="" syncable="YES"/>
+        <attribute name="id" attributeType="Integer 32" indexed="YES" syncable="YES"/>
+        <attribute name="present" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="updateDate" attributeType="Date" syncable="YES"/>
+        <relationship name="photos" optional="YES" toMany="YES" deletionRule="Cascade" ordered="YES" destinationEntity="Photo" inverseName="place" inverseEntity="Photo" syncable="YES"/>
+        <relationship name="street" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Street" inverseName="places" inverseEntity="Street" syncable="YES"/>
+    </entity>
+    <entity name="Street" representedClassName="kazimir_ios.Street" syncable="YES">
+        <attribute name="id" attributeType="Integer 32" indexed="YES" syncable="YES"/>
+        <attribute name="name" attributeType="String" syncable="YES"/>
+        <attribute name="path" attributeType="Transformable" syncable="YES"/>
+        <attribute name="updateDate" attributeType="Date" syncable="YES"/>
+        <relationship name="places" toMany="YES" minCount="1" deletionRule="Cascade" ordered="YES" destinationEntity="Place" inverseName="street" inverseEntity="Place" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="Street" positionX="-63" positionY="-18" width="128" height="120"/>
+        <element name="Place" positionX="-54" positionY="-9" width="128" height="135"/>
+        <element name="Photo" positionX="-18" positionY="27" width="128" height="165"/>
+    </elements>
+</model>

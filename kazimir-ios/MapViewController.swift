@@ -7,16 +7,19 @@
 //
 
 import UIKit
+import CoreData
+import CoreLocation
 
 class MapViewController: UIViewController {
 
     @IBOutlet weak var mapView: GMSMapView!
     @IBOutlet weak var pickerView: UIPickerView!
+    @IBOutlet weak var slideTransitionHandler: SlideTransitionHandler!
     
-    var slideTransitionHandler: SlideTransitionHandler?
-    
-    private var segueIdentifierOld = "pushItemViewControllerOld"
-    private var segueIdentifierNew = "pushItemViewControllerNew"
+    var streetsFetchedResultsController: NSFetchedResultsController = Storage.sharedInstance.getStreetsFetchedResultsController()
+    var polylines = [GMSPolyline]()
+    var selectedPolyline: GMSPolyline!
+    var viewAppearsForFirstTime = true
     
     @IBAction func mapButtonTapped(sender: AnyObject) {
         let duoViewController = self.parentViewController as! DuoViewController
@@ -27,32 +30,36 @@ class MapViewController: UIViewController {
         self.navigationController?.popToRootViewControllerAnimated(true)
     }
     
-    @IBAction func panGestureRecognized(sender: UIPanGestureRecognizer) {
-        switch (sender.state) {
-        case .Began:
-            slideTransitionHandler = SlideTransitionHandler()
-            slideTransitionHandler!.delegate = self
-            fallthrough
-        default:
-            slideTransitionHandler!.handleSlideTransitionWithinViewController(self.parentViewController!, gestureRecognizer: sender)
-        }
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
+        slideTransitionHandler.delegate = self
+        streetsFetchedResultsController.performFetch(nil)
         
-        mapView.padding = UIEdgeInsetsMake(100, 0, 100, 0)
         pickerView.transform = CGAffineTransformMakeScale(1, 0.6)
         
-        var camera = GMSCameraPosition.cameraWithLatitude(-33.86, longitude: 151.20, zoom: 6)
-        mapView.animateToCameraPosition(camera)
+        mapView.padding = UIEdgeInsetsMake(64, 0, 100, 0)
         mapView.myLocationEnabled = true
         
-        var marker = GMSMarker()
-        marker.position = CLLocationCoordinate2DMake(-33.86, 151.20)
-        marker.title = "Sydney"
-        marker.snippet = "Australia"
-        marker.map = mapView
+        for street in streetsFetchedResultsController.fetchedObjects as! [Street] {
+            let polyline = self.createPolylineForStreet(street)
+            polyline.map = mapView
+            polylines.append(polyline)
+        }
+        selectedPolyline = polylines[0]
+        self.updatePolylinesColors()
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        if viewAppearsForFirstTime {
+            viewAppearsForFirstTime = false
+            var bounds = GMSCoordinateBounds()
+            for polyline in polylines {
+                bounds = bounds.includingPath(polyline.path)
+            }
+            let cameraUpdate = GMSCameraUpdate.fitBounds(bounds)
+            mapView.moveCamera(cameraUpdate)
+        }
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -63,6 +70,27 @@ class MapViewController: UIViewController {
         let secondItemViewController = duoViewController.embededViewControllers[1] as! ItemViewController
         secondItemViewController.context = ItemContext(rawValue: slideTransitionHandler!.transitionDirection.getOtherDirection().rawValue)
     }
+    
+    private func createPolylineForStreet(street: Street) -> GMSPolyline {
+        let path = GMSMutablePath()
+        let coordinatesArray = street.path["coordinates"] as! [[NSNumber]]
+        for coordinateArray in coordinatesArray {
+            let latitude = coordinateArray[0].doubleValue
+            let longitude = coordinateArray[1].doubleValue
+            let coordinate = CLLocationCoordinate2DMake(latitude, longitude)
+            path.addCoordinate(coordinate)
+        }
+        
+        let polyline = GMSPolyline(path: path)
+        polyline.strokeWidth = 5
+        return polyline
+    }
+    
+    private func updatePolylinesColors() {
+        for polyline in polylines {
+            polyline.strokeColor = polyline == selectedPolyline ? Appearance.newColor : UIColor.darkGrayColor()
+        }
+    }
 }
 
 extension MapViewController: UIPickerViewDataSource {
@@ -72,7 +100,8 @@ extension MapViewController: UIPickerViewDataSource {
     }
     
     func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return 10
+        let sectionInfo = streetsFetchedResultsController.sections![0] as! NSFetchedResultsSectionInfo
+        return sectionInfo.numberOfObjects
     }
     
 }
@@ -84,43 +113,37 @@ extension MapViewController: UIPickerViewDelegate {
     }
     
     func pickerView(pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusingView view: UIView!) -> UIView {
-        if (view != nil) {
-            return view
-        }
-    
-        let label = UILabel()
+        let street = streetsFetchedResultsController.objectAtIndexPath(NSIndexPath(forRow: row, inSection: 0)) as! Street
+        let label = view as? UILabel ?? UILabel()
+        label.text = street.name
         label.font = UIFont(name: "OpenSans-Bold", size: UIFont.systemFontSize())
-        label.text = "PLAC NOWY"
         label.textAlignment = .Center
         label.transform = CGAffineTransformMakeScale(1, 1 / 0.6)
         return label
     }
     
-}
-
-extension MapViewController: UIGestureRecognizerDelegate {
-    
-    func gestureRecognizerShouldBegin(gestureRecognizer:UIGestureRecognizer) -> Bool {
-        if let panGestureRecognizer = gestureRecognizer as? UIPanGestureRecognizer {
-            let velocity = panGestureRecognizer.velocityInView(panGestureRecognizer.view)
-            return abs(velocity.x) > abs(velocity.y)
-        }
-        return false;
+    func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        selectedPolyline = polylines[row]
+        let bounds = GMSCoordinateBounds(path: selectedPolyline.path)
+        let cameraUpdate = GMSCameraUpdate.fitBounds(bounds)
+        mapView.animateWithCameraUpdate(cameraUpdate)
+        self.updatePolylinesColors()
     }
+    
 }
 
 extension MapViewController: SlideTransitionHandlerDelegate {
     
-    func slideTransitionHandler(slideTransitionHandler: SlideTransitionHandler, didFinishTransition canceled: Bool) {
-        self.slideTransitionHandler = nil
+    func viewControllerForSlideTransitionHandler(slideTransitionHandler: SlideTransitionHandler) -> UIViewController {
+        return self.parentViewController!
     }
     
     func slideTransitionHandler(slideTransitionHandler: SlideTransitionHandler, segueIdentifierForDirection direction: SlideTransitionDirection) -> String {
         switch (direction) {
         case .Left:
-            return segueIdentifierOld
+            return SegueIdentifier.Old.rawValue
         case .Right:
-            return segueIdentifierNew
+            return SegueIdentifier.New.rawValue
         }
     }
     

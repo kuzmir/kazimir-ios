@@ -14,7 +14,7 @@ protocol BarTintColorChanging {
     
 }
 
-class Appearance: NSObject {
+class Appearance {
     
     static let oldColor = Appearance.colorWithHex(0xCFBB32)
     static let newColor = Appearance.colorWithHex(0x359AAE)

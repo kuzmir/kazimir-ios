@@ -8,13 +8,22 @@
 
 import UIKit
 
+enum SegueIdentifier: String {
+    case Old = "pushItemViewControllerOld"
+    case New = "pushItemViewControllerNew"
+}
+
 enum ItemContext: Int {
     case Old
     case New
+}
+
+extension ItemContext {
     
     func getOtherContext() -> ItemContext {
         return self == .Old ? .New : .Old
     }
+    
 }
 
 class ItemViewController: UIViewController {
