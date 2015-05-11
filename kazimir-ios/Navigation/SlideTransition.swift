@@ -9,8 +9,8 @@
 import UIKit
 
 enum SlideTransitionDirection: Int {
-    case Left
     case Right
+    case Left
     
     func getOtherDirection() -> SlideTransitionDirection {
         return self == .Left ? .Right : .Left

@@ -18,7 +18,6 @@ class MapViewController: UIViewController {
     
     var streetsFetchedResultsController: NSFetchedResultsController = Storage.sharedInstance.getStreetsFetchedResultsController()
     var polylines = [GMSPolyline]()
-    var selectedPolyline: GMSPolyline!
     var viewAppearsForFirstTime = true
     
     @IBAction func mapButtonTapped(sender: AnyObject) {
@@ -45,7 +44,6 @@ class MapViewController: UIViewController {
             polyline.map = mapView
             polylines.append(polyline)
         }
-        selectedPolyline = polylines[0]
         self.updatePolylinesColors()
     }
     
@@ -64,11 +62,15 @@ class MapViewController: UIViewController {
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         super.prepareForSegue(segue, sender: sender)
+        let street = streetsFetchedResultsController.objectAtIndexPath(NSIndexPath(forRow: pickerView.selectedRowInComponent(0), inSection: 0)) as! Street
+        
         let duoViewController = segue.destinationViewController as! DuoViewController
         let firstItemViewController = duoViewController.embededViewControllers[0] as! ItemViewController
         firstItemViewController.context = ItemContext(rawValue: slideTransitionHandler!.transitionDirection.rawValue)
+        firstItemViewController.street = street
         let secondItemViewController = duoViewController.embededViewControllers[1] as! ItemViewController
         secondItemViewController.context = ItemContext(rawValue: slideTransitionHandler!.transitionDirection.getOtherDirection().rawValue)
+        secondItemViewController.street = street
     }
     
     private func createPolylineForStreet(street: Street) -> GMSPolyline {
@@ -87,6 +89,7 @@ class MapViewController: UIViewController {
     }
     
     private func updatePolylinesColors() {
+        let selectedPolyline = polylines[pickerView.selectedRowInComponent(0)]
         for polyline in polylines {
             polyline.strokeColor = polyline == selectedPolyline ? Appearance.newColor : UIColor.darkGrayColor()
         }
@@ -123,7 +126,7 @@ extension MapViewController: UIPickerViewDelegate {
     }
     
     func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        selectedPolyline = polylines[row]
+        let selectedPolyline = polylines[row]
         let bounds = GMSCoordinateBounds(path: selectedPolyline.path)
         let cameraUpdate = GMSCameraUpdate.fitBounds(bounds)
         mapView.animateWithCameraUpdate(cameraUpdate)
@@ -141,9 +144,9 @@ extension MapViewController: SlideTransitionHandlerDelegate {
     func slideTransitionHandler(slideTransitionHandler: SlideTransitionHandler, segueIdentifierForDirection direction: SlideTransitionDirection) -> String {
         switch (direction) {
         case .Left:
-            return SegueIdentifier.Old.rawValue
+            return ItemContext.Old.getSegueIdentifier()
         case .Right:
-            return SegueIdentifier.New.rawValue
+            return ItemContext.New.getSegueIdentifier()
         }
     }
     

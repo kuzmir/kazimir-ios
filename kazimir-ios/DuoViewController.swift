@@ -25,11 +25,11 @@ class DuoViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let viewController = embededViewControllers[visibleViewControllerIndex]
-        viewController.willMoveToParentViewController(self)
+        let viewController = visibleViewController
         self.addChildViewController(viewController)
         self.view.addSubview(viewController.view)
         self.setNavigationItem(viewController.navigationItem)
+        viewController.didMoveToParentViewController(self)
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -63,7 +63,6 @@ class DuoViewController: UIViewController {
         
         self.addChildViewController(newVisibleViewController)
         self.view.addSubview(newVisibleViewController.view)
-        newVisibleViewController.didMoveToParentViewController(self)
         
         animator.animate(fromViewController: visibleViewController, toViewController: newVisibleViewController) { (finished) -> Void in
             if (finished) {
@@ -71,11 +70,11 @@ class DuoViewController: UIViewController {
                 visibleViewController.view.removeFromSuperview()
                 visibleViewController.removeFromParentViewController()
                 
+                newVisibleViewController.didMoveToParentViewController(self)
                 self.setNavigationItem(newVisibleViewController.navigationItem)
                 self.visibleViewControllerIndex = newVisibleViewControllerIndex
             }
             else {
-                newVisibleViewController.willMoveToParentViewController(nil)
                 newVisibleViewController.view.removeFromSuperview()
                 newVisibleViewController.removeFromParentViewController()
             }

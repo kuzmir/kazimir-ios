@@ -12,6 +12,7 @@ import CoreData
 class ListViewController: UITableViewController {
     
     @IBOutlet weak var slideTransitionHandler: SlideTransitionHandler!
+    @IBOutlet var panGestureRecognizer: UIPanGestureRecognizer!
     
     var streetsFetchedResultsController: NSFetchedResultsController = Storage.sharedInstance.getStreetsFetchedResultsController()
     
@@ -26,17 +27,25 @@ class ListViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+//        tableView.contentInset = UIEdgeInsets(top: 64, left: 0, bottom: 0, right: 0)
         slideTransitionHandler.delegate = self
         streetsFetchedResultsController.performFetch(nil)
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         super.prepareForSegue(segue, sender: sender)
+        
+        let location = panGestureRecognizer.locationInView(tableView)
+        let indexPath = tableView.indexPathForRowAtPoint(location)!
+        let street = streetsFetchedResultsController.objectAtIndexPath(indexPath) as! Street
+        
         let duoViewController = segue.destinationViewController as! DuoViewController
         let firstItemViewController = duoViewController.embededViewControllers[0] as! ItemViewController
         firstItemViewController.context = ItemContext(rawValue: slideTransitionHandler!.transitionDirection.rawValue)
+        firstItemViewController.street = street
         let secondItemViewController = duoViewController.embededViewControllers[1] as! ItemViewController
         secondItemViewController.context = ItemContext(rawValue: slideTransitionHandler!.transitionDirection.getOtherDirection().rawValue)
+        secondItemViewController.street = street
     }
     
 }
@@ -72,9 +81,9 @@ extension ListViewController: SlideTransitionHandlerDelegate {
     func slideTransitionHandler(slideTransitionHandler: SlideTransitionHandler, segueIdentifierForDirection direction: SlideTransitionDirection) -> String {
         switch (direction) {
         case .Left:
-            return SegueIdentifier.Old.rawValue
+            return ItemContext.Old.getSegueIdentifier()
         case .Right:
-            return SegueIdentifier.New.rawValue
+            return ItemContext.New.getSegueIdentifier()
         }
     }
     

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2001B5AA1B013AED0096D1E6 /* GalleryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2001B5A91B013AED0096D1E6 /* GalleryView.swift */; };
 		20024FEA1AFFAFAC0013DC4D /* Client.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20024FE91AFFAFAC0013DC4D /* Client.swift */; };
 		20024FEE1AFFBD1C0013DC4D /* Kazimir.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 20024FEC1AFFBD1C0013DC4D /* Kazimir.xcdatamodeld */; };
 		2002500B1AFFC57B0013DC4D /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2002500A1AFFC57B0013DC4D /* Storage.swift */; };
@@ -68,6 +69,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2001B5A91B013AED0096D1E6 /* GalleryView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GalleryView.swift; sourceTree = "<group>"; };
 		20024FE91AFFAFAC0013DC4D /* Client.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Client.swift; sourceTree = "<group>"; };
 		20024FED1AFFBD1C0013DC4D /* Kazimir.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Kazimir.xcdatamodel; sourceTree = "<group>"; };
 		2002500A1AFFC57B0013DC4D /* Storage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
@@ -238,6 +240,7 @@
 				20738B581AE259B80000C808 /* AppDelegate.swift */,
 				20024FE91AFFAFAC0013DC4D /* Client.swift */,
 				20EF81E11AED8E6B00B03F87 /* ItemViewController.swift */,
+				2001B5A91B013AED0096D1E6 /* GalleryView.swift */,
 				202451B21AE2931C000D8022 /* MapViewController.swift */,
 				202451B01AE2850D000D8022 /* ListViewController.swift */,
 				2002500A1AFFC57B0013DC4D /* Storage.swift */,
@@ -433,6 +436,7 @@
 				20024FEE1AFFBD1C0013DC4D /* Kazimir.xcdatamodeld in Sources */,
 				20B5CA131AF8E68A0011B2F6 /* DuoViewController.swift in Sources */,
 				20D051D01AED856200BBA3BC /* NavigationController.swift in Sources */,
+				2001B5AA1B013AED0096D1E6 /* GalleryView.swift in Sources */,
 				20738B591AE259B80000C808 /* AppDelegate.swift in Sources */,
 				20D051CE1AED81FE00BBA3BC /* WelcomeViewController.swift in Sources */,
 				20B5CA151AF8EA440011B2F6 /* EmbedSegue.swift in Sources */,
