@@ -37,6 +37,12 @@ class ItemViewController: UIViewController {
     var context: ItemContext!
     var street: Street!
     
+    var locale: String = {
+        let localizations = NSBundle.mainBundle().preferredLocalizations as! [String]
+        let currentLocale =  NSLocale.currentLocale().objectForKey(NSLocaleLanguageCode) as! String
+        return contains(localizations,currentLocale) ? currentLocale : localizations[0]
+    }()
+    
     var popDirection: SlideTransitionDirection {
         return SlideTransitionDirection(rawValue: context.getOtherContext().rawValue)!
     }
@@ -70,11 +76,6 @@ class ItemViewController: UIViewController {
         if context.rawValue == SlideTransitionDirection.Left.rawValue {
             self.navigationItem.rightBarButtonItem = nil
         }
-    }
-    
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        self.automaticallyAdjustsScrollViewInsets = false
     }
     
     private func getPlacesFromStreet(street: Street, context: ItemContext) -> [Place] {
@@ -113,8 +114,8 @@ extension ItemViewController: UITableViewDataSource {
         let nameLabel = cell.viewWithTag(2) as! UILabel
         let descriptionLabel = cell.viewWithTag(3) as! UILabel
         
-        nameLabel.text = self.getNameFromPlace(place, locale: "pl")
-        descriptionLabel.text = self.getDescriptionFromPlace(place, locale: "pl")
+        nameLabel.text = self.getNameFromPlace(place, locale: locale)
+        descriptionLabel.text = self.getDescriptionFromPlace(place, locale: locale)
         for photo in place.photos.array as! [Photo] {
             let image = UIImage(data: photo.dataMedium)!
             galleryView.addImage(image)

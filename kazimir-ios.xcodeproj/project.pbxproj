@@ -53,6 +53,7 @@
 		20BC07ED1AF69FC800711A49 /* SlideTransitionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20BC07EC1AF69FC800711A49 /* SlideTransitionHandler.swift */; };
 		20D051CE1AED81FE00BBA3BC /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D051CD1AED81FE00BBA3BC /* WelcomeViewController.swift */; };
 		20D051D01AED856200BBA3BC /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D051CF1AED856200BBA3BC /* NavigationController.swift */; };
+		20E4BE191B04102A00A115A9 /* DataSynchronizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20E4BE181B04102A00A115A9 /* DataSynchronizer.swift */; };
 		20EF81E01AED89C200B03F87 /* FadeAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20EF81DF1AED89C200B03F87 /* FadeAnimator.swift */; };
 		20EF81E21AED8E6B00B03F87 /* ItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20EF81E11AED8E6B00B03F87 /* ItemViewController.swift */; };
 /* End PBXBuildFile section */
@@ -122,6 +123,7 @@
 		20BC07EC1AF69FC800711A49 /* SlideTransitionHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlideTransitionHandler.swift; sourceTree = "<group>"; };
 		20D051CD1AED81FE00BBA3BC /* WelcomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
 		20D051CF1AED856200BBA3BC /* NavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
+		20E4BE181B04102A00A115A9 /* DataSynchronizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataSynchronizer.swift; sourceTree = "<group>"; };
 		20EF81DF1AED89C200B03F87 /* FadeAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FadeAnimator.swift; sourceTree = "<group>"; };
 		20EF81E11AED8E6B00B03F87 /* ItemViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -231,19 +233,20 @@
 		20738B551AE259B80000C808 /* kazimir-ios */ = {
 			isa = PBXGroup;
 			children = (
-				20024FEB1AFFBCA90013DC4D /* Data */,
 				209EA3681AED980600820D4D /* Appearance.swift */,
 				20738B581AE259B80000C808 /* AppDelegate.swift */,
 				20024FE91AFFAFAC0013DC4D /* Client.swift */,
+				20E4BE181B04102A00A115A9 /* DataSynchronizer.swift */,
 				20EF81E11AED8E6B00B03F87 /* ItemViewController.swift */,
 				2001B5A91B013AED0096D1E6 /* GalleryView.swift */,
 				202451B21AE2931C000D8022 /* MapViewController.swift */,
 				202451B01AE2850D000D8022 /* ListViewController.swift */,
 				2002500A1AFFC57B0013DC4D /* Storage.swift */,
 				20D051CD1AED81FE00BBA3BC /* WelcomeViewController.swift */,
+				20024FEB1AFFBCA90013DC4D /* Data */,
+				20D051D11AED85EA00BBA3BC /* Navigation */,
 				20738B5C1AE259B80000C808 /* Main.storyboard */,
 				20738B5F1AE259B80000C808 /* Images.xcassets */,
-				20D051D11AED85EA00BBA3BC /* Navigation */,
 				20738B781AE25CDE0000C808 /* Fonts */,
 				20EF81E81AED936E00B03F87 /* ObjectiveC */,
 				20738B561AE259B80000C808 /* Supporting Files */,
@@ -432,6 +435,7 @@
 				20D051D01AED856200BBA3BC /* NavigationController.swift in Sources */,
 				2001B5AA1B013AED0096D1E6 /* GalleryView.swift in Sources */,
 				20738B591AE259B80000C808 /* AppDelegate.swift in Sources */,
+				20E4BE191B04102A00A115A9 /* DataSynchronizer.swift in Sources */,
 				20D051CE1AED81FE00BBA3BC /* WelcomeViewController.swift in Sources */,
 				20B5CA151AF8EA440011B2F6 /* EmbedSegue.swift in Sources */,
 				20024FEA1AFFAFAC0013DC4D /* Client.swift in Sources */,

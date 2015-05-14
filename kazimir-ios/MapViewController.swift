@@ -10,7 +10,7 @@ import UIKit
 import CoreData
 import CoreLocation
 
-class MapViewController: UIViewController {
+class MapViewController: UIViewController, NSFetchedResultsControllerDelegate {
 
     @IBOutlet weak var mapView: GMSMapView!
     @IBOutlet weak var pickerView: UIPickerView!
@@ -32,31 +32,20 @@ class MapViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         slideTransitionHandler.delegate = self
+        streetsFetchedResultsController.delegate = self
         streetsFetchedResultsController.performFetch(nil)
         
         pickerView.transform = CGAffineTransformMakeScale(1, 0.6)
         
         mapView.padding = UIEdgeInsetsMake(64, 0, 100, 0)
         mapView.myLocationEnabled = true
-        
-        for street in streetsFetchedResultsController.fetchedObjects as! [Street] {
-            let polyline = self.createPolylineForStreet(street)
-            polyline.map = mapView
-            polylines.append(polyline)
-        }
-        self.updatePolylinesColors()
     }
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         if viewAppearsForFirstTime {
             viewAppearsForFirstTime = false
-            var bounds = GMSCoordinateBounds()
-            for polyline in polylines {
-                bounds = bounds.includingPath(polyline.path)
-            }
-            let cameraUpdate = GMSCameraUpdate.fitBounds(bounds)
-            mapView.moveCamera(cameraUpdate)
+            self.reloadStreetsOnMap()
         }
     }
     
@@ -73,14 +62,32 @@ class MapViewController: UIViewController {
         secondItemViewController.street = street
     }
     
+    private func reloadStreetsOnMap() {
+        mapView.clear()
+        polylines.removeAll(keepCapacity: false)
+        
+        var bounds = GMSCoordinateBounds()
+        for street in streetsFetchedResultsController.fetchedObjects as! [Street] {
+            let polyline = self.createPolylineForStreet(street)
+            polyline.map = mapView
+            polylines.append(polyline)
+            bounds = bounds.includingPath(polyline.path)
+        }
+        
+        if polylines.count > 0 {
+            self.updatePolylinesColors()
+            let cameraUpdate = GMSCameraUpdate.fitBounds(bounds)
+            mapView.moveCamera(cameraUpdate)
+        }
+    }
+    
     private func createPolylineForStreet(street: Street) -> GMSPolyline {
         let path = GMSMutablePath()
         let coordinatesArray = street.path["coordinates"] as! [[NSNumber]]
         for coordinateArray in coordinatesArray {
             let latitude = coordinateArray[0].doubleValue
             let longitude = coordinateArray[1].doubleValue
-            let coordinate = CLLocationCoordinate2DMake(latitude, longitude)
-            path.addCoordinate(coordinate)
+            path.addCoordinate(CLLocationCoordinate2DMake(latitude, longitude))
         }
         
         let polyline = GMSPolyline(path: path)
@@ -131,6 +138,15 @@ extension MapViewController: UIPickerViewDelegate {
         let cameraUpdate = GMSCameraUpdate.fitBounds(bounds)
         mapView.animateWithCameraUpdate(cameraUpdate)
         self.updatePolylinesColors()
+    }
+    
+}
+
+extension MapViewController: NSFetchedResultsControllerDelegate {
+    
+    func controllerDidChangeContent(controller: NSFetchedResultsController) {
+        pickerView.reloadAllComponents()
+        self.reloadStreetsOnMap()
     }
     
 }

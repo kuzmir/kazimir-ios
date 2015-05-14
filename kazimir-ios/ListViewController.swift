@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-class ListViewController: UITableViewController {
+class ListViewController: UITableViewController, NSFetchedResultsControllerDelegate {
     
     @IBOutlet weak var slideTransitionHandler: SlideTransitionHandler!
     @IBOutlet var panGestureRecognizer: UIPanGestureRecognizer!
@@ -27,8 +27,8 @@ class ListViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        tableView.contentInset = UIEdgeInsets(top: 64, left: 0, bottom: 0, right: 0)
         slideTransitionHandler.delegate = self
+        streetsFetchedResultsController.delegate = self
         streetsFetchedResultsController.performFetch(nil)
     }
     
@@ -68,6 +68,14 @@ extension ListViewController: UITableViewDataSource {
         let nameLabel = cell.viewWithTag(2) as! UILabel
         nameLabel.text = street.name
         return cell
+    }
+    
+}
+
+extension ListViewController: NSFetchedResultsControllerDelegate {
+    
+    func controllerDidChangeContent(controller: NSFetchedResultsController) {
+        self.tableView.reloadData()
     }
     
 }
