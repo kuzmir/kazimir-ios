@@ -116,6 +116,8 @@ extension ItemViewController: UITableViewDataSource {
         
         nameLabel.text = self.getNameFromPlace(place, locale: locale)
         descriptionLabel.text = self.getDescriptionFromPlace(place, locale: locale)
+        
+        galleryView.clear()
         for photo in place.photos.array as! [Photo] {
             let image = UIImage(data: photo.dataMedium)!
             galleryView.addImage(image)

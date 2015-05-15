@@ -1,0 +1,127 @@
+[
+  {
+    "id": 2,
+    "name": "Plac Nowy",
+    "path": {
+      "type": "LineString",
+      "coordinates": [
+        [
+          50.05214115332007,
+          19.945088624954224
+        ],
+        [
+          50.05193965313749,
+          19.944735914468765
+        ],
+        [
+          50.051849236113924,
+          19.944564923644066
+        ],
+        [
+          50.05175881891993,
+          19.944469034671783
+        ],
+        [
+          50.05167184602977,
+          19.944467023015022
+        ],
+        [
+          50.05155042816695,
+          19.94452938437462
+        ],
+        [
+          50.05134892550391,
+          19.94465410709381
+        ]
+      ]
+    },
+    "path_string": "50.05214115332007,19.945088624954224;50.05193965313749,19.944735914468765;50.051849236113924,19.944564923644066;50.05175881891993,19.944469034671783;50.05167184602977,19.944467023015022;50.05155042816695,19.94452938437462;50.05134892550391,19.94465410709381;",
+    "updated_at": "2015-05-09T07:55:15.000Z",
+    "places": {
+      "present": [
+        {
+          "id": 2,
+          "details": {
+            "en": {
+              "name": "Plac Nowy",
+              "description": "Plac Nowy"
+            },
+            "pl": {
+              "name": "Plac Nowy",
+              "description": "Jeśli zapiekanki, to tylko z Okrąglaka. Plac Nowy tętni życiem bez względu na porę dnia i nocy - wieczorami oblegany do granic możliwości przez wielbicieli tanich szotów, za dnia jest miejscem spotkań, wycieczek i handlu. Latem o wolne miejsce ciężko nie tylko w kawiarnianych ogródkach, ale i na krawężnikach i murkach.\r\nW niedzielne poranki tłoczą się tu blogerki-hipsterki wśród stoisk z (nie)używaną odzieżą, butami i akcesoriami. Ceny – od kilkunastu do kilkuset złotych! W dni powszednie pobuszujesz wśród winyli, porcelany, archiwalnych widokówek i odgrzebanych na strychach starociach. Kupisz również kwiaty, świeże warzywa i owoce.\r\n\r\nPlac Nowy chętnie gości młodych projektantów (cykliczne targi biżuterii, ubrań itp.), lokalnych społeczników oraz muzyków. Przy odrobinie szczęścia wieczorem posłuchasz muzyków, grających na dachu Okrąglaka (np. 14-osobowego jazzbandu ze Szkocji). Jest moc!\r\n"
+            }
+          },
+          "update_at": "2015-05-09T07:56:04.000Z",
+          "photos": [
+            {
+              "id": 2,
+              "details": {
+                "en": {
+                  "title": "Plac Nowy",
+                  "description": "Plac Nowy"
+                },
+                "pl": {
+                  "title": "Plac Nowy",
+                  "description": "Plac Nowy"
+                }
+              },
+              "images": {
+                "medium": "faf56603a42909fa75dc1e53546e7461df60a4c9.png"
+              }
+            },
+            {
+              "id": 1,
+              "details": {
+                "en": {
+                  "title": "Synagoga Tempel",
+                  "description": "Synagoga Tempel"
+                },
+                "pl": {
+                  "title": "Synagoga Tempel",
+                  "description": "Synagoga Tempel"
+                }
+              },
+              "images": {
+                "medium": "d840c19bdc22f6310de06cb77a93f96b3f0c91b9.jpg"
+              }
+            }
+          ]
+        }
+      ],
+      "past": [
+        {
+          "id": 3,
+          "details": {
+            "en": {
+              "name": "Plac Nowy",
+              "description": "Plac Nowy"
+            },
+            "pl": {
+              "name": "Plac Nowy",
+              "description": "Plac, na którym stoisz, nie ma regularnego kształtu. Wpisano go w średniowieczne mury obronne.\r\nLibuszhof - nowy zaułek żydowski, plac Nowy. Przed Tobą targ najwyższej jakości produktów. Gospodynie najlepszych krakowskich domów zaopatrują tu swoje spiżarnie. Pod koniec XIX w. władze miasta zastąpują drewniane kramy, murowaną halą targową. Przy wschodnim wejściu (od ul. Estery) znajdziesz rytulaną ubojnię drobiu. Funkcjonuje, bo tak nakazują religijne rygory czystości spożywania pokarmów. Ciężar utrzymania instytucji spoczywa na barkach gminy żydowskiej.\r\nSpójrz na okalające plac budynki, 2 spośród nich to domy modlitwy: Bene Emuna (Dzieci Wiary) i Chaim Halberstam, poświęcony cadykowi, założycielowi chasydzkiej dynastii Sanz. W Bene Emuna znajdziesz obraz Vincenta Capraro -  \"Żydzi z Vught\", poświęcony wydarzeniom z obozu koncentracyjnego na południu Holandii.\r\n"
+            }
+          },
+          "update_at": "2015-05-09T07:56:23.000Z",
+          "photos": [
+            {
+              "id": 3,
+              "details": {
+                "en": {
+                  "title": "Plac Nowy",
+                  "description": "Plac Nowy"
+                },
+                "pl": {
+                  "title": "Plac Nowy",
+                  "description": "Plac Nowy"
+                }
+              },
+              "images": {
+                "medium": "0ad6bc2c6e60c0490267eb5086cf56fd3419121f.jpg"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  }
+]

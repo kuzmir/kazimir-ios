@@ -16,12 +16,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         Appearance.apply()
         GMSServices.provideAPIKey("AIzaSyCfiPBS-0-8EqHlX72TiKU0pEwi24-dLDo")
-        DataSynchronizer.sharedInstance.startSynchronization(nil)
         return true
     }
     
     func applicationWillEnterForeground(application: UIApplication) {
-        DataSynchronizer.sharedInstance.startSynchronization(nil)
+        DataSynchronizer.sharedInstance.startSynchronization(locally: true)
     }
     
 }

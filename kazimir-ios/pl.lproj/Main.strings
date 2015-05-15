@@ -29,8 +29,5 @@
 /* Class = "UILabel"; text = "STREET NAME"; ObjectID = "k5O-yX-1vi"; */
 "k5O-yX-1vi.text" = "NAZWA ULICY";
 
-/* Class = "UILabel"; text = "Could not download content. Please try again later.\n\nTap anywhere to dismiss."; ObjectID = "wfB-he-9il"; */
-"wfB-he-9il.text" = "Nie można wczytać informacji. Proszę spróbować później.\n\nTapnij aby kontynuować.";
-
 /* Class = "UILabel"; text = "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Proin nibh augue, suscipit a, scelerisque sed, lacinia in, mi. Cras vel lorem. Etiam pellentesque aliquet tellus. Phasellus pharetra nulla ac diam. Quisque semper justo at risus."; ObjectID = "yuA-29-9aS"; */
 "yuA-29-9aS.text" = "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Proin nibh augue, suscipit a, scelerisque sed, lacinia in, mi. Cras vel lorem. Etiam pellentesque aliquet tellus. Phasellus pharetra nulla ac diam. Quisque semper justo at risus.";

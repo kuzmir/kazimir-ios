@@ -1,5 +1,5 @@
 //
-//  DataDownloader.swift
+//  DataLoader.swift
 //  kazimir-ios
 //
 //  Created by Krzysztof Cieplucha on 15/05/15.
@@ -8,16 +8,16 @@
 
 import CoreData
 
-class DataDownloader {
+class DataLoader {
     
-    static let sharedInstance = DataDownloader()
+    static let sharedInstance = DataLoader()
     
     let downloadError = NSError(domain: "kazimir", code: 3, userInfo: nil)
     
     private init() {}
     
-    func downloadDataIntoContext(context: NSManagedObjectContext) -> NSError? {
-        var (jsons, error) = Client.sharedInstance.downloadData()
+    func loadDataIntoContext(context: NSManagedObjectContext, locally: Bool) -> NSError? {
+        var (jsons, error) = Client.sharedInstance.getData(locally: locally)
         if error != nil { return error }
         
         var streets = [Street]()
@@ -92,19 +92,11 @@ class DataDownloader {
             if mediumPhotoString == nil { return (nil, downloadError) }
             
             var imageData: NSData? = nil
-            (imageData, error) = self.downloadImageData(mediumPhotoString!)
+            (imageData, error) = Client.sharedInstance.getImageData(urlString: mediumPhotoString!)
             if error != nil { return (nil, error) }
             photo!.dataMedium = imageData!
         }
         return (photos, nil)
     }
     
-    private func downloadImageData(urlString: String) -> (NSData?, NSError?) {
-        let url = NSURL(string: urlString)
-        if url == nil { return (nil, downloadError) }
-        let data = NSData(contentsOfURL: url!)
-        if data == nil { return (nil, downloadError) }
-        return (data, nil)
-    }
-   
 }

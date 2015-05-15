@@ -12,7 +12,6 @@ import CoreData
 class ListViewController: UITableViewController, NSFetchedResultsControllerDelegate {
     
     @IBOutlet weak var slideTransitionHandler: SlideTransitionHandler!
-    @IBOutlet var panGestureRecognizer: UIPanGestureRecognizer!
     
     var streetsFetchedResultsController: NSFetchedResultsController = Storage.sharedInstance.getStreetsFetchedResultsController()
     
@@ -35,8 +34,7 @@ class ListViewController: UITableViewController, NSFetchedResultsControllerDeleg
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         super.prepareForSegue(segue, sender: sender)
         
-        let location = panGestureRecognizer.locationInView(tableView)
-        let indexPath = tableView.indexPathForRowAtPoint(location)!
+        let indexPath = tableView.indexPathForRowAtPoint(slideTransitionHandler.location)!
         let street = streetsFetchedResultsController.objectAtIndexPath(indexPath) as! Street
         
         let duoViewController = segue.destinationViewController as! DuoViewController
@@ -84,6 +82,10 @@ extension ListViewController: SlideTransitionHandlerDelegate {
     
     func viewControllerForSlideTransitionHandler(slideTransitionHandler: SlideTransitionHandler) -> UIViewController {
         return self.parentViewController!
+    }
+    
+    func slideTransitionHandler(slideTransitionHandler: SlideTransitionHandler, shouldBeginInLocation location: CGPoint) -> Bool {
+        return tableView.indexPathForRowAtPoint(location) != nil
     }
     
     func slideTransitionHandler(slideTransitionHandler: SlideTransitionHandler, segueIdentifierForDirection direction: SlideTransitionDirection) -> String {

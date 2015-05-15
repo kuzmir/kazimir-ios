@@ -11,6 +11,7 @@ import UIKit
 protocol SlideTransitionHandlerDelegate {
     
     func viewControllerForSlideTransitionHandler(slideTransitionHandler: SlideTransitionHandler) -> UIViewController
+    func slideTransitionHandler(slideTransitionHandler: SlideTransitionHandler, shouldBeginInLocation location: CGPoint) -> Bool
     func slideTransitionHandler(slideTransitionHandler: SlideTransitionHandler, segueIdentifierForDirection direction: SlideTransitionDirection) -> String
     
 }
@@ -18,6 +19,7 @@ protocol SlideTransitionHandlerDelegate {
 class SlideTransitionHandler: NSObject {
     
     var delegate: SlideTransitionHandlerDelegate!
+    var location: CGPoint!
     var transitionDirection: SlideTransitionDirection!
     
     @IBAction func panGestureRecognized(sender: UIPanGestureRecognizer) {
@@ -54,7 +56,13 @@ extension SlideTransitionHandler: UIGestureRecognizerDelegate {
     func gestureRecognizerShouldBegin(gestureRecognizer:UIGestureRecognizer) -> Bool {
         if let panGestureRecognizer = gestureRecognizer as? UIPanGestureRecognizer {
             let velocity = panGestureRecognizer.velocityInView(panGestureRecognizer.view)
-            return abs(velocity.x) > abs(velocity.y)
+            if abs(velocity.x) > abs(velocity.y) {
+                let location = panGestureRecognizer.locationInView(panGestureRecognizer.view)
+                if delegate.slideTransitionHandler(self, shouldBeginInLocation: location) {
+                    self.location = location
+                    return true
+                }
+            }
         }
         return false;
     }

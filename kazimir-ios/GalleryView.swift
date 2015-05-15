@@ -15,9 +15,18 @@ class GalleryView: UIScrollView {
         imageView.contentMode = .ScaleAspectFill
         imageView.clipsToBounds = true
         self.addSubview(imageView)
+        self.layoutSubviews()
+    }
+    
+    func clear() {
+        for view in self.subviews as! [UIView] {
+            view.removeFromSuperview()
+        }
+        self.contentSize = CGSizeZero
     }
 
     override func layoutSubviews() {
+        super.layoutSubviews()
         var contentWidth: CGFloat = 0
         for view in self.subviews as! [UIView] {
             view.frame = CGRectOffset(self.bounds, contentWidth, 0.0)

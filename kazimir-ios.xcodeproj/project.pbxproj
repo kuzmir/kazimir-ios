@@ -19,7 +19,7 @@
 		20243B3A1B054D5B00518663 /* PlaceExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20243B391B054D5B00518663 /* PlaceExtensions.swift */; };
 		20243B3C1B054D6900518663 /* StreetExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20243B3B1B054D6900518663 /* StreetExtensions.swift */; };
 		20243B3E1B054DB500518663 /* JSONConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20243B3D1B054DB500518663 /* JSONConvertible.swift */; };
-		20243B401B05550100518663 /* DataDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20243B3F1B05550100518663 /* DataDownloader.swift */; };
+		20243B401B05550100518663 /* DataLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20243B3F1B05550100518663 /* DataLoader.swift */; };
 		202451B11AE2850D000D8022 /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 202451B01AE2850D000D8022 /* ListViewController.swift */; };
 		202451B31AE2931C000D8022 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 202451B21AE2931C000D8022 /* MapViewController.swift */; };
 		202451BC1AE296B0000D8022 /* GoogleMaps.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 202451BA1AE296A3000D8022 /* GoogleMaps.framework */; };
@@ -39,6 +39,7 @@
 		203302351AFAB6E200E738BC /* Animator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 203302341AFAB6E200E738BC /* Animator.swift */; };
 		206721321AF40D83009F68F1 /* FlipAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 206721311AF40D83009F68F1 /* FlipAnimator.swift */; };
 		206B36E71B06085D00D0F207 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 206B36E91B06085D00D0F207 /* InfoPlist.strings */; };
+		206B36EF1B06156300D0F207 /* Resources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 206B36EE1B06156300D0F207 /* Resources.bundle */; };
 		20738B591AE259B80000C808 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20738B581AE259B80000C808 /* AppDelegate.swift */; };
 		20738B5E1AE259B80000C808 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 20738B5C1AE259B80000C808 /* Main.storyboard */; };
 		20738B601AE259B80000C808 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 20738B5F1AE259B80000C808 /* Images.xcassets */; };
@@ -90,7 +91,7 @@
 		20243B391B054D5B00518663 /* PlaceExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaceExtensions.swift; sourceTree = "<group>"; };
 		20243B3B1B054D6900518663 /* StreetExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StreetExtensions.swift; sourceTree = "<group>"; };
 		20243B3D1B054DB500518663 /* JSONConvertible.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONConvertible.swift; sourceTree = "<group>"; };
-		20243B3F1B05550100518663 /* DataDownloader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DataDownloader.swift; path = "kazimir-ios/Data/DataDownloader.swift"; sourceTree = SOURCE_ROOT; };
+		20243B3F1B05550100518663 /* DataLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DataLoader.swift; path = "kazimir-ios/Data/DataLoader.swift"; sourceTree = SOURCE_ROOT; };
 		202451B01AE2850D000D8022 /* ListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
 		202451B21AE2931C000D8022 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		202451BA1AE296A3000D8022 /* GoogleMaps.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleMaps.framework; sourceTree = "<group>"; };
@@ -114,6 +115,7 @@
 		206B36E81B06085D00D0F207 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		206B36EA1B06086100D0F207 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		206B36EB1B06086100D0F207 /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		206B36EE1B06156300D0F207 /* Resources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Resources.bundle; sourceTree = "<group>"; };
 		20738B531AE259B80000C808 /* kazimir-ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "kazimir-ios.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		20738B571AE259B80000C808 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		20738B581AE259B80000C808 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -181,7 +183,7 @@
 				20243B341B054CC700518663 /* Entity */,
 				20243B361B054CFE00518663 /* EntityExtensions */,
 				20024FE91AFFAFAC0013DC4D /* Client.swift */,
-				20243B3F1B05550100518663 /* DataDownloader.swift */,
+				20243B3F1B05550100518663 /* DataLoader.swift */,
 				20E4BE181B04102A00A115A9 /* DataSynchronizer.swift */,
 				20243B3D1B054DB500518663 /* JSONConvertible.swift */,
 				2002500A1AFFC57B0013DC4D /* Storage.swift */,
@@ -285,6 +287,7 @@
 				20D051D11AED85EA00BBA3BC /* Navigation */,
 				20738B5C1AE259B80000C808 /* Main.storyboard */,
 				20738B5F1AE259B80000C808 /* Images.xcassets */,
+				206B36EE1B06156300D0F207 /* Resources.bundle */,
 				20738B781AE25CDE0000C808 /* Fonts */,
 				20EF81E81AED936E00B03F87 /* ObjectiveC */,
 				20738B561AE259B80000C808 /* Supporting Files */,
@@ -447,6 +450,7 @@
 				20738B891AE25D0B0000C808 /* OpenSans-LightItalic.ttf in Resources */,
 				20738B831AE25D0B0000C808 /* OpenSans-Bold.ttf in Resources */,
 				20738B601AE259B80000C808 /* Images.xcassets in Resources */,
+				206B36EF1B06156300D0F207 /* Resources.bundle in Resources */,
 				20738B881AE25D0B0000C808 /* OpenSans-Light.ttf in Resources */,
 				20738B841AE25D0B0000C808 /* OpenSans-BoldItalic.ttf in Resources */,
 				20738B851AE25D0B0000C808 /* OpenSans-ExtraBold.ttf in Resources */,
@@ -475,7 +479,7 @@
 				20EF81E21AED8E6B00B03F87 /* ItemViewController.swift in Sources */,
 				209EA3691AED980600820D4D /* Appearance.swift in Sources */,
 				20243B3A1B054D5B00518663 /* PlaceExtensions.swift in Sources */,
-				20243B401B05550100518663 /* DataDownloader.swift in Sources */,
+				20243B401B05550100518663 /* DataLoader.swift in Sources */,
 				20024FEE1AFFBD1C0013DC4D /* Kazimir.xcdatamodeld in Sources */,
 				20B5CA131AF8E68A0011B2F6 /* DuoViewController.swift in Sources */,
 				20D051D01AED856200BBA3BC /* NavigationController.swift in Sources */,

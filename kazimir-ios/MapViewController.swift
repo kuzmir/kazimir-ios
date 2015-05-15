@@ -161,6 +161,10 @@ extension MapViewController: SlideTransitionHandlerDelegate {
         return self.parentViewController!
     }
     
+    func slideTransitionHandler(slideTransitionHandler: SlideTransitionHandler, shouldBeginInLocation location: CGPoint) -> Bool {
+        return true
+    }
+    
     func slideTransitionHandler(slideTransitionHandler: SlideTransitionHandler, segueIdentifierForDirection direction: SlideTransitionDirection) -> String {
         switch (direction) {
         case .Left:
