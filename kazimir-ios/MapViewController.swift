@@ -37,6 +37,10 @@ class MapViewController: UIViewController, NSFetchedResultsControllerDelegate {
         
         pickerView.transform = CGAffineTransformMakeScale(1, 0.6)
         
+        if CLLocationManager.authorizationStatus() == .NotDetermined {
+            CLLocationManager().requestWhenInUseAuthorization()
+        }
+        
         mapView.padding = UIEdgeInsetsMake(64, 0, 100, 0)
         mapView.myLocationEnabled = true
     }
