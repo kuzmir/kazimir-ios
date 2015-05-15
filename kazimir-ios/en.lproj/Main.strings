@@ -1,39 +1,36 @@
 
-/* Class = "UINavigationItem"; title = "Plac Nowy"; ObjectID = "4yF-rZ-VV0"; */
-"4yF-rZ-VV0.title" = "Plac Nowy";
-
-/* Class = "UILabel"; text = "Choose language:"; ObjectID = "AKs-Xa-Hyb"; */
-"AKs-Xa-Hyb.text" = "Choose language:";
-
 /* Class = "UILabel"; text = "Navigate right"; ObjectID = "Ar3-yj-TIV"; */
 "Ar3-yj-TIV.text" = "Navigate right";
+
+/* Class = "UINavigationItem"; title = "Street name"; ObjectID = "BMT-mW-u1a"; */
+"BMT-mW-u1a.title" = "Street name";
 
 /* Class = "UILabel"; text = "to enjoy present time"; ObjectID = "D9c-jf-pu5"; */
 "D9c-jf-pu5.text" = "to enjoy present time";
 
+/* Class = "UILabel"; text = "Loading content, please wait..."; ObjectID = "DIz-Fx-bRa"; */
+"DIz-Fx-bRa.text" = "Loading content, please wait...";
+
 /* Class = "UILabel"; text = "Navigate left"; ObjectID = "Hk1-wy-0sc"; */
 "Hk1-wy-0sc.text" = "Navigate left";
-
-/* Class = "UIButton"; normalTitle = "PL"; ObjectID = "PFS-kM-M75"; */
-"PFS-kM-M75.normalTitle" = "PL";
 
 /* Class = "UILabel"; text = "to discover past time"; ObjectID = "TWp-Mc-RuU"; */
 "TWp-Mc-RuU.text" = "to discover past time";
 
+/* Class = "UILabel"; text = "Place name"; ObjectID = "Ve0-6L-dST"; */
+"Ve0-6L-dST.text" = "Place name";
+
 /* Class = "UIButton"; normalTitle = "Discover Kazimierz"; ObjectID = "bQa-rx-Ftv"; */
 "bQa-rx-Ftv.normalTitle" = "Discover Kazimierz";
-
-/* Class = "UILabel"; text = "Okrąglak"; ObjectID = "eNb-jP-XcS"; */
-"eNb-jP-XcS.text" = "Okrąglak";
 
 /* Class = "UILabel"; text = "A guide from past till now"; ObjectID = "h2F-ZQ-KTA"; */
 "h2F-ZQ-KTA.text" = "A guide from past till now";
 
-/* Class = "UILabel"; text = "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Proin nibh augue, suscipit a, scelerisque sed, lacinia in, mi. Cras vel lorem. Etiam pellentesque aliquet tellus. Phasellus pharetra nulla ac diam. Quisque semper justo at risus."; ObjectID = "hf8-Od-Mqv"; */
-"hf8-Od-Mqv.text" = "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Proin nibh augue, suscipit a, scelerisque sed, lacinia in, mi. Cras vel lorem. Etiam pellentesque aliquet tellus. Phasellus pharetra nulla ac diam. Quisque semper justo at risus.";
+/* Class = "UILabel"; text = "STREET NAME"; ObjectID = "k5O-yX-1vi"; */
+"k5O-yX-1vi.text" = "STREET NAME";
 
-/* Class = "UILabel"; text = "PLAC NOWY"; ObjectID = "k5O-yX-1vi"; */
-"k5O-yX-1vi.text" = "PLAC NOWY";
+/* Class = "UILabel"; text = "Could not download content. Please try again later.\n\nTap anywhere to dismiss."; ObjectID = "wfB-he-9il"; */
+"wfB-he-9il.text" = "Could not download content. Please try again later.\n\nTap anywhere to dismiss.";
 
-/* Class = "UIButton"; normalTitle = "ENG"; ObjectID = "pt6-Sr-jWU"; */
-"pt6-Sr-jWU.normalTitle" = "ENG";
+/* Class = "UILabel"; text = "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Proin nibh augue, suscipit a, scelerisque sed, lacinia in, mi. Cras vel lorem. Etiam pellentesque aliquet tellus. Phasellus pharetra nulla ac diam. Quisque semper justo at risus."; ObjectID = "yuA-29-9aS"; */
+"yuA-29-9aS.text" = "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Proin nibh augue, suscipit a, scelerisque sed, lacinia in, mi. Cras vel lorem. Etiam pellentesque aliquet tellus. Phasellus pharetra nulla ac diam. Quisque semper justo at risus.";

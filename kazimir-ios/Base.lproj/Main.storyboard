@@ -141,10 +141,10 @@ Tap anywhere to dismiss.</string>
                                         </connections>
                                     </button>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jb8-u9-jQG">
-                                        <rect key="frame" x="163" y="176" width="242" height="20"/>
+                                        <rect key="frame" x="179" y="176" width="211" height="20"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Downloading content, please wait..." lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DIz-Fx-bRa">
-                                                <rect key="frame" x="28" y="2" width="214" height="17"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loading content, please wait..." lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DIz-Fx-bRa">
+                                                <rect key="frame" x="28" y="2" width="183" height="17"/>
                                                 <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="12"/>
                                                 <color key="textColor" red="0.39607843139999999" green="0.39607843139999999" blue="0.39607843139999999" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -434,8 +434,8 @@ Tap anywhere to dismiss.</string>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="chevron_left" translatesAutoresizingMaskIntoConstraints="NO" id="9nj-vR-rqQ">
                                             <rect key="frame" x="8" y="94" width="7" height="12"/>
                                         </imageView>
-                                        <label opaque="NO" userInteractionEnabled="NO" tag="2" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PLAC NOWY" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k5O-yX-1vi">
-                                            <rect key="frame" x="241" y="86" width="119" height="28"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" tag="2" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="STREET NAME" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k5O-yX-1vi">
+                                            <rect key="frame" x="232" y="86" width="136" height="28"/>
                                             <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="20"/>
                                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
@@ -628,7 +628,7 @@ Tap anywhere to dismiss.</string>
             </objects>
             <point key="canvasLocation" x="-585" y="206"/>
         </scene>
-        <!--Plac Nowy-->
+        <!--Street name-->
         <scene sceneID="L4z-aD-Gb1">
             <objects>
                 <viewController id="NX0-Cb-Tj4" customClass="ItemViewController" customModule="kazimir_ios" customModuleProvider="target" sceneMemberID="viewController">
@@ -649,8 +649,8 @@ Tap anywhere to dismiss.</string>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="sbZ-bD-4C7" id="4Ce-2i-Hhd">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" tag="2" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" text="Okrąglak" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ve0-6L-dST">
-                                                    <rect key="frame" x="16" y="166" width="75" height="25"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" tag="2" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" text="Place name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ve0-6L-dST">
+                                                    <rect key="frame" x="16" y="166" width="97" height="25"/>
                                                     <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="18"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -710,7 +710,7 @@ Tap anywhere to dismiss.</string>
                         </constraints>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout" top="YES"/>
-                    <navigationItem key="navigationItem" title="Plac Nowy" id="BMT-mW-u1a">
+                    <navigationItem key="navigationItem" title="Street name" id="BMT-mW-u1a">
                         <barButtonItem key="leftBarButtonItem" image="arrow_left" id="1Pv-3E-slY">
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>

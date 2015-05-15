@@ -38,6 +38,7 @@
 		202451DB1AE29AD6000D8022 /* GoogleMaps.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 202451DA1AE29AD6000D8022 /* GoogleMaps.bundle */; };
 		203302351AFAB6E200E738BC /* Animator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 203302341AFAB6E200E738BC /* Animator.swift */; };
 		206721321AF40D83009F68F1 /* FlipAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 206721311AF40D83009F68F1 /* FlipAnimator.swift */; };
+		206B36E71B06085D00D0F207 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 206B36E91B06085D00D0F207 /* InfoPlist.strings */; };
 		20738B591AE259B80000C808 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20738B581AE259B80000C808 /* AppDelegate.swift */; };
 		20738B5E1AE259B80000C808 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 20738B5C1AE259B80000C808 /* Main.storyboard */; };
 		20738B601AE259B80000C808 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 20738B5F1AE259B80000C808 /* Images.xcassets */; };
@@ -110,6 +111,9 @@
 		202451DA1AE29AD6000D8022 /* GoogleMaps.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = GoogleMaps.bundle; path = GoogleMaps.framework/Versions/A/Resources/GoogleMaps.bundle; sourceTree = "<group>"; };
 		203302341AFAB6E200E738BC /* Animator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Animator.swift; sourceTree = "<group>"; };
 		206721311AF40D83009F68F1 /* FlipAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlipAnimator.swift; sourceTree = "<group>"; };
+		206B36E81B06085D00D0F207 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		206B36EA1B06086100D0F207 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		206B36EB1B06086100D0F207 /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		20738B531AE259B80000C808 /* kazimir-ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "kazimir-ios.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		20738B571AE259B80000C808 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		20738B581AE259B80000C808 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -292,6 +296,7 @@
 			isa = PBXGroup;
 			children = (
 				20738B571AE259B80000C808 /* Info.plist */,
+				206B36E91B06085D00D0F207 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -399,6 +404,7 @@
 				TargetAttributes = {
 					20738B521AE259B80000C808 = {
 						CreatedOnToolsVersion = 6.3;
+						DevelopmentTeam = 7P44FAXTL7;
 					};
 					20738B671AE259B80000C808 = {
 						CreatedOnToolsVersion = 6.3;
@@ -413,6 +419,7 @@
 			knownRegions = (
 				en,
 				Base,
+				pl,
 			);
 			mainGroup = 20738B4A1AE259B80000C808;
 			productRefGroup = 20738B541AE259B80000C808 /* Products */;
@@ -431,6 +438,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				20738B8B1AE25D0B0000C808 /* OpenSans-Semibold.ttf in Resources */,
+				206B36E71B06085D00D0F207 /* InfoPlist.strings in Resources */,
 				20738B8C1AE25D0B0000C808 /* OpenSans-SemiboldItalic.ttf in Resources */,
 				20738B5E1AE259B80000C808 /* Main.storyboard in Resources */,
 				20738B8A1AE25D0B0000C808 /* OpenSans-Regular.ttf in Resources */,
@@ -510,6 +518,16 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		206B36E91B06085D00D0F207 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				206B36E81B06085D00D0F207 /* Base */,
+				206B36EA1B06086100D0F207 /* en */,
+				206B36EB1B06086100D0F207 /* pl */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
 		20738B5C1AE259B80000C808 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -612,6 +630,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/frameworks",
@@ -630,6 +649,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/frameworks",
