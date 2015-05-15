@@ -11,8 +11,10 @@
             <string>OpenSans-Bold</string>
             <string>OpenSans-Bold</string>
             <string>OpenSans-Bold</string>
+            <string>OpenSans-Bold</string>
         </mutableArray>
         <mutableArray key="OpenSans-Regular.ttf">
+            <string>OpenSans</string>
             <string>OpenSans</string>
             <string>OpenSans</string>
             <string>OpenSans</string>
@@ -21,6 +23,50 @@
         </mutableArray>
     </customFonts>
     <scenes>
+        <!--Error View Controller-->
+        <scene sceneID="udS-aP-ZUy">
+            <objects>
+                <viewController id="vhh-IA-xjZ" customClass="ErrorViewController" customModule="kazimir_ios" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="NoY-SZ-dBH"/>
+                        <viewControllerLayoutGuide type="bottom" id="tCy-S2-xHP"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="0bN-sf-zKL">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wfB-he-9il">
+                                <rect key="frame" x="110" y="267" width="381" height="66"/>
+                                <string key="text">Could not download content. Please try again later.
+
+Tap anywhere to dismiss.</string>
+                                <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="16"/>
+                                <color key="textColor" red="0.3960784375667572" green="0.3960784375667572" blue="0.3960784375667572" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <gestureRecognizers/>
+                        <constraints>
+                            <constraint firstAttribute="centerX" secondItem="wfB-he-9il" secondAttribute="centerX" id="egK-jz-NcU"/>
+                            <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="wfB-he-9il" secondAttribute="trailing" constant="20" id="fRd-Tt-y0g"/>
+                            <constraint firstAttribute="centerY" secondItem="wfB-he-9il" secondAttribute="centerY" id="hpJ-7g-cQ9"/>
+                            <constraint firstItem="wfB-he-9il" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="0bN-sf-zKL" secondAttribute="leadingMargin" constant="20" id="ogh-Zy-kIa"/>
+                        </constraints>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="el9-iy-bzW" appends="YES" id="Bej-tK-EUC"/>
+                        </connections>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="CMC-Dy-DUe" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="el9-iy-bzW">
+                    <connections>
+                        <action selector="tapGestureRecognized:" destination="vhh-IA-xjZ" id="3i1-1y-k8M"/>
+                    </connections>
+                </tapGestureRecognizer>
+            </objects>
+            <point key="canvasLocation" x="841" y="-523"/>
+        </scene>
         <!--Welcome View Controller-->
         <scene sceneID="ufC-wZ-h7g">
             <objects>
@@ -94,9 +140,42 @@
                                             <segue destination="rx5-a5-mM0" kind="show" id="6TX-YT-vWS"/>
                                         </connections>
                                     </button>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jb8-u9-jQG">
+                                        <rect key="frame" x="163" y="176" width="242" height="20"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Downloading content, please wait..." lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DIz-Fx-bRa">
+                                                <rect key="frame" x="28" y="2" width="214" height="17"/>
+                                                <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="12"/>
+                                                <color key="textColor" red="0.39607843139999999" green="0.39607843139999999" blue="0.39607843139999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                                <variation key="heightClass=compact" ambiguous="YES" misplaced="YES">
+                                                    <rect key="frame" x="202" y="130" width="196" height="0.0"/>
+                                                </variation>
+                                                <variation key="heightClass=compact-widthClass=compact" ambiguous="YES" misplaced="YES">
+                                                    <rect key="frame" x="102" y="109" width="196" height="0.0"/>
+                                                </variation>
+                                                <variation key="heightClass=compact-widthClass=regular" ambiguous="YES" misplaced="YES">
+                                                    <rect key="frame" x="302" y="130" width="196" height="0.0"/>
+                                                </variation>
+                                            </label>
+                                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="vxZ-gX-nmW">
+                                                <rect key="frame" x="0.0" y="0.0" width="20" height="20"/>
+                                            </activityIndicatorView>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="centerY" secondItem="DIz-Fx-bRa" secondAttribute="centerY" id="GQj-eZ-PIj"/>
+                                            <constraint firstItem="vxZ-gX-nmW" firstAttribute="top" secondItem="jb8-u9-jQG" secondAttribute="top" id="PY4-Ti-KBg"/>
+                                            <constraint firstItem="DIz-Fx-bRa" firstAttribute="leading" secondItem="vxZ-gX-nmW" secondAttribute="trailing" constant="8" symbolic="YES" id="fho-dl-XWU"/>
+                                            <constraint firstAttribute="trailing" secondItem="DIz-Fx-bRa" secondAttribute="trailing" id="hTM-qU-dq4"/>
+                                            <constraint firstAttribute="bottom" secondItem="vxZ-gX-nmW" secondAttribute="bottom" id="sp8-6g-tVn"/>
+                                            <constraint firstItem="vxZ-gX-nmW" firstAttribute="leading" secondItem="jb8-u9-jQG" secondAttribute="leading" id="xMu-NA-Hay"/>
+                                        </constraints>
+                                    </view>
                                 </subviews>
                                 <constraints>
+                                    <constraint firstItem="jb8-u9-jQG" firstAttribute="bottom" secondItem="do2-iO-OqU" secondAttribute="bottomMargin" id="4Ij-19-Zg2"/>
                                     <constraint firstAttribute="centerY" secondItem="bQa-rx-Ftv" secondAttribute="centerY" id="9Ys-Ud-kfC"/>
+                                    <constraint firstAttribute="centerX" secondItem="jb8-u9-jQG" secondAttribute="centerX" id="JSh-a4-MJl"/>
                                     <constraint firstAttribute="centerX" secondItem="bQa-rx-Ftv" secondAttribute="centerX" id="XRo-Si-Fc1"/>
                                 </constraints>
                             </view>
@@ -272,6 +351,12 @@
                     </view>
                     <navigationItem key="navigationItem" id="nDE-Wg-uDJ"/>
                     <nil key="simulatedTopBarMetrics"/>
+                    <connections>
+                        <outlet property="activityIndicatorView" destination="vxZ-gX-nmW" id="JEh-jX-6bZ"/>
+                        <outlet property="discoverButton" destination="bQa-rx-Ftv" id="iQH-bN-b18"/>
+                        <outlet property="messagaLabel" destination="DIz-Fx-bRa" id="low-1X-UME"/>
+                        <segue destination="vhh-IA-xjZ" kind="presentation" identifier="showError" modalPresentationStyle="formSheet" modalTransitionStyle="crossDissolve" id="iGh-Zn-Vav"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>

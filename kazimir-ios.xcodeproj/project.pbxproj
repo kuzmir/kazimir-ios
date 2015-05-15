@@ -55,6 +55,7 @@
 		209EA3691AED980600820D4D /* Appearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 209EA3681AED980600820D4D /* Appearance.swift */; };
 		20B5CA131AF8E68A0011B2F6 /* DuoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20B5CA121AF8E68A0011B2F6 /* DuoViewController.swift */; };
 		20B5CA151AF8EA440011B2F6 /* EmbedSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20B5CA141AF8EA440011B2F6 /* EmbedSegue.swift */; };
+		20BBFF381B05850B00A81E0D /* ErrorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20BBFF371B05850B00A81E0D /* ErrorViewController.swift */; };
 		20BC07ED1AF69FC800711A49 /* SlideTransitionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20BC07EC1AF69FC800711A49 /* SlideTransitionHandler.swift */; };
 		20D051CE1AED81FE00BBA3BC /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D051CD1AED81FE00BBA3BC /* WelcomeViewController.swift */; };
 		20D051D01AED856200BBA3BC /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D051CF1AED856200BBA3BC /* NavigationController.swift */; };
@@ -130,6 +131,7 @@
 		209EA3681AED980600820D4D /* Appearance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Appearance.swift; sourceTree = "<group>"; };
 		20B5CA121AF8E68A0011B2F6 /* DuoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DuoViewController.swift; path = ../DuoViewController.swift; sourceTree = "<group>"; };
 		20B5CA141AF8EA440011B2F6 /* EmbedSegue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmbedSegue.swift; sourceTree = "<group>"; };
+		20BBFF371B05850B00A81E0D /* ErrorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorViewController.swift; sourceTree = "<group>"; };
 		20BC07EC1AF69FC800711A49 /* SlideTransitionHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlideTransitionHandler.swift; sourceTree = "<group>"; };
 		20D051CD1AED81FE00BBA3BC /* WelcomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
 		20D051CF1AED856200BBA3BC /* NavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
@@ -269,6 +271,7 @@
 			children = (
 				209EA3681AED980600820D4D /* Appearance.swift */,
 				20738B581AE259B80000C808 /* AppDelegate.swift */,
+				20BBFF371B05850B00A81E0D /* ErrorViewController.swift */,
 				20EF81E11AED8E6B00B03F87 /* ItemViewController.swift */,
 				2001B5A91B013AED0096D1E6 /* GalleryView.swift */,
 				202451B21AE2931C000D8022 /* MapViewController.swift */,
@@ -478,6 +481,7 @@
 				200250A71B0010740013DC4D /* Photo.swift in Sources */,
 				20EF81E01AED89C200B03F87 /* FadeAnimator.swift in Sources */,
 				202451B31AE2931C000D8022 /* MapViewController.swift in Sources */,
+				20BBFF381B05850B00A81E0D /* ErrorViewController.swift in Sources */,
 				20BC07ED1AF69FC800711A49 /* SlideTransitionHandler.swift in Sources */,
 				200250A51B0010730013DC4D /* Place.swift in Sources */,
 				203302351AFAB6E200E738BC /* Animator.swift in Sources */,
