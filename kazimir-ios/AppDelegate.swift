@@ -20,7 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func applicationWillEnterForeground(application: UIApplication) {
-        DataSynchronizer.sharedInstance.startSynchronization(locally: true)
+        DataSynchronizer.sharedInstance.startSynchronization(locally: false)
     }
     
 }

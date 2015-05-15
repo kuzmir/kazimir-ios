@@ -28,6 +28,9 @@ class WelcomeViewController: UIViewController {
             DataSynchronizer.sharedInstance.delegate = self
             DataSynchronizer.sharedInstance.startSynchronization(locally: true)
         }
+        else {
+            DataSynchronizer.sharedInstance.startSynchronization(locally: false)
+        }
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -47,7 +50,7 @@ extension WelcomeViewController: DataSynchronizerDelegate {
     func dataSynchronizerDidFinishSynchronization(dataSynchronizer: DataSynchronizer, error: NSError?) {
         activityIndicatorView.stopAnimating()
         messagaLabel.hidden = true
-        DataSynchronizer.sharedInstance.delegate = self
+        DataSynchronizer.sharedInstance.delegate = nil
         DataSynchronizer.sharedInstance.startSynchronization(locally: false)
     }
     
