@@ -1,6 +1,6 @@
 [
   {
-    "id": 2,
+    "id": 1,
     "name": "Plac Nowy",
     "path": {
       "type": "LineString",
@@ -40,7 +40,7 @@
     "places": {
       "present": [
         {
-          "id": 2,
+          "id": 1,
           "details": {
             "en": {
               "name": "Plac Nowy",
@@ -54,7 +54,7 @@
           "update_at": "2015-05-09T07:56:04.000Z",
           "photos": [
             {
-              "id": 2,
+              "id": 1,
               "details": {
                 "en": {
                   "title": "Plac Nowy",
@@ -70,7 +70,55 @@
               }
             },
             {
-              "id": 1,
+              "id": 2,
+              "details": {
+                "en": {
+                  "title": "Synagoga Tempel",
+                  "description": "Synagoga Tempel"
+                },
+                "pl": {
+                  "title": "Synagoga Tempel",
+                  "description": "Synagoga Tempel"
+                }
+              },
+              "images": {
+                "medium": "d840c19bdc22f6310de06cb77a93f96b3f0c91b9.jpg"
+              }
+            }
+          ]
+        },
+        {
+          "id": 2,
+          "details": {
+            "en": {
+              "name": "Plac Nowy",
+              "description": "Plac Nowy"
+            },
+            "pl": {
+              "name": "Plac Nowy",
+              "description": "Jeśli zapiekanki, to tylko z Okrąglaka. Plac Nowy tętni życiem bez względu na porę dnia i nocy - wieczorami oblegany do granic możliwości przez wielbicieli tanich szotów, za dnia jest miejscem spotkań, wycieczek i handlu. Latem o wolne miejsce ciężko nie tylko w kawiarnianych ogródkach, ale i na krawężnikach i murkach.\r\nW niedzielne poranki tłoczą się tu blogerki-hipsterki wśród stoisk z (nie)używaną odzieżą, butami i akcesoriami. Ceny – od kilkunastu do kilkuset złotych! W dni powszednie pobuszujesz wśród winyli, porcelany, archiwalnych widokówek i odgrzebanych na strychach starociach. Kupisz również kwiaty, świeże warzywa i owoce.\r\n\r\nPlac Nowy chętnie gości młodych projektantów (cykliczne targi biżuterii, ubrań itp.), lokalnych społeczników oraz muzyków. Przy odrobinie szczęścia wieczorem posłuchasz muzyków, grających na dachu Okrąglaka (np. 14-osobowego jazzbandu ze Szkocji). Jest moc!\r\n"
+            }
+          },
+          "update_at": "2015-05-09T07:56:04.000Z",
+          "photos": [
+            {
+              "id": 3,
+              "details": {
+                "en": {
+                  "title": "Plac Nowy",
+                  "description": "Plac Nowy"
+                },
+                "pl": {
+                  "title": "Plac Nowy",
+                  "description": "Plac Nowy"
+                }
+              },
+              "images": {
+                "medium": "faf56603a42909fa75dc1e53546e7461df60a4c9.png"
+              }
+            },
+            {
+              "id": 4,
               "details": {
                 "en": {
                   "title": "Synagoga Tempel",
@@ -104,7 +152,7 @@
           "update_at": "2015-05-09T07:56:23.000Z",
           "photos": [
             {
-              "id": 3,
+              "id": 5,
               "details": {
                 "en": {
                   "title": "Plac Nowy",

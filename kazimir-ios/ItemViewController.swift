@@ -103,27 +103,44 @@ class ItemViewController: UIViewController {
 
 extension ItemViewController: UITableViewDataSource {
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return self.getPlacesFromStreet(street, context: context).count
     }
     
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 1
+    }
+    
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let place = self.getPlacesFromStreet(street, context: context)[indexPath.row]
+        let place = self.getPlacesFromStreet(street, context: context)[indexPath.section]
         let cell = tableView.dequeueReusableCellWithIdentifier("placeCell") as! UITableViewCell
-        let galleryView = cell.viewWithTag(1) as! GalleryView
-        let nameLabel = cell.viewWithTag(2) as! UILabel
-        let descriptionLabel = cell.viewWithTag(3) as! UILabel
+        let nameLabel = cell.viewWithTag(1) as! UILabel
+        let descriptionLabel = cell.viewWithTag(2) as! UILabel
         
         nameLabel.text = self.getNameFromPlace(place, locale: locale)
         descriptionLabel.text = self.getDescriptionFromPlace(place, locale: locale)
+        return cell
+    }
+    
+}
+
+extension ItemViewController: UITableViewDelegate {
+    
+    func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let place = self.getPlacesFromStreet(street, context: context)[section]
+        let header = tableView.dequeueReusableCellWithIdentifier("galleryCell") as! UITableViewCell
+        let galleryView = header.viewWithTag(1) as! GalleryView
         
         galleryView.clear()
         for photo in place.photos.array as! [Photo] {
             let image = UIImage(data: photo.dataMedium)!
             galleryView.addImage(image)
         }
-        
-        return cell
+        return header
+    }
+    
+    func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 200
     }
     
 }
