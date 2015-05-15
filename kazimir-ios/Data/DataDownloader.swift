@@ -20,6 +20,7 @@ class DataDownloader {
         var (jsons, error) = Client.sharedInstance.downloadData()
         if error != nil { return error }
         
+        var streets = [Street]()
         for json in jsons! {
             var result: (Street, Relations?)? = nil
             (result, error) = Storage.sharedInstance.createEntityFromJSON(json, context: context)
@@ -43,6 +44,15 @@ class DataDownloader {
                 places = places + pastPlaces!
             }
             street.places = NSOrderedSet(array: places)
+            streets.append(street)
+        }
+        
+        // delete old streets
+        let fetchRequest = NSFetchRequest(entityName: Storage.getEntityName(Street.self))
+        let result = context.executeFetchRequest(fetchRequest, error: &error)
+        if error != nil { return error }
+        for street in result as! [Street] {
+            if !contains(streets, street) { context.deleteObject(street) }
         }
         return nil
     }
@@ -96,117 +106,5 @@ class DataDownloader {
         if data == nil { return (nil, downloadError) }
         return (data, nil)
     }
-    
-    
-
-//    private func storeStreetFromJSON(json: [String: AnyObject], context: NSManagedObjectContext) -> (Street?, NSError?) {
-//        let id = json["id"] as? NSNumber
-//        if id == nil { return (nil, standardError) }
-//        let street: Street = self.getEntity(id!, context: context)
-//
-//        let dateString = json["updated_at"] as? String
-//        if dateString == nil { return (nil, standardError) }
-//        let updateDate = dateFormatter.dateFromString(dateString!)
-//        if updateDate == nil { return (nil, standardError) }
-//
-//        if street.updateDate.compare(updateDate!) == .OrderedAscending {
-//            street.updateDate = updateDate!
-//
-//            let name = json["name"] as? String
-//            if name == nil { return (nil, standardError) }
-//            street.name = name!
-//
-//            let path = json["path"] as? [String : AnyObject]
-//            if path == nil { return (nil, standardError) }
-//            street.path = path!
-//
-//            let placesJSON = json["places"] as? [String: AnyObject]
-//            if placesJSON == nil { return (nil, standardError) }
-//
-//            let presentPlacesJSON = placesJSON!["present"] as? [[String: AnyObject]]
-//            if presentPlacesJSON == nil { return (nil, standardError) }
-//
-//            var places = [Place]()
-//            for placeJSON in presentPlacesJSON! {
-//                let (place, error) = self.storePlaceFromJSON(placeJSON, present: true, context: context)
-//                if error != nil { return (nil, error) }
-//                places.append(place!)
-//            }
-//
-//            let pastPlacesJSON = placesJSON!["past"] as? [[String: AnyObject]]
-//            if pastPlacesJSON == nil { return (nil, standardError) }
-//
-//            for placeJSON in pastPlacesJSON! {
-//                let (place, error) = self.storePlaceFromJSON(placeJSON, present: false, context: context)
-//                if error != nil { return (nil, error) }
-//                places.append(place!)
-//            }
-//            street.places = NSOrderedSet(array: places)
-//        }
-//
-//        return (street, nil)
-//    }
-//
-//    private func storePlaceFromJSON(json: [String: AnyObject], present: Bool, context: NSManagedObjectContext) -> (Place?, NSError?) {
-//        let id = json["id"] as? NSNumber
-//        if id == nil { return (nil, standardError) }
-//        let place: Place = self.getEntity(id!, context: context)
-//
-//        let dateString = json["update_at"] as? String
-//        if dateString == nil { return (nil, standardError) }
-//        let updateDate = dateFormatter.dateFromString(dateString!)
-//        if updateDate == nil { return (nil, standardError) }
-//
-//        if place.updateDate.compare(updateDate!) == .OrderedAscending {
-//            place.updateDate = updateDate!
-//            place.present = NSNumber(bool: present)
-//
-//            let details = json["details"] as? [String : AnyObject]
-//            if details == nil { return (nil, standardError) }
-//            place.details = details!
-//
-//            let photosJSON = json["photos"] as? [[String: AnyObject]]
-//            if photosJSON == nil { return (nil, standardError) }
-//
-//            var photos = [Photo]()
-//            for photoJSON in photosJSON! {
-//                let (photo, error) = self.storePhotoFromJSON(photoJSON, context: context)
-//                if error != nil { return (nil, error) }
-//                photos.append(photo!)
-//            }
-//            place.photos = NSOrderedSet(array: photos)
-//        }
-//
-//        return (place, nil)
-//    }
-//
-//    private func storePhotoFromJSON(json: [String: AnyObject], context: NSManagedObjectContext) -> (Photo?, NSError?) {
-//        let id = json["id"] as? NSNumber
-//        if id == nil { return (nil, standardError) }
-//        let photo: Photo = self.getEntity(id!, context: context)
-//
-//        let details = json["details"] as? [String : AnyObject]
-//        if details == nil { return (nil, standardError) }
-//        photo.details = details!
-//
-//        let imagesJSON = json["images"] as? [String: String]
-//        if imagesJSON == nil { return (nil, standardError) }
-//
-//        let mediumPhotoString = imagesJSON!["medium"]
-//        if mediumPhotoString == nil { return (nil, standardError) }
-//        let (imageData, error) = self.downloadImageData(mediumPhotoString!)
-//        if error != nil { return (nil, error) }
-//        photo.dataMedium = imageData!
-//        
-//        return (photo, nil)
-//    }
-//    
-//    private func downloadImageData(urlString: String) -> (NSData?, NSError?) {
-//        let url = NSURL(string: urlString)
-//        if url == nil { return (nil, standardError) }
-//        let data = NSData(contentsOfURL: url!)
-//        if data == nil { return (nil, standardError) }
-//        return (data, nil)
-//    }
    
 }
