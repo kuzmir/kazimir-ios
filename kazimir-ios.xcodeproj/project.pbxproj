@@ -15,6 +15,11 @@
 		200250A71B0010740013DC4D /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200250A61B0010740013DC4D /* Photo.swift */; };
 		200250AB1B0024C90013DC4D /* Street.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200250AA1B0024C90013DC4D /* Street.swift */; };
 		2002DF451AF15956008DFC85 /* SlideTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2002DF441AF15956008DFC85 /* SlideTransition.swift */; };
+		20243B381B054D4B00518663 /* PhotoExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20243B371B054D4B00518663 /* PhotoExtensions.swift */; };
+		20243B3A1B054D5B00518663 /* PlaceExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20243B391B054D5B00518663 /* PlaceExtensions.swift */; };
+		20243B3C1B054D6900518663 /* StreetExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20243B3B1B054D6900518663 /* StreetExtensions.swift */; };
+		20243B3E1B054DB500518663 /* JSONConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20243B3D1B054DB500518663 /* JSONConvertible.swift */; };
+		20243B401B05550100518663 /* DataDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20243B3F1B05550100518663 /* DataDownloader.swift */; };
 		202451B11AE2850D000D8022 /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 202451B01AE2850D000D8022 /* ListViewController.swift */; };
 		202451B31AE2931C000D8022 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 202451B21AE2931C000D8022 /* MapViewController.swift */; };
 		202451BC1AE296B0000D8022 /* GoogleMaps.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 202451BA1AE296A3000D8022 /* GoogleMaps.framework */; };
@@ -79,6 +84,11 @@
 		2002DF441AF15956008DFC85 /* SlideTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlideTransition.swift; sourceTree = "<group>"; };
 		2011D73A1AF6ADDA00B86462 /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/Main.strings; sourceTree = "<group>"; };
 		2011D73C1AF6ADDF00B86462 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
+		20243B371B054D4B00518663 /* PhotoExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoExtensions.swift; sourceTree = "<group>"; };
+		20243B391B054D5B00518663 /* PlaceExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaceExtensions.swift; sourceTree = "<group>"; };
+		20243B3B1B054D6900518663 /* StreetExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StreetExtensions.swift; sourceTree = "<group>"; };
+		20243B3D1B054DB500518663 /* JSONConvertible.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONConvertible.swift; sourceTree = "<group>"; };
+		20243B3F1B05550100518663 /* DataDownloader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DataDownloader.swift; path = "kazimir-ios/Data/DataDownloader.swift"; sourceTree = SOURCE_ROOT; };
 		202451B01AE2850D000D8022 /* ListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
 		202451B21AE2931C000D8022 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		202451BA1AE296A3000D8022 /* GoogleMaps.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleMaps.framework; sourceTree = "<group>"; };
@@ -123,7 +133,7 @@
 		20BC07EC1AF69FC800711A49 /* SlideTransitionHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlideTransitionHandler.swift; sourceTree = "<group>"; };
 		20D051CD1AED81FE00BBA3BC /* WelcomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
 		20D051CF1AED856200BBA3BC /* NavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
-		20E4BE181B04102A00A115A9 /* DataSynchronizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataSynchronizer.swift; sourceTree = "<group>"; };
+		20E4BE181B04102A00A115A9 /* DataSynchronizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DataSynchronizer.swift; path = "kazimir-ios/Data/DataSynchronizer.swift"; sourceTree = SOURCE_ROOT; };
 		20EF81DF1AED89C200B03F87 /* FadeAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FadeAnimator.swift; sourceTree = "<group>"; };
 		20EF81E11AED8E6B00B03F87 /* ItemViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -162,12 +172,36 @@
 		20024FEB1AFFBCA90013DC4D /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				20243B341B054CC700518663 /* Entity */,
+				20243B361B054CFE00518663 /* EntityExtensions */,
+				20024FE91AFFAFAC0013DC4D /* Client.swift */,
+				20243B3F1B05550100518663 /* DataDownloader.swift */,
+				20E4BE181B04102A00A115A9 /* DataSynchronizer.swift */,
+				20243B3D1B054DB500518663 /* JSONConvertible.swift */,
+				2002500A1AFFC57B0013DC4D /* Storage.swift */,
 				20024FEC1AFFBD1C0013DC4D /* Kazimir.xcdatamodeld */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		20243B341B054CC700518663 /* Entity */ = {
+			isa = PBXGroup;
+			children = (
 				200250A61B0010740013DC4D /* Photo.swift */,
 				200250A41B0010730013DC4D /* Place.swift */,
 				200250AA1B0024C90013DC4D /* Street.swift */,
 			);
-			path = Data;
+			path = Entity;
+			sourceTree = "<group>";
+		};
+		20243B361B054CFE00518663 /* EntityExtensions */ = {
+			isa = PBXGroup;
+			children = (
+				20243B371B054D4B00518663 /* PhotoExtensions.swift */,
+				20243B391B054D5B00518663 /* PlaceExtensions.swift */,
+				20243B3B1B054D6900518663 /* StreetExtensions.swift */,
+			);
+			path = EntityExtensions;
 			sourceTree = "<group>";
 		};
 		202451B91AE2968D000D8022 /* frameworks */ = {
@@ -235,13 +269,10 @@
 			children = (
 				209EA3681AED980600820D4D /* Appearance.swift */,
 				20738B581AE259B80000C808 /* AppDelegate.swift */,
-				20024FE91AFFAFAC0013DC4D /* Client.swift */,
-				20E4BE181B04102A00A115A9 /* DataSynchronizer.swift */,
 				20EF81E11AED8E6B00B03F87 /* ItemViewController.swift */,
 				2001B5A91B013AED0096D1E6 /* GalleryView.swift */,
 				202451B21AE2931C000D8022 /* MapViewController.swift */,
 				202451B01AE2850D000D8022 /* ListViewController.swift */,
-				2002500A1AFFC57B0013DC4D /* Storage.swift */,
 				20D051CD1AED81FE00BBA3BC /* WelcomeViewController.swift */,
 				20024FEB1AFFBCA90013DC4D /* Data */,
 				20D051D11AED85EA00BBA3BC /* Navigation */,
@@ -426,10 +457,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				20243B381B054D4B00518663 /* PhotoExtensions.swift in Sources */,
 				2002DF451AF15956008DFC85 /* SlideTransition.swift in Sources */,
+				20243B3C1B054D6900518663 /* StreetExtensions.swift in Sources */,
 				2002500B1AFFC57B0013DC4D /* Storage.swift in Sources */,
 				20EF81E21AED8E6B00B03F87 /* ItemViewController.swift in Sources */,
 				209EA3691AED980600820D4D /* Appearance.swift in Sources */,
+				20243B3A1B054D5B00518663 /* PlaceExtensions.swift in Sources */,
+				20243B401B05550100518663 /* DataDownloader.swift in Sources */,
 				20024FEE1AFFBD1C0013DC4D /* Kazimir.xcdatamodeld in Sources */,
 				20B5CA131AF8E68A0011B2F6 /* DuoViewController.swift in Sources */,
 				20D051D01AED856200BBA3BC /* NavigationController.swift in Sources */,
@@ -448,6 +483,7 @@
 				203302351AFAB6E200E738BC /* Animator.swift in Sources */,
 				200250AB1B0024C90013DC4D /* Street.swift in Sources */,
 				206721321AF40D83009F68F1 /* FlipAnimator.swift in Sources */,
+				20243B3E1B054DB500518663 /* JSONConvertible.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

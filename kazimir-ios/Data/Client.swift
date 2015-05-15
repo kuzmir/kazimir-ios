@@ -10,10 +10,12 @@ class Client {
     
     static let sharedInstance = Client()
     
-    let standardError = NSError(domain: "kazimir", code: 1, userInfo: nil)
+    let clientError = NSError(domain: "kazimir", code: 1, userInfo: nil)
     let url = NSURL(string: "http://kazimirapp.pl/streets.json")!
     
-    func downloadData() -> ([Dictionary<String, AnyObject>]?, NSError?) {
+    private init() {}
+    
+    func downloadData() -> ([JSON]?, NSError?) {
         let request = NSURLRequest(URL: url)
         var response: NSURLResponse? = nil
         var error: NSError? = nil
@@ -24,8 +26,8 @@ class Client {
             if httpResponse.statusCode != 200 { return (nil, error) }
         }
         
-        let json = NSJSONSerialization.JSONObjectWithData(data!, options: .allZeros, error: &error) as? [Dictionary<String, AnyObject>]
-        if json == nil { return (nil, standardError) }
+        let json = NSJSONSerialization.JSONObjectWithData(data!, options: .allZeros, error: &error) as? [JSON]
+        if json == nil { return (nil, clientError) }
         return (json, nil)
     }
     
