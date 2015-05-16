@@ -7,6 +7,7 @@
 //
 
 enum StreetRelation: String {
+    case Places = "places"
     case PresentPlaces = "present"
     case PastPlaces = "past"
 }
@@ -16,7 +17,26 @@ enum StreetProperty: String {
     case Name = "name"
     case Path = "path"
     case UpdateDate = "updated_at"
-    case Places = "places"
+}
+
+extension Street {
+    
+    static func getPresentPlacesJSON(#json: JSON) -> RelationInfo {
+        let places = json[StreetRelation.Places.rawValue] as? JSON
+        if places == nil { return (nil, Storage.storageError) }
+        let presentPlaces = places![StreetRelation.PresentPlaces.rawValue] as? [JSON]
+        if presentPlaces == nil { return (nil, Storage.storageError) }
+        return (presentPlaces!, nil)
+    }
+    
+    static func getPastPlacesJSON(#json: JSON) -> RelationInfo {
+        let places = json[StreetRelation.Places.rawValue] as? JSON
+        if places == nil { return (nil, Storage.storageError) }
+        let presentPlaces = places![StreetRelation.PastPlaces.rawValue] as? [JSON]
+        if presentPlaces == nil { return (nil, Storage.storageError) }
+        return (presentPlaces!, nil)
+    }
+    
 }
 
 extension Street: JSONConvertible {
@@ -25,31 +45,26 @@ extension Street: JSONConvertible {
         return json[StreetProperty.Id.rawValue] as? NSNumber
     }
     
-    static func getUpdateDateFromJSON(json: JSON) -> NSDate? {
+    func fromJSON(json: JSON) -> ConversionResult {
         let updateDateString = json[StreetProperty.UpdateDate.rawValue] as? String
-        if updateDateString == nil { return nil }
-        return Storage.dateFormatter.dateFromString(updateDateString!)
-    }
-    
-    func fromJSON(json: JSON) -> (Relations?, NSError?) {
-        let updateDate = Street.getUpdateDateFromJSON(json)
+        if updateDateString == nil { return (nil, Storage.storageError) }
+        let updateDate =  Storage.dateFormatter.dateFromString(updateDateString!)
         if updateDate == nil { return (nil, Storage.storageError) }
-        self.updateDate = updateDate!
         
-        let name = json[StreetProperty.Name.rawValue] as? String
-        if name == nil { return (nil, Storage.storageError) }
-        self.name = name!
-        
-        let path = json[StreetProperty.Path.rawValue] as? JSON
-        if path == nil { return (nil, Storage.storageError) }
-        self.path = path!
-        
-        var relations = Relations()
-        let places = json[StreetProperty.Places.rawValue] as? JSON
-        if places == nil { return (nil, Storage.storageError) }
-        relations[StreetRelation.PresentPlaces.rawValue] = places![StreetRelation.PresentPlaces.rawValue] as? [JSON]
-        relations[StreetRelation.PastPlaces.rawValue] = places![StreetRelation.PastPlaces.rawValue] as? [JSON]
-        return (relations, nil)
+        if self.updateDate.compare(updateDate!) == .OrderedAscending {
+            self.updateDate = updateDate!
+            
+            let name = json[StreetProperty.Name.rawValue] as? String
+            if name == nil { return (nil, Storage.storageError) }
+            self.name = name!
+            
+            let path = json[StreetProperty.Path.rawValue] as? JSON
+            if path == nil { return (nil, Storage.storageError) }
+            self.path = path!
+            return (true, nil)
+        }
+
+        return (false, nil)
     }
     
 }

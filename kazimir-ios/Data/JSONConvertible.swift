@@ -9,12 +9,12 @@
 import UIKit
 
 typealias JSON = [String: AnyObject]
-typealias Relations = [String: [JSON]]
+typealias ConversionResult = (updated: Bool?, error: NSError?)
+typealias RelationInfo = (jsons: [JSON]?, error: NSError?)
 
 protocol JSONConvertible {
     
     static func getIdFromJSON(json: JSON) -> NSNumber?
-    static func getUpdateDateFromJSON(json: JSON) -> NSDate?
-    func fromJSON(json: JSON) -> (Relations?, NSError?)
+    func fromJSON(json: JSON) -> ConversionResult
    
 }

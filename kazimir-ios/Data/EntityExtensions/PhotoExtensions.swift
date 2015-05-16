@@ -15,24 +15,28 @@ enum PhotoProperty: String {
     case Details = "details"
 }
 
+extension Photo {
+    
+    static func getImagesJSON(#json: JSON) -> RelationInfo {
+        let images = json[PhotoRelation.Images.rawValue] as? JSON
+        if images == nil { return (nil, Storage.storageError) }
+        return ([images!], nil)
+    }
+    
+}
+
 extension Photo: JSONConvertible {
     
     static func getIdFromJSON(json: JSON) -> NSNumber? {
         return json[PhotoProperty.Id.rawValue] as? NSNumber
     }
     
-    static func getUpdateDateFromJSON(json: JSON) -> NSDate? {
-        return NSDate(timeIntervalSince1970: 0)
-    }
-    
-    func fromJSON(json: JSON) -> (Relations?, NSError?) {
+    func fromJSON(json: JSON) -> ConversionResult {
         let details = json[PhotoProperty.Details.rawValue] as? JSON
         if details == nil { return (nil, Storage.storageError) }
         self.details = details!
         
-        var relations = Relations()
-        relations[PhotoRelation.Images.rawValue] = json[PhotoRelation.Images.rawValue] as? [JSON]
-        return (relations, nil)
+        return (true, nil)
     }
     
 }

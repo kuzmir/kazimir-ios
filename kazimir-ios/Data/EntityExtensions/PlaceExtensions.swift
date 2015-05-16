@@ -17,30 +17,37 @@ enum PlaceProperty: String {
     case UpdateDate = "update_at"
 }
 
+extension Place {
+    
+    static func getPhotosJSON(#json: JSON) -> RelationInfo {
+        let photos = json[PlaceRelation.Photos.rawValue] as? [JSON]
+        if photos == nil { return (nil, Storage.storageError) }
+        return (photos!, nil)
+    }
+    
+}
+
 extension Place: JSONConvertible {
     
     static func getIdFromJSON(json: JSON) -> NSNumber? {
         return json[PlaceProperty.Id.rawValue] as? NSNumber
     }
     
-    static func getUpdateDateFromJSON(json: JSON) -> NSDate? {
+    func fromJSON(json: JSON) -> ConversionResult {
         let updateDateString = json[PlaceProperty.UpdateDate.rawValue] as? String
-        if updateDateString == nil { return nil }
-        return Storage.dateFormatter.dateFromString(updateDateString!)
-    }
-    
-    func fromJSON(json: JSON) -> (Relations?, NSError?) {
-        let updateDate = Photo.getUpdateDateFromJSON(json)
+        if updateDateString == nil { return (nil, Storage.storageError) }
+        let updateDate = Storage.dateFormatter.dateFromString(updateDateString!)
         if updateDate == nil { return (nil, Storage.storageError) }
-        self.updateDate = updateDate!
         
-        let details = json[PlaceProperty.Details.rawValue] as? JSON
-        if details == nil { return (nil, Storage.storageError) }
-        self.details = details!
-        
-        var relations = Relations()
-        relations[PlaceRelation.Photos.rawValue] = json[PlaceRelation.Photos.rawValue] as? [JSON]
-        return (relations, nil)
+        if self.updateDate.compare(updateDate!) == .OrderedAscending {
+            self.updateDate = updateDate!
+            
+            let details = json[PlaceProperty.Details.rawValue] as? JSON
+            if details == nil { return (nil, Storage.storageError) }
+            self.details = details!
+            return (true, nil)
+        }
+        return (false, nil)
     }
     
 }

@@ -8,6 +8,12 @@
 
 import CoreData
 
+struct StorageResult<T> {
+    var entity: T?
+    var updated: Bool?
+    var error: NSError?
+}
+
 class Storage {
     
     static let sharedInstance = Storage()
@@ -47,22 +53,14 @@ class Storage {
     
     private init() { }
     
-    func createEntityFromJSON<T where T: JSONConvertible, T: NSManagedObject>(json: JSON, context: NSManagedObjectContext) -> ((T, Relations?)?, NSError?) {
+    func storeEntityFromJSON<T where T: JSONConvertible, T: NSManagedObject>(json: JSON, context: NSManagedObjectContext) -> StorageResult<T> {
         let id = T.getIdFromJSON(json)
-        if id == nil { return (nil, Storage.storageError) }
+        if id == nil { return StorageResult<T>(entity: nil, updated: nil, error: Storage.storageError) }
         let entity: T = self.getEntity(id!, context: context)
         
-        let (relations, error) = entity.fromJSON(json)
-        if (error != nil) { return (nil, error) }
-        else { return ((entity, relations), nil) }
-    }
-    
-    func createEntityWithoutRelationsFromJSON<T where T: JSONConvertible, T: NSManagedObject>(json: JSON, context: NSManagedObjectContext) -> (T?, NSError?) {
-        var error: NSError? = nil
-        var result: (T, Relations?)? = nil
-        (result, error) = self.createEntityFromJSON(json, context: context)
-        if error != nil { return (nil, error) }
-        return (result!.0, nil)
+        let conversionResult = entity.fromJSON(json)
+        if conversionResult.error != nil { return StorageResult<T>(entity: nil, updated: nil, error: Storage.storageError) }
+        else { return StorageResult<T>(entity: entity, updated: conversionResult.updated, error: nil) }
     }
     
     func getWriteManagedObjectContext() -> NSManagedObjectContext! {

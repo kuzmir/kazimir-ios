@@ -8,6 +8,10 @@
 
 import CoreData
 
+typealias StreetProcessResult = (street: Street?, error: NSError?)
+typealias PlacesProcessResult = (places: [Place]?, error: NSError?)
+typealias PhotosProcessResult = (photos: [Photo]?, error: NSError?)
+
 class DataLoader {
     
     static let sharedInstance = DataLoader()
@@ -17,21 +21,21 @@ class DataLoader {
     private init() {}
     
     func loadDataIntoContext(context: NSManagedObjectContext, locally: Bool, progress: () -> Bool) -> NSError? {
-        var (jsons, error) = Client.sharedInstance.getData(locally: locally)
+        let (jsons, error) = Client.sharedInstance.getData(locally: locally)
         if error != nil { return error }
         
         var streets = [Street]()
         for json in jsons! {
-            var street: Street? = nil
-            (street, error) = self.processStreet(json, context: context)
-            if error != nil { return error }
-            streets.append(street!)
+            let streetProcessResult = self.processStreet(json, context: context)
+            if streetProcessResult.error != nil { return streetProcessResult.error }
+            streets.append(streetProcessResult.street!)
             if !progress() { return nil }
         }
         
-        // delete old streets
+        // delete deprecated streets
+        var fetchError: NSError? = nil
         let fetchRequest = NSFetchRequest(entityName: Storage.getEntityName(Street.self))
-        let result = context.executeFetchRequest(fetchRequest, error: &error)
+        let result = context.executeFetchRequest(fetchRequest, error: &fetchError)
         if error != nil { return error }
         for street in result as! [Street] {
             if !contains(streets, street) { context.deleteObject(street) }
@@ -40,71 +44,63 @@ class DataLoader {
         return nil
     }
     
-    func processStreet(json: JSON, context: NSManagedObjectContext) -> (Street?, NSError?) {
-        var error: NSError? = nil
-        var result: (Street, Relations?)? = nil
-        (result, error) = Storage.sharedInstance.createEntityFromJSON(json, context: context)
-        if error != nil { return  (nil, error) }
-        let street = result!.0
+    func processStreet(json: JSON, context: NSManagedObjectContext) -> StreetProcessResult {
+        let storateResult = Storage.sharedInstance.storeEntityFromJSON(json, context: context) as StorageResult<Street>
+        if storateResult.error != nil { return  (nil, storateResult.error) }
         
         var places = [Place]()
-        let presentPlacesJSON = result!.1![StreetRelation.PresentPlaces.rawValue]
-        if presentPlacesJSON != nil {
-            var presentPlaces: [Place]? = nil
-            (presentPlaces, error) = self.processPlacesForStreet(street, jsons:presentPlacesJSON!, present: true, context: context)
-            if error != nil { return  (nil, error) }
-            places = places + presentPlaces!
-        }
+        let presentPlacesRelationInfo = Street.getPresentPlacesJSON(json: json)
+        if presentPlacesRelationInfo.error != nil { return (nil, presentPlacesRelationInfo.error) }
+        let presentPlacesProcessResult = self.processPlacesForStreet(storateResult.entity!, jsons:presentPlacesRelationInfo.jsons!, present: true, context: context)
+        if presentPlacesProcessResult.error != nil { return  (nil, presentPlacesProcessResult.error) }
+        places = places + presentPlacesProcessResult.places!
         
-        let pastPlacesJSON = result!.1![StreetRelation.PastPlaces.rawValue]
-        if pastPlacesJSON != nil {
-            var pastPlaces: [Place]? = nil
-            (pastPlaces, error) = self.processPlacesForStreet(street, jsons:pastPlacesJSON!, present: false, context: context)
-            if error != nil { return  (nil, error) }
-            places = places + pastPlaces!
-        }
-        street.places = NSOrderedSet(array: places)
-        return (street, nil)
+        let pastPlacesRelationInfo = Street.getPastPlacesJSON(json: json)
+        if pastPlacesRelationInfo.error != nil { return (nil, pastPlacesRelationInfo.error) }
+        let pastPlacesProcessResult = self.processPlacesForStreet(storateResult.entity!, jsons:pastPlacesRelationInfo.jsons!, present: false, context: context)
+        if pastPlacesProcessResult.error != nil { return  (nil, pastPlacesProcessResult.error) }
+        places = places + pastPlacesProcessResult.places!
+        storateResult.entity!.places = NSOrderedSet(array: places)
+        
+        return (storateResult.entity!, nil)
     }
     
-    func processPlacesForStreet(street: Street, jsons: [JSON], present: Bool,  context: NSManagedObjectContext) -> ([Place]?, NSError?) {
+    func processPlacesForStreet(street: Street, jsons: [JSON], present: Bool,  context: NSManagedObjectContext) -> PlacesProcessResult {
         var places = [Place]()
         for json in jsons {
-            var error: NSError? = nil
-            var result: (Place, Relations?)? = nil
-            (result, error) = Storage.sharedInstance.createEntityFromJSON(json, context: context)
-            if error != nil { return  (nil, error) }
-            let place = result!.0
-            place.present = NSNumber(bool: present)
-            places.append(place)
+            let storageResult = Storage.sharedInstance.storeEntityFromJSON(json, context: context) as StorageResult<Place>
+            if storageResult.error != nil { return  (nil, storageResult.error) }
+            places.append(storageResult.entity!)
             
-            let photosJSON = result!.1![PlaceRelation.Photos.rawValue]
-            if photosJSON != nil {
-                var photos: [Photo]? = nil
-                (photos, error) = self.processPhotosForPlace(place, jsons: photosJSON!, context: context)
-                if error != nil { return (nil, error) }
-                place.photos = NSOrderedSet(array: photos!)
+            if storageResult.updated! {
+                storageResult.entity!.present = NSNumber(bool: present)
+                
+                let photosRelationInfo = Place.getPhotosJSON(json: json)
+                if photosRelationInfo.error != nil { return (nil, photosRelationInfo.error) }
+                let photosProcessResult = self.processPhotosForPlace(storageResult.entity!, jsons: photosRelationInfo.jsons!, context: context)
+                if photosProcessResult.error != nil { return (nil, photosProcessResult.error) }
+                storageResult.entity!.photos = NSOrderedSet(array: photosProcessResult.photos!)
             }
         }
         return (places, nil)
     }
     
-    func processPhotosForPlace(place: Place, jsons: [JSON], context: NSManagedObjectContext) -> ([Photo]?, NSError?) {
+    func processPhotosForPlace(place: Place, jsons: [JSON], context: NSManagedObjectContext) -> PhotosProcessResult {
         var photos = [Photo]()
         for json in jsons {
-            var (photo, error) = Storage.sharedInstance.createEntityWithoutRelationsFromJSON(json, context: context) as (Photo?, NSError?)
-            if error != nil { return  (nil, error) }
-            photos.append(photo!)
+            let storageResult = Storage.sharedInstance.storeEntityFromJSON(json, context: context) as StorageResult<Photo>
+            if storageResult.error != nil { return  (nil, storageResult.error) }
+            photos.append(storageResult.entity!)
             
-            let images = json["images"] as? [String: String]
-            if images == nil { return (nil, downloadError) }
-            let mediumPhotoString = images!["medium"]
+            let imagesRelationInfo = Photo.getImagesJSON(json: json)
+            if imagesRelationInfo.error != nil { return (nil, imagesRelationInfo.error) }
+
+            let mediumPhotoString = imagesRelationInfo.jsons![0]["medium"] as? String
             if mediumPhotoString == nil { return (nil, downloadError) }
             
-            var imageData: NSData? = nil
-            (imageData, error) = Client.sharedInstance.getImageData(urlString: mediumPhotoString!)
+            let (imageData, error) = Client.sharedInstance.getImageData(urlString: mediumPhotoString!)
             if error != nil { return (nil, error) }
-            photo!.dataMedium = imageData!
+            storageResult.entity!.dataMedium = imageData!
         }
         return (photos, nil)
     }
