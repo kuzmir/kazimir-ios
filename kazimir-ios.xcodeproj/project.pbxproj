@@ -54,6 +54,7 @@
 		20738B8A1AE25D0B0000C808 /* OpenSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 20738B801AE25D0B0000C808 /* OpenSans-Regular.ttf */; };
 		20738B8B1AE25D0B0000C808 /* OpenSans-Semibold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 20738B811AE25D0B0000C808 /* OpenSans-Semibold.ttf */; };
 		20738B8C1AE25D0B0000C808 /* OpenSans-SemiboldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 20738B821AE25D0B0000C808 /* OpenSans-SemiboldItalic.ttf */; };
+		20817D071B0774A4004C3B7C /* FadeTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20817D061B0774A4004C3B7C /* FadeTransition.swift */; };
 		209EA3691AED980600820D4D /* Appearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 209EA3681AED980600820D4D /* Appearance.swift */; };
 		20B5CA131AF8E68A0011B2F6 /* DuoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20B5CA121AF8E68A0011B2F6 /* DuoViewController.swift */; };
 		20B5CA151AF8EA440011B2F6 /* EmbedSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20B5CA141AF8EA440011B2F6 /* EmbedSegue.swift */; };
@@ -134,6 +135,7 @@
 		20738B801AE25D0B0000C808 /* OpenSans-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "OpenSans-Regular.ttf"; path = "open-sans/OpenSans-Regular.ttf"; sourceTree = "<group>"; };
 		20738B811AE25D0B0000C808 /* OpenSans-Semibold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "OpenSans-Semibold.ttf"; path = "open-sans/OpenSans-Semibold.ttf"; sourceTree = "<group>"; };
 		20738B821AE25D0B0000C808 /* OpenSans-SemiboldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "OpenSans-SemiboldItalic.ttf"; path = "open-sans/OpenSans-SemiboldItalic.ttf"; sourceTree = "<group>"; };
+		20817D061B0774A4004C3B7C /* FadeTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FadeTransition.swift; sourceTree = "<group>"; };
 		209EA3681AED980600820D4D /* Appearance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Appearance.swift; sourceTree = "<group>"; };
 		20B5CA121AF8E68A0011B2F6 /* DuoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DuoViewController.swift; path = ../DuoViewController.swift; sourceTree = "<group>"; };
 		20B5CA141AF8EA440011B2F6 /* EmbedSegue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmbedSegue.swift; sourceTree = "<group>"; };
@@ -241,7 +243,7 @@
 				20EF81DF1AED89C200B03F87 /* FadeAnimator.swift */,
 				206721311AF40D83009F68F1 /* FlipAnimator.swift */,
 			);
-			name = Animation;
+			path = Animation;
 			sourceTree = "<group>";
 		};
 		203302371AFAB7C500E738BC /* Transition */ = {
@@ -249,8 +251,9 @@
 			children = (
 				2002DF441AF15956008DFC85 /* SlideTransition.swift */,
 				20BC07EC1AF69FC800711A49 /* SlideTransitionHandler.swift */,
+				20817D061B0774A4004C3B7C /* FadeTransition.swift */,
 			);
-			name = Transition;
+			path = Transition;
 			sourceTree = "<group>";
 		};
 		20738B4A1AE259B80000C808 = {
@@ -476,6 +479,7 @@
 				2002DF451AF15956008DFC85 /* SlideTransition.swift in Sources */,
 				20243B3C1B054D6900518663 /* StreetExtensions.swift in Sources */,
 				2002500B1AFFC57B0013DC4D /* Storage.swift in Sources */,
+				20817D071B0774A4004C3B7C /* FadeTransition.swift in Sources */,
 				20EF81E21AED8E6B00B03F87 /* ItemViewController.swift in Sources */,
 				209EA3691AED980600820D4D /* Appearance.swift in Sources */,
 				20243B3A1B054D5B00518663 /* PlaceExtensions.swift in Sources */,

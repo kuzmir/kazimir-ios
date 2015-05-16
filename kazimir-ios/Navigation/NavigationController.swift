@@ -30,7 +30,7 @@ extension NavigationController: UINavigationControllerDelegate {
             let itemViewController = fromVC.visibleViewController as! ItemViewController
             return SlideTransition(direction: itemViewController.popDirection, interactive: false)
         default:
-            return nil
+            return FadeTransition()
         }
     }
     
