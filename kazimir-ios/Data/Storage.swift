@@ -78,8 +78,15 @@ class Storage {
     }
     
     func getStreetsFetchedResultsController() -> NSFetchedResultsController {
-        let fetchRequest = NSFetchRequest(entityName: "Street")
-        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "name", ascending: true)]
+        let fetchRequest = NSFetchRequest(entityName: Storage.getEntityName(Street.self))
+        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "id", ascending: true)]
+        return NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: managedObjectContext!, sectionNameKeyPath: nil, cacheName: nil)
+    }
+    
+    func getStreetFetchedResultsController(#streetId: NSNumber) -> NSFetchedResultsController {
+        let fetchRequest = NSFetchRequest(entityName: Storage.getEntityName(Street.self))
+        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "id", ascending: true)]
+        fetchRequest.predicate = NSPredicate(format: "id = %@", argumentArray: [streetId])
         return NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: managedObjectContext!, sectionNameKeyPath: nil, cacheName: nil)
     }
     

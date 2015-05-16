@@ -17,7 +17,7 @@ class Client {
     private init() {}
     
     func getData(#locally: Bool) -> ([JSON]?, NSError?) {
-        return locally ? self.loadLodalData() : self.downloadData()
+        return locally ? self.loadLocalData() : self.downloadData()
     }
     
     func getImageData(#urlString: String) -> (NSData?, NSError?) {
@@ -51,7 +51,7 @@ class Client {
         return (json, nil)
     }
     
-    private func loadLodalData() -> ([JSON]?, NSError?) {
+    private func loadLocalData() -> ([JSON]?, NSError?) {
         let resourcesBundle = NSBundle(URL: resourcesBundleURL)!
         let resourcesJSONPath = resourcesBundle.pathForResource("resources", ofType: "json")!
         let resourcesJSONData = NSData(contentsOfFile: resourcesJSONPath)

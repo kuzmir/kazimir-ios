@@ -60,10 +60,10 @@ class MapViewController: UIViewController, NSFetchedResultsControllerDelegate {
         let duoViewController = segue.destinationViewController as! DuoViewController
         let firstItemViewController = duoViewController.embededViewControllers[0] as! ItemViewController
         firstItemViewController.context = ItemContext(rawValue: slideTransitionHandler!.transitionDirection.rawValue)
-        firstItemViewController.street = street
+        firstItemViewController.streetFetchedResultsController = Storage.sharedInstance.getStreetFetchedResultsController(streetId: street.id)
         let secondItemViewController = duoViewController.embededViewControllers[1] as! ItemViewController
         secondItemViewController.context = ItemContext(rawValue: slideTransitionHandler!.transitionDirection.getOtherDirection().rawValue)
-        secondItemViewController.street = street
+        secondItemViewController.streetFetchedResultsController = Storage.sharedInstance.getStreetFetchedResultsController(streetId: street.id)
     }
     
     private func reloadStreetsOnMap() {

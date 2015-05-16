@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 enum ItemContext: Int {
     case Old
@@ -35,7 +36,7 @@ class ItemViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     
     var context: ItemContext!
-    var street: Street!
+    var streetFetchedResultsController: NSFetchedResultsController!
     
     var locale: String = {
         let localizations = NSBundle.mainBundle().preferredLocalizations as! [String]
@@ -68,7 +69,10 @@ class ItemViewController: UIViewController {
         
         flipButton.setImage(UIImage(named: context.getImageName()), forState: .Normal)
         
-        self.navigationItem.title = street.name
+        streetFetchedResultsController.delegate = self
+        streetFetchedResultsController.performFetch(nil)
+        
+        self.navigationItem.title = self.getStreet()?.name
         self.navigationItem.hidesBackButton = true
         if context.rawValue == SlideTransitionDirection.Right.rawValue {
             self.navigationItem.leftBarButtonItem = nil
@@ -76,6 +80,10 @@ class ItemViewController: UIViewController {
         if context.rawValue == SlideTransitionDirection.Left.rawValue {
             self.navigationItem.rightBarButtonItem = nil
         }
+    }
+    
+    private func getStreet() -> Street? {
+        return streetFetchedResultsController.fetchedObjects?[0] as? Street
     }
     
     private func getPlacesFromStreet(street: Street, context: ItemContext) -> [Place] {
@@ -89,14 +97,14 @@ class ItemViewController: UIViewController {
         return places
     }
     
-    private func getNameFromPlace(place: Place, locale: String) -> String {
-        let details = place.details[locale] as! [String: String]
-        return details["name"]!
+    private func getNameFromPlace(place: Place, locale: String) -> String? {
+        let details = place.details[locale] as? [String: String]
+        return details?["name"]
     }
     
-    private func getDescriptionFromPlace(place: Place, locale: String) -> String {
-        let details = place.details[locale] as! [String: String]
-        return details["description"]!
+    private func getDescriptionFromPlace(place: Place, locale: String) -> String? {
+        let details = place.details[locale] as? [String: String]
+        return details?["description"]
     }
     
 }
@@ -104,21 +112,24 @@ class ItemViewController: UIViewController {
 extension ItemViewController: UITableViewDataSource {
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return self.getPlacesFromStreet(street, context: context).count
+        let street = self.getStreet()
+        return street != nil ? self.getPlacesFromStreet(street!, context: context).count : 0
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return self.getStreet() != nil ? 1 : 0
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let place = self.getPlacesFromStreet(street, context: context)[indexPath.section]
         let cell = tableView.dequeueReusableCellWithIdentifier("placeCell") as! UITableViewCell
-        let nameLabel = cell.viewWithTag(1) as! UILabel
-        let descriptionLabel = cell.viewWithTag(2) as! UILabel
-        
-        nameLabel.text = self.getNameFromPlace(place, locale: locale)
-        descriptionLabel.text = self.getDescriptionFromPlace(place, locale: locale)
+        if let street = self.getStreet() {
+            let place = self.getPlacesFromStreet(street, context: context)[indexPath.section]
+            let nameLabel = cell.viewWithTag(1) as! UILabel
+            let descriptionLabel = cell.viewWithTag(2) as! UILabel
+            
+            nameLabel.text = self.getNameFromPlace(place, locale: locale)
+            descriptionLabel.text = self.getDescriptionFromPlace(place, locale: locale)
+        }
         return cell
     }
     
@@ -127,20 +138,31 @@ extension ItemViewController: UITableViewDataSource {
 extension ItemViewController: UITableViewDelegate {
     
     func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let place = self.getPlacesFromStreet(street, context: context)[section]
         let header = tableView.dequeueReusableCellWithIdentifier("galleryCell") as! UITableViewCell
-        let galleryView = header.viewWithTag(1) as! GalleryView
-        
-        galleryView.clear()
-        for photo in place.photos.array as! [Photo] {
-            let image = UIImage(data: photo.dataMedium)!
-            galleryView.addImage(image)
+        if let street = getStreet() {
+            let place = self.getPlacesFromStreet(street, context: context)[section]
+            let galleryView = header.viewWithTag(1) as! GalleryView
+            
+            galleryView.clear()
+            for photo in place.photos.array as! [Photo] {
+                let image = UIImage(data: photo.dataMedium)!
+                galleryView.addImage(image)
+            }
         }
         return header
     }
     
     func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 200
+    }
+    
+}
+
+extension ItemViewController: NSFetchedResultsControllerDelegate {
+    
+    func controllerDidChangeContent(controller: NSFetchedResultsController) {
+        self.navigationItem.title = self.getStreet()?.name
+        self.tableView.reloadData()
     }
     
 }
