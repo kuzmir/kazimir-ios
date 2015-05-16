@@ -11,7 +11,7 @@ import CoreData
 
 protocol DataSynchronizerDelegate {
     
-    func dataSynchronizerDidFinishSynchronization(dataSynchronizer: DataSynchronizer, error: NSError?)
+    func dataSynchronizer(dataSynchronizer: DataSynchronizer, didFinishSynchronizationLocally locally: Bool, error: NSError?)
     
 }
 
@@ -37,7 +37,7 @@ class DataSynchronizer {
                 })
                 dispatch_sync(dispatch_get_main_queue(), { () -> Void in
                     self.isSynchronizationInProgress = false
-                    self.delegate?.dataSynchronizerDidFinishSynchronization(self, error: error)
+                    self.delegate?.dataSynchronizer(self, didFinishSynchronizationLocally: locally, error: error)
                 })
             })
         }

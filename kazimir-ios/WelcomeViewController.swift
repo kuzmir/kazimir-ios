@@ -21,11 +21,10 @@ class WelcomeViewController: UIViewController {
         super.viewDidLoad()
         streetsFetchedResultsController.delegate = self
         streetsFetchedResultsController.performFetch(nil)
+        
+        DataSynchronizer.sharedInstance.delegate = self
         if streetsFetchedResultsController.fetchedObjects?.count == 0 {
             discoverButton.enabled = false
-            activityIndicatorView.startAnimating()
-            messagaLabel.hidden = false
-            DataSynchronizer.sharedInstance.delegate = self
             DataSynchronizer.sharedInstance.startSynchronization(locally: true)
         }
         else {
@@ -47,11 +46,15 @@ class WelcomeViewController: UIViewController {
 
 extension WelcomeViewController: DataSynchronizerDelegate {
     
-    func dataSynchronizerDidFinishSynchronization(dataSynchronizer: DataSynchronizer, error: NSError?) {
-        activityIndicatorView.stopAnimating()
-        messagaLabel.hidden = true
-        DataSynchronizer.sharedInstance.delegate = nil
-        DataSynchronizer.sharedInstance.startSynchronization(locally: false)
+    func dataSynchronizer(dataSynchronizer: DataSynchronizer, didFinishSynchronizationLocally locally: Bool, error: NSError?) {
+        if locally {
+            DataSynchronizer.sharedInstance.startSynchronization(locally: false)
+        }
+        else {
+            activityIndicatorView.stopAnimating()
+            messagaLabel.hidden = true
+            DataSynchronizer.sharedInstance.delegate = nil
+        }
     }
     
 }
