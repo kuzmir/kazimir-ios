@@ -16,35 +16,17 @@ class DataLoader {
     
     private init() {}
     
-    func loadDataIntoContext(context: NSManagedObjectContext, locally: Bool) -> NSError? {
+    func loadDataIntoContext(context: NSManagedObjectContext, locally: Bool, progress: () -> Bool) -> NSError? {
         var (jsons, error) = Client.sharedInstance.getData(locally: locally)
         if error != nil { return error }
         
         var streets = [Street]()
         for json in jsons! {
-            var result: (Street, Relations?)? = nil
-            (result, error) = Storage.sharedInstance.createEntityFromJSON(json, context: context)
-            if error != nil { return  error }
-            let street = result!.0
-            
-            var places = [Place]()
-            let presentPlacesJSON = result!.1![StreetRelation.PresentPlaces.rawValue]
-            if presentPlacesJSON != nil {
-                var presentPlaces: [Place]? = nil
-                (presentPlaces, error) = self.processPlacesForStreet(street, jsons:presentPlacesJSON!, present: true, context: context)
-                if error != nil { return  error }
-                places = places + presentPlaces!
-            }
-            
-            let pastPlacesJSON = result!.1![StreetRelation.PastPlaces.rawValue]
-            if pastPlacesJSON != nil {
-                var pastPlaces: [Place]? = nil
-                (pastPlaces, error) = self.processPlacesForStreet(street, jsons:pastPlacesJSON!, present: false, context: context)
-                if error != nil { return  error }
-                places = places + pastPlaces!
-            }
-            street.places = NSOrderedSet(array: places)
-            streets.append(street)
+            var street: Street? = nil
+            (street, error) = self.processStreet(json, context: context)
+            if error != nil { return error }
+            streets.append(street!)
+            if !progress() { return nil }
         }
         
         // delete old streets
@@ -54,7 +36,35 @@ class DataLoader {
         for street in result as! [Street] {
             if !contains(streets, street) { context.deleteObject(street) }
         }
+        progress()
         return nil
+    }
+    
+    func processStreet(json: JSON, context: NSManagedObjectContext) -> (Street?, NSError?) {
+        var error: NSError? = nil
+        var result: (Street, Relations?)? = nil
+        (result, error) = Storage.sharedInstance.createEntityFromJSON(json, context: context)
+        if error != nil { return  (nil, error) }
+        let street = result!.0
+        
+        var places = [Place]()
+        let presentPlacesJSON = result!.1![StreetRelation.PresentPlaces.rawValue]
+        if presentPlacesJSON != nil {
+            var presentPlaces: [Place]? = nil
+            (presentPlaces, error) = self.processPlacesForStreet(street, jsons:presentPlacesJSON!, present: true, context: context)
+            if error != nil { return  (nil, error) }
+            places = places + presentPlaces!
+        }
+        
+        let pastPlacesJSON = result!.1![StreetRelation.PastPlaces.rawValue]
+        if pastPlacesJSON != nil {
+            var pastPlaces: [Place]? = nil
+            (pastPlaces, error) = self.processPlacesForStreet(street, jsons:pastPlacesJSON!, present: false, context: context)
+            if error != nil { return  (nil, error) }
+            places = places + pastPlaces!
+        }
+        street.places = NSOrderedSet(array: places)
+        return (street, nil)
     }
     
     func processPlacesForStreet(street: Street, jsons: [JSON], present: Bool,  context: NSManagedObjectContext) -> ([Place]?, NSError?) {

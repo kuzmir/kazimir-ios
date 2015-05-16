@@ -29,9 +29,12 @@ class DataSynchronizer {
             isSynchronizationInProgress = true
             let writeContext = Storage.sharedInstance.getWriteManagedObjectContext()
             writeContext.performBlock({ () -> Void in
-                var error = DataLoader.sharedInstance.loadDataIntoContext(writeContext, locally: locally)
-                if error == nil { writeContext.save(&error) }
-                error = error ?? Storage.sharedInstance.save()
+                var error: NSError? = nil
+                error = DataLoader.sharedInstance.loadDataIntoContext(writeContext, locally: locally, progress: { () -> Bool in
+                    writeContext.save(&error)
+                    error = error ?? Storage.sharedInstance.save()
+                    return error == nil
+                })
                 dispatch_sync(dispatch_get_main_queue(), { () -> Void in
                     self.isSynchronizationInProgress = false
                     self.delegate?.dataSynchronizerDidFinishSynchronization(self, error: error)
