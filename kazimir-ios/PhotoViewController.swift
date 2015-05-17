@@ -33,12 +33,11 @@ class PhotoViewController: UIViewController {
         let minHorizontalZoomScale = scrollView.frame.size.width / image.size.width
         let minVerticalZoomScale = scrollView.frame.size.height / image.size.height
         let minZoomScale = min(minHorizontalZoomScale, minVerticalZoomScale)
-        scrollView.minimumZoomScale = minZoomScale
-        scrollView.zoomScale = scrollView.minimumZoomScale
-        
         let horizontalContentInset = (scrollView.frame.size.width - image.size.width * minZoomScale) / 2
         let verticalContentInset = (scrollView.frame.size.height - image.size.height * minZoomScale) / 2
         scrollView.contentInset = UIEdgeInsetsMake(verticalContentInset, horizontalContentInset, verticalContentInset, horizontalContentInset)
+        scrollView.minimumZoomScale = minZoomScale
+        scrollView.zoomScale = scrollView.minimumZoomScale
     }
     
     override func preferredStatusBarStyle() -> UIStatusBarStyle {
@@ -53,13 +52,15 @@ extension PhotoViewController: UIScrollViewDelegate {
         return imageView
     }
     
-    func scrollViewDidEndDragging(scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+    func scrollViewDidZoom(scrollView: UIScrollView) {
         let image = imageView.image!
         let horizontalContentInset = max(0, (scrollView.frame.size.width - image.size.width * scrollView.zoomScale) / 2)
         let verticalContentInset = max(0, (scrollView.frame.size.height - image.size.height * scrollView.zoomScale) / 2)
-        UIView.animateWithDuration(0.25, animations: { () -> Void in
-            scrollView.contentInset = UIEdgeInsetsMake(verticalContentInset, horizontalContentInset, verticalContentInset, horizontalContentInset)
-        })
+        if scrollView.contentInset.right != horizontalContentInset || scrollView.contentInset.top != verticalContentInset {
+            UIView.animateWithDuration(0.25, animations: { () -> Void in
+                scrollView.contentInset = UIEdgeInsetsMake(verticalContentInset, horizontalContentInset, verticalContentInset, horizontalContentInset)
+            })
+        }
     }
     
 }

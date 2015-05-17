@@ -69,7 +69,7 @@ extension ListViewController: UITableViewDataSource {
         
         let imageView = cell.viewWithTag(1) as! UIImageView
         let photo = self.getPhotoFromStreet(street)
-        imageView.image = photo != nil ? UIImage(data: photo!.dataMedium) : nil
+        imageView.image = photo != nil ? UIImage(data: photo!.dataMedium) : UIImage(named: "kazimir_neutral")
 
         return cell
     }

@@ -382,20 +382,24 @@
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="x2Z-Uo-eb8" id="Nts-9d-t1x">
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" tag="1" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="fKQ-h5-Uwj">
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" tag="1" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="kazimir_neutral" translatesAutoresizingMaskIntoConstraints="NO" id="fKQ-h5-Uwj">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="200"/>
                                             <gestureRecognizers/>
                                         </imageView>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="chevron_left" translatesAutoresizingMaskIntoConstraints="NO" id="9nj-vR-rqQ">
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zwc-lN-VZb">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="200"/>
+                                            <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.29999999999999999" colorSpace="calibratedRGB"/>
+                                        </view>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" image="chevron_left" translatesAutoresizingMaskIntoConstraints="NO" id="9nj-vR-rqQ">
                                             <rect key="frame" x="8" y="94" width="7" height="12"/>
                                         </imageView>
-                                        <label opaque="NO" userInteractionEnabled="NO" tag="2" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="STREET NAME" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k5O-yX-1vi">
+                                        <label opaque="NO" userInteractionEnabled="NO" tag="2" contentMode="left" horizontalHuggingPriority="750" verticalHuggingPriority="750" text="STREET NAME" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="k5O-yX-1vi">
                                             <rect key="frame" x="232" y="86" width="136" height="28"/>
                                             <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="20"/>
                                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="chevron_right" translatesAutoresizingMaskIntoConstraints="NO" id="R1e-dP-taa">
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" image="chevron_right" translatesAutoresizingMaskIntoConstraints="NO" id="R1e-dP-taa">
                                             <rect key="frame" x="585" y="94" width="7" height="12"/>
                                         </imageView>
                                     </subviews>
@@ -406,11 +410,17 @@
                                         <constraint firstAttribute="centerY" secondItem="k5O-yX-1vi" secondAttribute="centerY" id="8qn-wb-Faw"/>
                                         <constraint firstItem="R1e-dP-taa" firstAttribute="trailing" secondItem="Nts-9d-t1x" secondAttribute="trailingMargin" id="AVC-rL-Xq4"/>
                                         <constraint firstItem="9nj-vR-rqQ" firstAttribute="leading" secondItem="Nts-9d-t1x" secondAttribute="leadingMargin" id="Cd2-rc-Jhe"/>
+                                        <constraint firstItem="k5O-yX-1vi" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="9nj-vR-rqQ" secondAttribute="trailing" constant="16" id="Ckd-ih-Ubo"/>
+                                        <constraint firstAttribute="trailing" secondItem="Zwc-lN-VZb" secondAttribute="trailing" id="Pzq-ln-DkK"/>
                                         <constraint firstItem="fKQ-h5-Uwj" firstAttribute="top" secondItem="Nts-9d-t1x" secondAttribute="top" id="ZIr-2E-YxV"/>
+                                        <constraint firstItem="R1e-dP-taa" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="k5O-yX-1vi" secondAttribute="trailing" constant="16" id="aNw-OF-YbP"/>
+                                        <constraint firstItem="Zwc-lN-VZb" firstAttribute="leading" secondItem="Nts-9d-t1x" secondAttribute="leading" id="e1s-gv-kce"/>
+                                        <constraint firstItem="Zwc-lN-VZb" firstAttribute="top" secondItem="Nts-9d-t1x" secondAttribute="top" id="eGX-5i-hys"/>
                                         <constraint firstAttribute="centerY" secondItem="R1e-dP-taa" secondAttribute="centerY" constant="-0.5" id="kk0-jy-v6q"/>
                                         <constraint firstAttribute="centerX" secondItem="k5O-yX-1vi" secondAttribute="centerX" id="lRb-uL-GGA"/>
                                         <constraint firstItem="fKQ-h5-Uwj" firstAttribute="leading" secondItem="Nts-9d-t1x" secondAttribute="leading" id="lVY-mO-Xco"/>
                                         <constraint firstAttribute="bottom" secondItem="fKQ-h5-Uwj" secondAttribute="bottom" id="umy-hT-tMR"/>
+                                        <constraint firstAttribute="bottom" secondItem="Zwc-lN-VZb" secondAttribute="bottom" id="xVG-Lv-3tm"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <gestureRecognizers/>
@@ -665,20 +675,20 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="vvg-kk-ORc" id="5Dl-HT-Rjt">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" text="Place name" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ymY-N6-Jz9">
+                                                <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" text="Place name" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ymY-N6-Jz9">
                                                     <rect key="frame" x="16" y="16" width="568" height="25"/>
                                                     <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="18"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" tag="2" contentMode="left" horizontalHuggingPriority="750" verticalHuggingPriority="750" text="Place details" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="att-hP-qGy">
-                                                    <rect key="frame" x="16" y="57" width="568" height="46"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" tag="2" contentMode="left" horizontalHuggingPriority="750" verticalHuggingPriority="750" text="Place details" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="att-hP-qGy">
+                                                    <rect key="frame" x="16" y="57" width="568" height="38"/>
                                                     <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="12"/>
                                                     <color key="textColor" red="0.23529411850000001" green="0.23529411850000001" blue="0.23529411850000001" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="bottom" secondItem="att-hP-qGy" secondAttribute="bottom" constant="8" id="AeO-s6-ZyR"/>
+                                                <constraint firstAttribute="bottom" secondItem="att-hP-qGy" secondAttribute="bottom" constant="16" id="AeO-s6-ZyR"/>
                                                 <constraint firstAttribute="trailing" secondItem="ymY-N6-Jz9" secondAttribute="trailing" constant="16" id="P8w-ZO-KUM"/>
                                                 <constraint firstItem="att-hP-qGy" firstAttribute="leading" secondItem="5Dl-HT-Rjt" secondAttribute="leading" constant="16" id="QmS-LP-9IK"/>
                                                 <constraint firstAttribute="trailing" secondItem="att-hP-qGy" secondAttribute="trailing" constant="16" id="UM0-Uy-Tof"/>
@@ -779,6 +789,7 @@
         <image name="chevron_yellow" width="10" height="17"/>
         <image name="discover_button" width="220" height="44"/>
         <image name="icon_list" width="29" height="20"/>
+        <image name="kazimir_neutral" width="512" height="332"/>
         <image name="logo" width="185" height="110"/>
         <image name="logotype" width="127" height="20"/>
         <image name="map_icon" width="20" height="20"/>
