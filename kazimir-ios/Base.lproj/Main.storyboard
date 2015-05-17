@@ -19,6 +19,7 @@
             <string>OpenSans</string>
             <string>OpenSans</string>
             <string>OpenSans</string>
+            <string>OpenSans</string>
         </mutableArray>
     </customFonts>
     <scenes>
@@ -615,31 +616,49 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="placeCell" rowHeight="110" id="vvg-kk-ORc">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="placeCell" id="vvg-kk-ORc">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="vvg-kk-ORc" id="5Dl-HT-Rjt">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" text="Place name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ymY-N6-Jz9">
-                                                    <rect key="frame" x="16" y="16" width="97" height="20"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" text="No place name" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ymY-N6-Jz9">
+                                                    <rect key="frame" x="16" y="16" width="568" height="25"/>
                                                     <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="18"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" tag="2" contentMode="left" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="att-hP-qGy">
-                                                    <rect key="frame" x="16" y="52" width="568" height="50"/>
-                                                    <string key="text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Proin nibh augue, suscipit a, scelerisque sed, lacinia in, mi. Cras vel lorem. Etiam pellentesque aliquet tellus. Phasellus pharetra nulla ac diam. Quisque semper justo at risus.</string>
+                                                <label opaque="NO" userInteractionEnabled="NO" tag="2" contentMode="left" horizontalHuggingPriority="750" verticalHuggingPriority="750" text="No place details" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="att-hP-qGy">
+                                                    <rect key="frame" x="16" y="57" width="568" height="46"/>
                                                     <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="12"/>
                                                     <color key="textColor" red="0.23529411850000001" green="0.23529411850000001" blue="0.23529411850000001" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="att-hP-qGy" firstAttribute="top" secondItem="ymY-N6-Jz9" secondAttribute="bottom" constant="16" id="DRw-WR-2Pt"/>
-                                                <constraint firstAttribute="bottom" secondItem="att-hP-qGy" secondAttribute="bottom" constant="8" id="ef9-QV-IQm"/>
-                                                <constraint firstAttribute="trailing" secondItem="att-hP-qGy" secondAttribute="trailing" constant="16" id="jFj-EH-2kC"/>
-                                                <constraint firstItem="att-hP-qGy" firstAttribute="leading" secondItem="5Dl-HT-Rjt" secondAttribute="leading" constant="16" id="juL-hh-6Mj"/>
-                                                <constraint firstItem="ymY-N6-Jz9" firstAttribute="leading" secondItem="5Dl-HT-Rjt" secondAttribute="leading" constant="16" id="y6H-RQ-dBs"/>
-                                                <constraint firstItem="ymY-N6-Jz9" firstAttribute="top" secondItem="5Dl-HT-Rjt" secondAttribute="top" constant="16" id="yTl-L1-8Mc"/>
+                                                <constraint firstAttribute="bottom" secondItem="att-hP-qGy" secondAttribute="bottom" constant="8" id="AeO-s6-ZyR"/>
+                                                <constraint firstAttribute="trailing" secondItem="ymY-N6-Jz9" secondAttribute="trailing" constant="16" id="P8w-ZO-KUM"/>
+                                                <constraint firstItem="att-hP-qGy" firstAttribute="leading" secondItem="5Dl-HT-Rjt" secondAttribute="leading" constant="16" id="QmS-LP-9IK"/>
+                                                <constraint firstAttribute="trailing" secondItem="att-hP-qGy" secondAttribute="trailing" constant="16" id="UM0-Uy-Tof"/>
+                                                <constraint firstItem="att-hP-qGy" firstAttribute="top" secondItem="ymY-N6-Jz9" secondAttribute="bottom" constant="16" id="Uma-lC-giA"/>
+                                                <constraint firstItem="ymY-N6-Jz9" firstAttribute="leading" secondItem="5Dl-HT-Rjt" secondAttribute="leading" constant="16" id="mPT-CK-8xf"/>
+                                                <constraint firstItem="ymY-N6-Jz9" firstAttribute="top" secondItem="5Dl-HT-Rjt" secondAttribute="top" constant="16" id="tVe-0R-SfX"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" selectionStyle="default" indentationWidth="10" reuseIdentifier="inPreparationCell" rowHeight="200" id="5cS-TC-mhQ">
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="5cS-TC-mhQ" id="csW-dL-VKe">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" text="In preparation" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yvr-Es-4uU">
+                                                    <rect key="frame" x="194" y="78" width="213" height="44"/>
+                                                    <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="32"/>
+                                                    <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="centerX" secondItem="Yvr-Es-4uU" secondAttribute="centerX" id="XzN-Tg-0a0"/>
+                                                <constraint firstAttribute="centerY" secondItem="Yvr-Es-4uU" secondAttribute="centerY" id="wfy-wi-UaH"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>

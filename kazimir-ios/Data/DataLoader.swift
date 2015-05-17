@@ -92,17 +92,35 @@ class DataLoader {
             if storageResult.error != nil { return  (nil, storageResult.error) }
             photos.append(storageResult.entity!)
             
-            let imagesRelationInfo = Photo.getImagesJSON(json: json)
-            if imagesRelationInfo.error != nil { return (nil, imagesRelationInfo.error) }
-
-            let mediumPhotoString = imagesRelationInfo.jsons![0]["medium"] as? String
-            if mediumPhotoString == nil { return (nil, downloadError) }
+            let thumbImageDataResult = self.loadImage(type: "thumb", withPhotoJSON: json)
+            if thumbImageDataResult.error != nil { return (nil, thumbImageDataResult.error) }
+            storageResult.entity!.dataThumb = thumbImageDataResult.data!
             
-            let (imageData, error) = Client.sharedInstance.getImageData(urlString: mediumPhotoString!)
-            if error != nil { return (nil, error) }
-            storageResult.entity!.dataMedium = imageData!
+            let tinyImageDataResult = self.loadImage(type: "tiny", withPhotoJSON: json)
+            if tinyImageDataResult.error != nil { return (nil, tinyImageDataResult.error) }
+            storageResult.entity!.dataTiny = tinyImageDataResult.data!
+            
+            let smallImageDataResult = self.loadImage(type: "small", withPhotoJSON: json)
+            if smallImageDataResult.error != nil { return (nil, smallImageDataResult.error) }
+            storageResult.entity!.dataSmall = smallImageDataResult.data!
+            
+            let mediumImageDataResult = self.loadImage(type: "medium", withPhotoJSON: json)
+            if mediumImageDataResult.error != nil { return (nil, mediumImageDataResult.error) }
+            storageResult.entity!.dataMedium = mediumImageDataResult.data!
+            
+            let largeImageDataResult = self.loadImage(type: "large", withPhotoJSON: json)
+            if largeImageDataResult.error != nil { return (nil, largeImageDataResult.error) }
+            storageResult.entity!.dataLarge = largeImageDataResult.data!
         }
         return (photos, nil)
+    }
+    
+    private func loadImage(#type: String, withPhotoJSON json: JSON) -> DataResult {
+        let imagesRelationInfo = Photo.getImagesJSON(json: json)
+        if imagesRelationInfo.error != nil { return (nil, imagesRelationInfo.error) }
+        let photoString = imagesRelationInfo.jsons![0][type] as? String
+        if photoString == nil { return (nil, downloadError) }
+        return Client.sharedInstance.getImageData(urlString: photoString!)
     }
     
 }

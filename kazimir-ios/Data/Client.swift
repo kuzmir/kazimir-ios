@@ -6,6 +6,9 @@
 //  Copyright (c) 2015 Kazimir. All rights reserved.
 //
 
+typealias DataResult = (data: NSData?, error: NSError?)
+typealias JSONsResult = (jsons: [JSON]?, error: NSError?)
+
 class Client {
     
     static let sharedInstance = Client()
@@ -16,11 +19,11 @@ class Client {
     
     private init() {}
     
-    func getData(#locally: Bool) -> ([JSON]?, NSError?) {
+    func getData(#locally: Bool) -> JSONsResult {
         return locally ? self.loadLocalData() : self.downloadData()
     }
     
-    func getImageData(#urlString: String) -> (NSData?, NSError?) {
+    func getImageData(#urlString: String) -> DataResult {
         var url = NSURL(string: urlString, relativeToURL: resourcesBundleURL)
         if url != nil && url!.fileURL {
             let data = NSData(contentsOfURL: url!)
@@ -35,7 +38,7 @@ class Client {
         return (nil, clientError)
     }
     
-    private func downloadData() -> ([JSON]?, NSError?) {
+    private func downloadData() -> JSONsResult {
         let request = NSURLRequest(URL: apiUrl)
         var response: NSURLResponse? = nil
         var error: NSError? = nil
@@ -51,7 +54,7 @@ class Client {
         return (json, nil)
     }
     
-    private func loadLocalData() -> ([JSON]?, NSError?) {
+    private func loadLocalData() -> JSONsResult {
         let resourcesBundle = NSBundle(URL: resourcesBundleURL)!
         let resourcesJSONPath = resourcesBundle.pathForResource("resources", ofType: "json")!
         let resourcesJSONData = NSData(contentsOfFile: resourcesJSONPath)

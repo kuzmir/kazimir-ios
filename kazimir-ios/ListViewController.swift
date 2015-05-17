@@ -46,6 +46,12 @@ class ListViewController: UITableViewController, NSFetchedResultsControllerDeleg
         secondItemViewController.streetFetchedResultsController = Storage.sharedInstance.getStreetFetchedResultsController(streetId: street.id)
     }
     
+    private func getPhotoFromStreet(street: Street) -> Photo? {
+        let place = street.places.count > 0 ? street.places[0] as? Place : nil
+        if place == nil { return nil }
+        return place!.photos.count > 0 ? place!.photos[0] as? Photo : nil
+    }
+    
 }
 
 extension ListViewController: UITableViewDataSource {
@@ -57,14 +63,15 @@ extension ListViewController: UITableViewDataSource {
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let street = streetsFetchedResultsController.objectAtIndexPath(indexPath) as! Street
-        let place = street.places[0] as! Place
-        let photo = place.photos[0] as! Photo
-        
         let cell = tableView.dequeueReusableCellWithIdentifier("listViewCell") as! UITableViewCell
-        let imageView = cell.viewWithTag(1) as! UIImageView
-        imageView.image = UIImage(data: photo.dataMedium)
         let nameLabel = cell.viewWithTag(2) as! UILabel
         nameLabel.text = street.name
+        
+        if let photo = self.getPhotoFromStreet(street) {
+            let imageView = cell.viewWithTag(1) as! UIImageView
+            imageView.image = UIImage(data: photo.dataMedium)
+        }
+
         return cell
     }
     
