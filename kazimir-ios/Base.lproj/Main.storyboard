@@ -585,7 +585,7 @@
         <!--Photo View Controller-->
         <scene sceneID="wPq-4D-Mwe">
             <objects>
-                <viewController id="vcp-8T-xq3" customClass="PhotoViewController" customModule="kazimir_ios" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="vcp-8T-xq3" customClass="PhotoViewController" customModule="kazimir_ios" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="aCR-vG-MeI"/>
                         <viewControllerLayoutGuide type="bottom" id="TKg-bo-e8s"/>
@@ -594,15 +594,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OHT-FM-MYt">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OHT-FM-MYt">
                                 <rect key="frame" x="0.0" y="20" width="600" height="580"/>
-                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
                                     <outlet property="delegate" destination="vcp-8T-xq3" id="m4P-OF-Fwd"/>
                                 </connections>
                             </scrollView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="TKg-bo-e8s" firstAttribute="top" secondItem="OHT-FM-MYt" secondAttribute="bottom" id="Fh1-Y3-5Om"/>
                             <constraint firstItem="OHT-FM-MYt" firstAttribute="top" secondItem="aCR-vG-MeI" secondAttribute="bottom" id="FyW-Fi-Da7"/>
@@ -613,6 +612,7 @@
                             <outletCollection property="gestureRecognizers" destination="KjF-YA-h2C" appends="YES" id="7vs-YM-bW9"/>
                         </connections>
                     </view>
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
                     <connections>
                         <outlet property="scrollView" destination="OHT-FM-MYt" id="4kc-ze-AON"/>
                     </connections>

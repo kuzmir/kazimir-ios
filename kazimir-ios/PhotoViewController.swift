@@ -40,6 +40,10 @@ class PhotoViewController: UIViewController {
         let verticalContentInset = (scrollView.frame.size.height - image.size.height * minZoomScale) / 2
         scrollView.contentInset = UIEdgeInsetsMake(verticalContentInset, horizontalContentInset, verticalContentInset, horizontalContentInset)
     }
+    
+    override func preferredStatusBarStyle() -> UIStatusBarStyle {
+        return .LightContent
+    }
 
 }
 
@@ -47,6 +51,15 @@ extension PhotoViewController: UIScrollViewDelegate {
     
     func viewForZoomingInScrollView(scrollView: UIScrollView) -> UIView? {
         return imageView
+    }
+    
+    func scrollViewDidEndDragging(scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        let image = imageView.image!
+        let horizontalContentInset = max(0, (scrollView.frame.size.width - image.size.width * scrollView.zoomScale) / 2)
+        let verticalContentInset = max(0, (scrollView.frame.size.height - image.size.height * scrollView.zoomScale) / 2)
+        UIView.animateWithDuration(0.25, animations: { () -> Void in
+            scrollView.contentInset = UIEdgeInsetsMake(verticalContentInset, horizontalContentInset, verticalContentInset, horizontalContentInset)
+        })
     }
     
 }
