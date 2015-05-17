@@ -11,6 +11,7 @@ import CoreData
 
 protocol DataSynchronizerDelegate {
     
+    func dataSynchronizer(dataSynchronizer: DataSynchronizer, didStartSynchronizationLocally locally: Bool)
     func dataSynchronizer(dataSynchronizer: DataSynchronizer, didFinishSynchronizationLocally locally: Bool, error: NSError?)
     
 }
@@ -27,6 +28,7 @@ class DataSynchronizer {
     func startSynchronization(#locally: Bool) {
         if (!isSynchronizationInProgress) {
             isSynchronizationInProgress = true
+            delegate?.dataSynchronizer(self, didStartSynchronizationLocally: locally)
             let writeContext = Storage.sharedInstance.getWriteManagedObjectContext()
             writeContext.performBlock({ () -> Void in
                 var error: NSError? = nil

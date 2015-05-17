@@ -1,6 +1,6 @@
 [
   {
-    "id": 1,
+    "id": 2,
     "name": "Plac Nowy",
     "path": {
       "type": "LineString",
@@ -40,97 +40,57 @@
     "places": {
       "present": [
         {
-          "id": 1,
-          "details": {
-            "en": {
-              "name": "Plac Nowy",
-              "description": "Plac Nowy"
-            },
-            "pl": {
-              "name": "Plac Nowy",
-              "description": "Jeśli zapiekanki, to tylko z Okrąglaka. Plac Nowy tętni życiem bez względu na porę dnia i nocy - wieczorami oblegany do granic możliwości przez wielbicieli tanich szotów, za dnia jest miejscem spotkań, wycieczek i handlu. Latem o wolne miejsce ciężko nie tylko w kawiarnianych ogródkach, ale i na krawężnikach i murkach.\r\nW niedzielne poranki tłoczą się tu blogerki-hipsterki wśród stoisk z (nie)używaną odzieżą, butami i akcesoriami. Ceny – od kilkunastu do kilkuset złotych! W dni powszednie pobuszujesz wśród winyli, porcelany, archiwalnych widokówek i odgrzebanych na strychach starociach. Kupisz również kwiaty, świeże warzywa i owoce.\r\n\r\nPlac Nowy chętnie gości młodych projektantów (cykliczne targi biżuterii, ubrań itp.), lokalnych społeczników oraz muzyków. Przy odrobinie szczęścia wieczorem posłuchasz muzyków, grających na dachu Okrąglaka (np. 14-osobowego jazzbandu ze Szkocji). Jest moc!\r\n"
-            }
-          },
-          "update_at": "2015-05-09T07:56:04.000Z",
-          "photos": [
-            {
-              "id": 1,
-              "details": {
-                "en": {
-                  "title": "Plac Nowy",
-                  "description": "Plac Nowy"
-                },
-                "pl": {
-                  "title": "Plac Nowy",
-                  "description": "Plac Nowy"
-                }
-              },
-              "images": {
-                "medium": "faf56603a42909fa75dc1e53546e7461df60a4c9.png"
-              }
-            },
-            {
-              "id": 2,
-              "details": {
-                "en": {
-                  "title": "Synagoga Tempel",
-                  "description": "Synagoga Tempel"
-                },
-                "pl": {
-                  "title": "Synagoga Tempel",
-                  "description": "Synagoga Tempel"
-                }
-              },
-              "images": {
-                "medium": "d840c19bdc22f6310de06cb77a93f96b3f0c91b9.jpg"
-              }
-            }
-          ]
-        },
-        {
           "id": 2,
           "details": {
             "en": {
               "name": "Plac Nowy",
-              "description": "Plac Nowy"
+              "description": "If you like to try “zapiekanki”, you need to get it from Okrąglak. Plac Nowy is teeming with life whole day and night - at the evenings crowded by fans of cheap shots, during the day is a place of meetings, excursions and trade. In the summer you are really lucky to find some free spot in the open air bars, coffee places, but also in the square itself.\r\n\r\nIn the Sunday morning square is filled with bloggers and hipsters rummage in second hand clothing, shoes and accessories. Prices from a dozen to several hundred złotych.  On weekdays you can find here vinyl, porcelain , archival postcards or antiques. Apart of it here you can always find flowers, fresh vegetables and fruits .\r\n\r\nPlac Nowy is always open for young designers, activists and musicians.It’s here where you can visit jewelry or clothing market, lising jazz or experimental music or visit art exhibitions.  If you are lucky you will get to hear music played from the roof of Okrąglak( like 14 people band from Scotland).Feel the power!"
             },
             "pl": {
               "name": "Plac Nowy",
               "description": "Jeśli zapiekanki, to tylko z Okrąglaka. Plac Nowy tętni życiem bez względu na porę dnia i nocy - wieczorami oblegany do granic możliwości przez wielbicieli tanich szotów, za dnia jest miejscem spotkań, wycieczek i handlu. Latem o wolne miejsce ciężko nie tylko w kawiarnianych ogródkach, ale i na krawężnikach i murkach.\r\nW niedzielne poranki tłoczą się tu blogerki-hipsterki wśród stoisk z (nie)używaną odzieżą, butami i akcesoriami. Ceny – od kilkunastu do kilkuset złotych! W dni powszednie pobuszujesz wśród winyli, porcelany, archiwalnych widokówek i odgrzebanych na strychach starociach. Kupisz również kwiaty, świeże warzywa i owoce.\r\n\r\nPlac Nowy chętnie gości młodych projektantów (cykliczne targi biżuterii, ubrań itp.), lokalnych społeczników oraz muzyków. Przy odrobinie szczęścia wieczorem posłuchasz muzyków, grających na dachu Okrąglaka (np. 14-osobowego jazzbandu ze Szkocji). Jest moc!\r\n"
             }
           },
-          "update_at": "2015-05-09T07:56:04.000Z",
+          "update_at": "2015-05-17T13:05:20.000Z",
           "photos": [
             {
-              "id": 3,
+              "id": 2,
               "details": {
                 "en": {
                   "title": "Plac Nowy",
-                  "description": "Plac Nowy"
+                  "description": ""
                 },
                 "pl": {
                   "title": "Plac Nowy",
-                  "description": "Plac Nowy"
+                  "description": ""
                 }
               },
               "images": {
-                "medium": "faf56603a42909fa75dc1e53546e7461df60a4c9.png"
+                "thumb": "e537df0c0d78bc8960ccf67c0af693cea3773f81.png",
+                "tiny": "e28f57128b21e34f7b99f284daf0cf1ef8b00bce.png",
+                "small": "71e0e37bb54048d4ab7f07746385cd93f7dd3120.png",
+                "medium": "faf56603a42909fa75dc1e53546e7461df60a4c9.png",
+                "large": "820f95e6a67ec1df259e71ca7463aba67def6a17.png"
               }
             },
             {
-              "id": 4,
+              "id": 6,
               "details": {
                 "en": {
-                  "title": "Synagoga Tempel",
-                  "description": "Synagoga Tempel"
+                  "title": "Plac Nowy new",
+                  "description": ""
                 },
                 "pl": {
-                  "title": "Synagoga Tempel",
-                  "description": "Synagoga Tempel"
+                  "title": "Plac Nowy new",
+                  "description": ""
                 }
               },
               "images": {
-                "medium": "d840c19bdc22f6310de06cb77a93f96b3f0c91b9.jpg"
+                "thumb": "585d2ac2f2f8c6ee59149c878ecf50eee01c9946.jpg",
+                "tiny": "ac0b3589f8fa2936a436563717dd106d0a091e6d.jpg",
+                "small": "8ff97e93694a5b8cb0ecbcb02f27d95c310570b1.jpg",
+                "medium": "76136d20fc60344ef472bc90f8adbae7a639b0bf.jpg",
+                "large": "c7229e3af701b7890d5392bcfb1128bf42bd528d.jpg"
               }
             }
           ]
@@ -142,29 +102,194 @@
           "details": {
             "en": {
               "name": "Plac Nowy",
-              "description": "Plac Nowy"
+              "description": "Square where you stand , have no regular shape. It’s typed it in the medieval walls.\r\nLibuszhof - new Jewish alley, plac Nowy. In front of you, there is a market with the highest quality products. Here housewives supplies best houses of Krakow.\r\nAt the end of the nineteenth century city ​​government  would replace the wooden stalls with brick market hall. At the eastern entrance ( from the street. Esther ) you will find ra ritual poultry slaughterhouse. It works , because so dictate religious rigors of Purity intake of food . Weight Maintenance of the institution rests on the shoulders of Jewish municipalities .\r\n\r\nLook at the buildings surrounding the square , 2 of them are houses of worship : Bene Emuna ( Children of Faith ) and Chaim Halberstam , dedicated to the tzaddik , the founder of the Sanz Hasidic dynasty . The Bene Emuna you can find the image of Vincent Capraro - \"The Jews of Vught \", dedicated to the events of the concentration camp in the south of the Netherlands."
             },
             "pl": {
               "name": "Plac Nowy",
               "description": "Plac, na którym stoisz, nie ma regularnego kształtu. Wpisano go w średniowieczne mury obronne.\r\nLibuszhof - nowy zaułek żydowski, plac Nowy. Przed Tobą targ najwyższej jakości produktów. Gospodynie najlepszych krakowskich domów zaopatrują tu swoje spiżarnie. Pod koniec XIX w. władze miasta zastąpują drewniane kramy, murowaną halą targową. Przy wschodnim wejściu (od ul. Estery) znajdziesz rytulaną ubojnię drobiu. Funkcjonuje, bo tak nakazują religijne rygory czystości spożywania pokarmów. Ciężar utrzymania instytucji spoczywa na barkach gminy żydowskiej.\r\nSpójrz na okalające plac budynki, 2 spośród nich to domy modlitwy: Bene Emuna (Dzieci Wiary) i Chaim Halberstam, poświęcony cadykowi, założycielowi chasydzkiej dynastii Sanz. W Bene Emuna znajdziesz obraz Vincenta Capraro -  \"Żydzi z Vught\", poświęcony wydarzeniom z obozu koncentracyjnego na południu Holandii.\r\n"
             }
           },
-          "update_at": "2015-05-09T07:56:23.000Z",
+          "update_at": "2015-05-17T13:03:03.000Z",
           "photos": [
             {
-              "id": 5,
+              "id": 3,
               "details": {
                 "en": {
                   "title": "Plac Nowy",
-                  "description": "Plac Nowy"
+                  "description": ""
                 },
                 "pl": {
                   "title": "Plac Nowy",
-                  "description": "Plac Nowy"
+                  "description": ""
                 }
               },
               "images": {
-                "medium": "0ad6bc2c6e60c0490267eb5086cf56fd3419121f.jpg"
+                "thumb": "4366a2008ce4eeba1c8eb8caf27a4376e752c636.jpg",
+                "tiny": "0e90cee6f7905a26ef15c8168186897c7304c1c5.jpg",
+                "small": "d5726d9862c9261977ed6c0051e0f8f8706eebdc.jpg",
+                "medium": "0ad6bc2c6e60c0490267eb5086cf56fd3419121f.jpg",
+                "large": "daea8eca9db87b11184eaad076d4ef47e613ce9c.jpg"
+              }
+            },
+            {
+              "id": 7,
+              "details": {
+                "en": {
+                  "title": "Plac Nowy old",
+                  "description": ""
+                },
+                "pl": {
+                  "title": "Plac Nowy old",
+                  "description": ""
+                }
+              },
+              "images": {
+                "thumb": "078ffdad10162e69caaac716698be8768d8d6525.jpg",
+                "tiny": "98808421cf12eb0dd28dc88894d11c3f8d2c907c.jpg",
+                "small": "eebadbabdc76c5321cf960a2328b193c940332f3.jpg",
+                "medium": "c6c4adebe318a59f839f16a25376bd3ac6562b96.jpg",
+                "large": "6c744497f71a1374022307db8833fd1e04543a51.jpg"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "id": 5,
+    "name": "Meiselsa",
+    "path": {
+      "type": "LineString",
+      "coordinates": [
+        [
+          50.0503231433176,
+          19.94122087955475
+        ],
+        [
+          50.050908716785116,
+          19.942840933799744
+        ],
+        [
+          50.051452949248585,
+          19.944546818733215
+        ],
+        [
+          50.05092249489827,
+          19.94247615337372
+        ]
+      ]
+    },
+    "path_string": "50.0503231433176,19.94122087955475;50.050908716785116,19.942840933799744;50.051452949248585,19.944546818733215;50.05092249489827,19.94247615337372;",
+    "updated_at": "2015-05-14T17:14:08.000Z",
+    "places": {
+      "present": [
+        {
+          "id": 11,
+          "details": {
+            "en": {
+              "name": "House of Prayer at Meisels 18",
+              "description": "Right after the war the building was established Jewish Socialist Party . In 1951 the building was put Song and Dance Ensemble \" Krakowiacy \", which occupied it until 2006 .\r\nToday, the site of the former house of prayer is a club Mezcal . Its creation provoked a storm of media - many criticized the municipality, which decided to hire former religious object for business entertainment . This took place just after reconditioning and the decisions have been taken without informing the public.\r\n\r\nThe building not only from the outside attracts attention - have a look inside, when the club is open , and you'll find a unique polychrome wall-mounted , depicting holy places and animals. This is a remnant of the old design house of prayer , which was discovered during the renovation in 2008 .\r\n"
+            },
+            "pl": {
+              "name": "Dom Modlitwy przy Meiselsa 18",
+              "description": "Tuż po wojnie w budynku siedzibę miała Żydowska Partia Socjalistyczna. W 1951 budynek oddany został Zespołowi Pieśni i Tańca „Krakowiacy”, który zajmował go aż do 2006.\r\nDziś w miejscu dawnego domu modlitwy znajduje się klub Mezcal. Jego powstanie wywołało burzę medialną – wielu poddawało krytyce gminę, która zdecydowała się na wynajęcie dawnego obiektu religijnego pod działalność rozrywkową. Miało to miejsce tuż po generalnym remoncie, a decyzje podjęte zostały bez poinformowania ogółu.\r\nBudynek nie tylko z zewnątrz przyciąga uwagę – zajrzyj do środka, gdy klub jest otwarty, a znajdziesz wyjątkową polichromię naścienną, przedstawiającą miejsca święte i zwierzęta. To pozostałość dawnego wystroju domu modlitwy, odkryta podczas remontu w 2008. "
+            }
+          },
+          "update_at": "2015-05-17T13:40:42.000Z",
+          "photos": [
+            {
+              "id": 8,
+              "details": {
+                "en": {
+                  "title": "Meiselsa new",
+                  "description": ""
+                },
+                "pl": {
+                  "title": "Meiselsa new",
+                  "description": ""
+                }
+              },
+              "images": {
+                "thumb": "a978137afe0fe1a0b20f2edec57f73812330481d.jpg",
+                "tiny": "399e4a66d98ae91e5b8d40d71ad436f7b530b2fe.jpg",
+                "small": "5d83c1022779f226c8d56491c3931b7e6523872b.jpg",
+                "medium": "f8e76da8cefa60a184520392160eee605bdaf0cb.jpg",
+                "large": "51060a773a5f9c8cb8a796f06756ea31657480fb.jpg"
+              }
+            }
+          ]
+        }
+      ],
+      "past": [
+        {
+          "id": 10,
+          "details": {
+            "en": {
+              "name": "House of Prayer at Meisels 18",
+              "description": "The bulding was built in the late nineteenth century . Before the war, it served as a house of prayer Psalm Brotherhood ( Chevra T'hilim ) . Architecturally, the building refers to the Neo-Romanesque style . The prayer hall was located on the ground floor .\r\nGoing further note the passage connecting with the street Meisels Joseph. The distinctive building evokes the atmosphere of pre-war Krakow. Located in the passage garden of Mleczarnia club, during the summer season attracts unique atmosphere ."
+            },
+            "pl": {
+              "name": "Dom Modlitwy przy Meiselsa 18",
+              "description": "Obiekt ten powstał pod koniec XIX w. Przed wojną mieścił się tu dom modlitwy Bractwa Psalmowego (Chewra T’hilim). Architektonicznie budynek nawiązuje do stylu neoromańskiego. Sala modlitewna znajdowała się na parterze. \r\n\r\nIdąc dalej zwróć uwagę na pasaż łączący Meiselsa z ulicą Józefa. Charakterystyczna zabudowa przywołuje atmosferę przedwojennego Krakowa – podobnie jak wiele innych miejsc na Kazimierzu została wykorzystana przy kręceniu na początku lat 90. Znajdujący się w pasażu ogródek klubu Mleczarnia przyciąga w sezonie letnim wyjątkowym klimatem."
+            }
+          },
+          "update_at": "2015-05-17T13:39:54.000Z",
+          "photos": [
+            {
+              "id": 9,
+              "details": {
+                "en": {
+                  "title": "Meiselsa old",
+                  "description": ""
+                },
+                "pl": {
+                  "title": "Meiselsa old",
+                  "description": ""
+                }
+              },
+              "images": {
+                "thumb": "d968df6371caf25c54d49f6ed25e028ff4bf04c5.jpg",
+                "tiny": "50ced2afdb4ce143862b9c83f196e376d7723524.jpg",
+                "small": "f2d4c19629f137ca98ff0fbe2c3b507670407a80.jpg",
+                "medium": "d30e99325c24e00319dc4ac1f241816ec536512f.jpg",
+                "large": "d80be98480f5f23c786d2bb49bd72071c328ac23.jpg"
+              }
+            }
+          ]
+        },
+        {
+          "id": 13,
+          "details": {
+            "en": {
+              "name": "Meiselsa 2 - building where lived Karol Kot",
+              "description": "After crossing the Krakowska you are in the second part Meiselsa street . In the building at number 2 lived Karol Kot , the killer prowling the mid-60s in Kazimierz. His murder triggered a psychosis among Cracovians . Kot was killing children and old women , and at the hearing spoke with delight about done deeds. Twenty-two killer was executed in 1968 , the event was widely reported in the press, and a few decades later, his deeds have become the subject poem / song Marcin Świetlicki \"Karol cat \" ."
+            },
+            "pl": {
+              "name": "Meiselsa 2 - Kamienica w której mieszkał Karol Kot",
+              "description": "Po przekroczeniu Krakowskiej znajdujesz się w drugiej części Meiselsa. W kamienicy pod numerem 2 mieszał Karol Kot, morderca grasujący w połowie lat 60. po Kazimierzu i nie tylko. Jego mordy wywołały psychozę wśród Krakowian. Kot zabijał dzieci i staruszki, a podczas rozprawy z lubością wypowiadał się o dokonanych czynach. Dwudziestodwuletniego mordercę stracono w 1968, wydarzenie to było szeroko komentowane w prasie, a kilkadziesiąt lat później jego czyny stały się tematem wiersza/piosenki Marcina Świetlickiego \"Karol Kot\"."
+            }
+          },
+          "update_at": "2015-05-17T13:35:12.000Z",
+          "photos": [
+            {
+              "id": 10,
+              "details": {
+                "en": {
+                  "title": "Meiselsa old 1",
+                  "description": ""
+                },
+                "pl": {
+                  "title": "Meiselsa old 1",
+                  "description": ""
+                }
+              },
+              "images": {
+                "thumb": "d1727e34adfead1b81b490d542ed67fc4b16e197.jpg",
+                "tiny": "a52bb5e0c0ea5d8974686851bbd87cb04661bfa5.jpg",
+                "small": "044db2c7755fae40265613a7b1229fdfd8ffa1b5.jpg",
+                "medium": "0e644bd3a695424ea01fe79f5d32d8ca0938d9ea.jpg",
+                "large": "f08a0a8885709efc880ab2802736962df0588c76.jpg"
               }
             }
           ]
