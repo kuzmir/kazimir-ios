@@ -13,6 +13,7 @@ enum PhotoRelation: String {
 enum PhotoProperty: String {
     case Id = "id"
     case Details = "details"
+    case UpdateDate = "updated_at"
 }
 
 extension Photo {
@@ -32,11 +33,20 @@ extension Photo: JSONConvertible {
     }
     
     func fromJSON(json: JSON) -> ConversionResult {
-        let details = json[PhotoProperty.Details.rawValue] as? JSON
-        if details == nil { return (nil, Storage.storageError) }
-        self.details = details!
+        let updateDateString = json[PhotoProperty.UpdateDate.rawValue] as? String
+        if updateDateString == nil { return (nil, Storage.storageError) }
+        let updateDate = Storage.dateFormatter.dateFromString(updateDateString!)
+        if updateDate == nil { return (nil, Storage.storageError) }
         
-        return (true, nil)
+        if self.updateDate.compare(updateDate!) == .OrderedAscending {
+            self.updateDate = updateDate!
+            
+            let details = json[PhotoProperty.Details.rawValue] as? JSON
+            if details == nil { return (nil, Storage.storageError) }
+            self.details = details!
+            return (true, nil)
+        }
+        return (false, nil)
     }
     
 }

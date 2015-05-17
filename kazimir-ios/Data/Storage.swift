@@ -88,7 +88,7 @@ class Storage {
         return NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: managedObjectContext!, sectionNameKeyPath: nil, cacheName: nil)
     }
     
-    private func getEntity<T: NSManagedObject>(id: NSNumber, context: NSManagedObjectContext) -> T {
+    private func getEntity<T where T: JSONConvertible, T: NSManagedObject>(id: NSNumber, context: NSManagedObjectContext) -> T {
         let entityName = Storage.getEntityName(T.self)
         let fetchRequest = NSFetchRequest(entityName: entityName)
         fetchRequest.predicate = NSPredicate(format: "id = %@", argumentArray: [id])
@@ -96,20 +96,11 @@ class Storage {
         return result.count > 0 ? result[0] as! T : self.createEntity(id, context: context) as T
     }
     
-    private func createEntity<T: NSManagedObject>(id: NSNumber, context: NSManagedObjectContext) -> T {
+    private func createEntity<T where T: JSONConvertible, T: NSManagedObject>(id: NSNumber, context: NSManagedObjectContext) -> T {
         let entityName = Storage.getEntityName(T.self)
         let entity = NSEntityDescription.insertNewObjectForEntityForName(entityName, inManagedObjectContext: context) as! T
-        if let street = entity as? Street  {
-            street.id = id
-            street.updateDate = NSDate(timeIntervalSince1970: 0)
-        }
-        if let place = entity as? Place {
-            place.id = id
-            place.updateDate = NSDate(timeIntervalSince1970: 0)
-        }
-        if let photo = entity as? Photo {
-            photo.id = id
-        }
+        entity.setValue(id, forKey: "id")
+        entity.setValue(NSDate(timeIntervalSince1970: 0), forKey: "updateDate")
         return entity
     }
     

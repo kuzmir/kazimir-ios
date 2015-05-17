@@ -6,8 +6,6 @@
 //  Copyright (c) 2015 Kazimir. All rights reserved.
 //
 
-import UIKit
-
 typealias JSON = [String: AnyObject]
 typealias ConversionResult = (updated: Bool?, error: NSError?)
 typealias RelationInfo = (jsons: [JSON]?, error: NSError?)

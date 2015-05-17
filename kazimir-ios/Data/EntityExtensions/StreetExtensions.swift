@@ -63,7 +63,6 @@ extension Street: JSONConvertible {
             self.path = path!
             return (true, nil)
         }
-
         return (false, nil)
     }
     

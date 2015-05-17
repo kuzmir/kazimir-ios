@@ -18,6 +18,7 @@ class Photo: NSManagedObject {
     @NSManaged var dataMedium: NSData
     @NSManaged var dataLarge: NSData
     @NSManaged var details: NSDictionary
+    @NSManaged var updateDate: NSDate
     @NSManaged var place: Place
 
 }

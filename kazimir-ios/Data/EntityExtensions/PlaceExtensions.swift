@@ -1,4 +1,3 @@
-
 //
 //  PlaceExtensions.swift
 //  kazimir-ios
@@ -14,7 +13,7 @@ enum PlaceRelation: String {
 enum PlaceProperty: String {
     case Id = "id"
     case Details = "details"
-    case UpdateDate = "update_at"
+    case UpdateDate = "updated_at"
 }
 
 extension Place {
