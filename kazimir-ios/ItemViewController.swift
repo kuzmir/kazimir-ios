@@ -136,15 +136,13 @@ extension ItemViewController: UITableViewDataSource {
         if places.count > 0 {
             let place = places[indexPath.section]
             
-            if let placeName = self.getNameFromPlace(place, locale: locale) {
-                let nameLabel = cell.viewWithTag(1) as! UILabel
-                nameLabel.text = placeName
-            }
+            let nameLabel = cell.viewWithTag(1) as! UILabel
+            let placeName = self.getNameFromPlace(place, locale: locale)
+            nameLabel.text = placeName != nil ? placeName : "..."
             
-            if let placeDescription = self.getDescriptionFromPlace(place, locale: locale) {
-                let descriptionLabel = cell.viewWithTag(2) as! UILabel
-                descriptionLabel.text = placeDescription
-            }
+            let descriptionLabel = cell.viewWithTag(2) as! UILabel
+            let placeDescription = self.getDescriptionFromPlace(place, locale: locale)
+            descriptionLabel.text = placeDescription != nil ? placeDescription : "..."
         }
         return cell
     }

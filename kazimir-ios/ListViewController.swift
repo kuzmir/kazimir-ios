@@ -67,10 +67,9 @@ extension ListViewController: UITableViewDataSource {
         let nameLabel = cell.viewWithTag(2) as! UILabel
         nameLabel.text = street.name
         
-        if let photo = self.getPhotoFromStreet(street) {
-            let imageView = cell.viewWithTag(1) as! UIImageView
-            imageView.image = UIImage(data: photo.dataMedium)
-        }
+        let imageView = cell.viewWithTag(1) as! UIImageView
+        let photo = self.getPhotoFromStreet(street)
+        imageView.image = photo != nil ? UIImage(data: photo!.dataMedium) : nil
 
         return cell
     }
