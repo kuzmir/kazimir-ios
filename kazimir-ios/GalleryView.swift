@@ -10,6 +10,11 @@ import UIKit
 
 class GalleryView: UIView {
     
+    var seciont: Int?
+    var index: Int {
+        return pageContol.currentPage
+    }
+    
     private var imageViews = [UIImageView]()
     private var pageContol = UIPageControl()
     private var scrollView: UIScrollView = {

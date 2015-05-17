@@ -582,6 +582,48 @@
             </objects>
             <point key="canvasLocation" x="-585" y="206"/>
         </scene>
+        <!--Photo View Controller-->
+        <scene sceneID="wPq-4D-Mwe">
+            <objects>
+                <viewController id="vcp-8T-xq3" customClass="PhotoViewController" customModule="kazimir_ios" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="aCR-vG-MeI"/>
+                        <viewControllerLayoutGuide type="bottom" id="TKg-bo-e8s"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="kf7-9q-DIg">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="wbO-oq-Pfv">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                <gestureRecognizers/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="TKg-bo-e8s" firstAttribute="top" secondItem="wbO-oq-Pfv" secondAttribute="bottom" id="7nh-bP-1Ev"/>
+                            <constraint firstItem="wbO-oq-Pfv" firstAttribute="top" secondItem="kf7-9q-DIg" secondAttribute="top" id="Wjr-zg-b5T"/>
+                            <constraint firstItem="wbO-oq-Pfv" firstAttribute="leading" secondItem="kf7-9q-DIg" secondAttribute="leading" id="lBs-Uj-UZH"/>
+                            <constraint firstAttribute="trailing" secondItem="wbO-oq-Pfv" secondAttribute="trailing" id="wa4-qq-kD7"/>
+                        </constraints>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="KjF-YA-h2C" appends="YES" id="7vs-YM-bW9"/>
+                        </connections>
+                    </view>
+                    <connections>
+                        <outlet property="imageView" destination="wbO-oq-Pfv" id="eK6-WY-LXP"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dsJ-hn-js4" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="KjF-YA-h2C">
+                    <connections>
+                        <action selector="tapGestureRecognized:" destination="vcp-8T-xq3" id="Q3Y-pi-77g"/>
+                    </connections>
+                </tapGestureRecognizer>
+            </objects>
+            <point key="canvasLocation" x="1570" y="1704"/>
+        </scene>
         <!--Street name-->
         <scene sceneID="L4z-aD-Gb1">
             <objects>
@@ -667,6 +709,7 @@
                                 <connections>
                                     <outlet property="dataSource" destination="NX0-Cb-Tj4" id="2Yo-uL-YT3"/>
                                     <outlet property="delegate" destination="NX0-Cb-Tj4" id="92i-8d-Swg"/>
+                                    <outletCollection property="gestureRecognizers" destination="1aB-SU-gL4" appends="YES" id="YA2-M5-RG4"/>
                                 </connections>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AsH-U0-zuf">
@@ -680,6 +723,7 @@
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="Pfc-D1-icg" firstAttribute="leading" secondItem="HTf-HL-qWe" secondAttribute="leading" id="1AO-f3-V9m"/>
                             <constraint firstAttribute="centerX" secondItem="AsH-U0-zuf" secondAttribute="centerX" id="CVk-8A-ppO"/>
@@ -708,9 +752,15 @@
                     <connections>
                         <outlet property="flipButton" destination="AsH-U0-zuf" id="neq-dR-QDf"/>
                         <outlet property="tableView" destination="Pfc-D1-icg" id="S6a-HZ-y3b"/>
+                        <segue destination="vcp-8T-xq3" kind="presentation" identifier="showPhoto" modalPresentationStyle="fullScreen" modalTransitionStyle="crossDissolve" id="Y3U-cg-xoo"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WFZ-r5-Brk" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="1aB-SU-gL4">
+                    <connections>
+                        <action selector="tapGestureRecognized:" destination="NX0-Cb-Tj4" id="sLL-R6-fBt"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1570" y="961"/>
         </scene>
@@ -733,7 +783,7 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="Ie2-Ep-yYG"/>
-        <segue reference="bUC-Zs-iOy"/>
+        <segue reference="zjb-2s-o9V"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.20784313976764679" green="0.60392159223556519" blue="0.68235296010971069" alpha="1" colorSpace="calibratedRGB"/>
 </document>

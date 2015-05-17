@@ -46,12 +46,6 @@ class ItemViewController: UIViewController {
         return streetFetchedResultsController.fetchedObjects?[0] as? Street
     }
     
-    var locale: String = {
-        let localizations = NSBundle.mainBundle().preferredLocalizations as! [String]
-        let currentLocale =  NSLocale.currentLocale().objectForKey(NSLocaleLanguageCode) as! String
-        return contains(localizations,currentLocale) ? currentLocale : localizations[0]
-    }()
-    
     var popDirection: SlideTransitionDirection {
         return SlideTransitionDirection(rawValue: context.getOtherContext().rawValue)!
     }
@@ -67,6 +61,14 @@ class ItemViewController: UIViewController {
     @IBAction func flipButtonTapped(sender: AnyObject) {
         let duoViewController = self.parentViewController as! DuoViewController
         duoViewController.switchViews()
+    }
+    
+    @IBAction func tapGestureRecognized(sender: UITapGestureRecognizer) {
+        let galleryView = tableView.hitTest(sender.locationInView(tableView), withEvent: nil)?.superview as? GalleryView
+        if galleryView == nil { return }
+        let places = self.getPlacesFromStreet(street!, context: context)
+        let photo = places[galleryView!.seciont!].photos[galleryView!.index] as! Photo
+        self.performSegueWithIdentifier("showPhoto", sender: photo)
     }
     
     override func viewDidLoad() {
@@ -87,6 +89,17 @@ class ItemViewController: UIViewController {
         }
         if context.rawValue == SlideTransitionDirection.Left.rawValue {
             self.navigationItem.rightBarButtonItem = nil
+        }
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        super.prepareForSegue(segue, sender: sender)
+        switch segue.identifier! {
+            case "showPhoto":
+            let photoViewController = segue.destinationViewController as! PhotoViewController
+            photoViewController.photo = sender as! Photo
+        default:
+            break
         }
     }
     
@@ -137,11 +150,11 @@ extension ItemViewController: UITableViewDataSource {
             let place = places[indexPath.section]
             
             let nameLabel = cell.viewWithTag(1) as! UILabel
-            let placeName = self.getNameFromPlace(place, locale: locale)
+            let placeName = self.getNameFromPlace(place, locale: Appearance.getLocale())
             nameLabel.text = placeName != nil ? placeName : "..."
             
             let descriptionLabel = cell.viewWithTag(2) as! UILabel
-            let placeDescription = self.getDescriptionFromPlace(place, locale: locale)
+            let placeDescription = self.getDescriptionFromPlace(place, locale: Appearance.getLocale())
             descriptionLabel.text = placeDescription != nil ? placeDescription : "..."
         }
         return cell
@@ -159,6 +172,7 @@ extension ItemViewController: UITableViewDelegate {
         
         let header = tableView.dequeueReusableCellWithIdentifier("galleryCell") as! UITableViewCell
         let galleryView = header.viewWithTag(1) as! GalleryView
+        galleryView.seciont = section
         
         galleryView.clear()
         for photo in place.photos.array as! [Photo] {

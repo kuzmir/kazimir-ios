@@ -33,5 +33,11 @@ class Appearance {
             blue: CGFloat((hex & 0x0000FF) >> 0) / 0xFF,
             alpha: 1.0)
     }
-   
+    
+    class func getLocale() -> String {
+        let localizations = NSBundle.mainBundle().preferredLocalizations as! [String]
+        let currentLocale =  NSLocale.currentLocale().objectForKey(NSLocaleLanguageCode) as! String
+        return contains(localizations,currentLocale) ? currentLocale : localizations[0]
+    }
+    
 }
