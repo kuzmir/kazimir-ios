@@ -8,7 +8,7 @@
 /* Class = "UILabel"; text = "to enjoy present time"; ObjectID = "D9c-jf-pu5"; */
 "D9c-jf-pu5.text" = "aby cieszyć się teraźniejszością";
 
-/* Class = "UILabel"; text = "Loading content, please wait..."; ObjectID = "DIz-Fx-bRa"; */
+/* Class = "UILabel"; text = "Updating content..."; ObjectID = "DIz-Fx-bRa"; */
 "DIz-Fx-bRa.text" = "Aktualizowanie informacji...";
 
 /* Class = "UILabel"; text = "Navigate left"; ObjectID = "Hk1-wy-0sc"; */
@@ -17,8 +17,11 @@
 /* Class = "UILabel"; text = "to discover past time"; ObjectID = "TWp-Mc-RuU"; */
 "TWp-Mc-RuU.text" = "aby odkryć przeszłość";
 
-/* Class = "UILabel"; text = "Place name"; ObjectID = "Ve0-6L-dST"; */
-"Ve0-6L-dST.text" = "Nazwa miejsca";
+/* Class = "UILabel"; text = "In preparation"; ObjectID = "Yvr-Es-4uU"; */
+"Yvr-Es-4uU.text" = "W przygotowaniu";
+
+/* Class = "UILabel"; text = "Place details"; ObjectID = "att-hP-qGy"; */
+"att-hP-qGy.text" = "Szczegóły miejsca";
 
 /* Class = "UIButton"; normalTitle = "Discover Kazimierz"; ObjectID = "bQa-rx-Ftv"; */
 "bQa-rx-Ftv.normalTitle" = "Odkryj Kazimierz";
@@ -29,5 +32,5 @@
 /* Class = "UILabel"; text = "STREET NAME"; ObjectID = "k5O-yX-1vi"; */
 "k5O-yX-1vi.text" = "NAZWA ULICY";
 
-/* Class = "UILabel"; text = "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Proin nibh augue, suscipit a, scelerisque sed, lacinia in, mi. Cras vel lorem. Etiam pellentesque aliquet tellus. Phasellus pharetra nulla ac diam. Quisque semper justo at risus."; ObjectID = "yuA-29-9aS"; */
-"yuA-29-9aS.text" = "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Proin nibh augue, suscipit a, scelerisque sed, lacinia in, mi. Cras vel lorem. Etiam pellentesque aliquet tellus. Phasellus pharetra nulla ac diam. Quisque semper justo at risus.";
+/* Class = "UILabel"; text = "Place name"; ObjectID = "ymY-N6-Jz9"; */
+"ymY-N6-Jz9.text" = "Nazwa miejsca";
