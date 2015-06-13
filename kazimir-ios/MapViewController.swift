@@ -85,6 +85,7 @@ class MapViewController: UIViewController, NSFetchedResultsControllerDelegate {
         var bounds = GMSCoordinateBounds()
         for street in streetsFetchedResultsController.fetchedObjects as! [Street] {
             let polyline = self.createPolylineForStreet(street)
+            polyline.tappable = true
             polyline.map = mapView
             polylines.append(polyline)
             bounds = bounds.includingPath(polyline.path)
@@ -117,12 +118,22 @@ class MapViewController: UIViewController, NSFetchedResultsControllerDelegate {
             polyline.strokeColor = polyline == selectedPolyline ? Appearance.newColor : UIColor.darkGrayColor()
         }
     }
+    
+    private func selectPolyline(polyline: GMSPolyline) {
+        let index = find(polylines, polyline)!
+        pickerView.selectRow(index, inComponent: 0, animated: true)
+        let bounds = GMSCoordinateBounds(path: polyline.path)
+        let cameraUpdate = GMSCameraUpdate.fitBounds(bounds)
+        mapView.animateWithCameraUpdate(cameraUpdate)
+        self.updatePolylinesColors()
+    }
 }
 
 extension MapViewController: GMSMapViewDelegate {
     
     func mapView(mapView: GMSMapView!, didTapOverlay overlay: GMSOverlay!) {
-        let i = 0
+        let selectedPolyline = overlay as! GMSPolyline
+        self.selectPolyline(selectedPolyline)
     }
     
 }
@@ -153,10 +164,7 @@ extension MapViewController: UIPickerViewDelegate {
     
     func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         let selectedPolyline = polylines[row]
-        let bounds = GMSCoordinateBounds(path: selectedPolyline.path)
-        let cameraUpdate = GMSCameraUpdate.fitBounds(bounds)
-        mapView.animateWithCameraUpdate(cameraUpdate)
-        self.updatePolylinesColors()
+        self.selectPolyline(selectedPolyline)
     }
     
 }
