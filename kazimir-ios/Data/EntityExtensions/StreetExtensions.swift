@@ -6,6 +6,8 @@
 //  Copyright (c) 2015 Kazimir. All rights reserved.
 //
 
+import Foundation
+
 enum StreetRelation: String {
     case Places = "places"
     case PresentPlaces = "present"

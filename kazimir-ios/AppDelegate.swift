@@ -6,6 +6,7 @@
 //  Copyright (c) 2015 Kazimir. All rights reserved.
 //
 
+import GoogleMaps
 import UIKit
 
 @UIApplicationMain

@@ -22,20 +22,6 @@
 		20243B401B05550100518663 /* DataLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20243B3F1B05550100518663 /* DataLoader.swift */; };
 		202451B11AE2850D000D8022 /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 202451B01AE2850D000D8022 /* ListViewController.swift */; };
 		202451B31AE2931C000D8022 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 202451B21AE2931C000D8022 /* MapViewController.swift */; };
-		202451BC1AE296B0000D8022 /* GoogleMaps.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 202451BA1AE296A3000D8022 /* GoogleMaps.framework */; };
-		202451BE1AE29787000D8022 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 202451BD1AE29787000D8022 /* AVFoundation.framework */; };
-		202451C01AE29793000D8022 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 202451BF1AE29793000D8022 /* CoreData.framework */; };
-		202451C21AE297BA000D8022 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 202451C11AE297BA000D8022 /* CoreLocation.framework */; };
-		202451C41AE297BF000D8022 /* GLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 202451C31AE297BF000D8022 /* GLKit.framework */; };
-		202451C61AE297C9000D8022 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 202451C51AE297C9000D8022 /* CoreText.framework */; };
-		202451C81AE297D3000D8022 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 202451C71AE297D3000D8022 /* ImageIO.framework */; };
-		202451CA1AE297E1000D8022 /* libc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 202451C91AE297E1000D8022 /* libc++.dylib */; };
-		202451CC1AE297EB000D8022 /* libicucore.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 202451CB1AE297EB000D8022 /* libicucore.dylib */; };
-		202451CE1AE297F5000D8022 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 202451CD1AE297F5000D8022 /* libz.dylib */; };
-		202451D01AE297FD000D8022 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 202451CF1AE297FD000D8022 /* OpenGLES.framework */; };
-		202451D21AE29806000D8022 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 202451D11AE29806000D8022 /* QuartzCore.framework */; };
-		202451D41AE29812000D8022 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 202451D31AE29812000D8022 /* SystemConfiguration.framework */; };
-		202451DB1AE29AD6000D8022 /* GoogleMaps.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 202451DA1AE29AD6000D8022 /* GoogleMaps.bundle */; };
 		203302351AFAB6E200E738BC /* Animator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 203302341AFAB6E200E738BC /* Animator.swift */; };
 		206721321AF40D83009F68F1 /* FlipAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 206721311AF40D83009F68F1 /* FlipAnimator.swift */; };
 		206B36E71B06085D00D0F207 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 206B36E91B06085D00D0F207 /* InfoPlist.strings */; };
@@ -63,8 +49,10 @@
 		20D051CE1AED81FE00BBA3BC /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D051CD1AED81FE00BBA3BC /* WelcomeViewController.swift */; };
 		20D051D01AED856200BBA3BC /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D051CF1AED856200BBA3BC /* NavigationController.swift */; };
 		20E4BE191B04102A00A115A9 /* DataSynchronizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20E4BE181B04102A00A115A9 /* DataSynchronizer.swift */; };
+		20EA31901B2CC36600EEE627 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 167D50ED8C3F19A1ED5DDD08 /* libPods.a */; };
 		20EF81E01AED89C200B03F87 /* FadeAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20EF81DF1AED89C200B03F87 /* FadeAnimator.swift */; };
 		20EF81E21AED8E6B00B03F87 /* ItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20EF81E11AED8E6B00B03F87 /* ItemViewController.swift */; };
+		9A550ECC900EFB3B52A8DE70 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 167D50ED8C3F19A1ED5DDD08 /* libPods.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -78,6 +66,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		167D50ED8C3F19A1ED5DDD08 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		2001B5A91B013AED0096D1E6 /* GalleryView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GalleryView.swift; sourceTree = "<group>"; };
 		20024FE91AFFAFAC0013DC4D /* Client.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Client.swift; sourceTree = "<group>"; };
 		20024FED1AFFBD1C0013DC4D /* Kazimir.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Kazimir.xcdatamodel; sourceTree = "<group>"; };
@@ -93,22 +82,6 @@
 		20243B3F1B05550100518663 /* DataLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DataLoader.swift; path = "kazimir-ios/Data/DataLoader.swift"; sourceTree = SOURCE_ROOT; };
 		202451B01AE2850D000D8022 /* ListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
 		202451B21AE2931C000D8022 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
-		202451BA1AE296A3000D8022 /* GoogleMaps.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleMaps.framework; sourceTree = "<group>"; };
-		202451BD1AE29787000D8022 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
-		202451BF1AE29793000D8022 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
-		202451C11AE297BA000D8022 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
-		202451C31AE297BF000D8022 /* GLKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLKit.framework; path = System/Library/Frameworks/GLKit.framework; sourceTree = SDKROOT; };
-		202451C51AE297C9000D8022 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
-		202451C71AE297D3000D8022 /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
-		202451C91AE297E1000D8022 /* libc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libc++.dylib"; path = "usr/lib/libc++.dylib"; sourceTree = SDKROOT; };
-		202451CB1AE297EB000D8022 /* libicucore.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libicucore.dylib; path = usr/lib/libicucore.dylib; sourceTree = SDKROOT; };
-		202451CD1AE297F5000D8022 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
-		202451CF1AE297FD000D8022 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
-		202451D11AE29806000D8022 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
-		202451D31AE29812000D8022 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
-		202451D51AE2982C000D8022 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
-		202451D71AE299A2000D8022 /* kazimir-ios-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "kazimir-ios-Bridging-Header.h"; sourceTree = "<group>"; };
-		202451DA1AE29AD6000D8022 /* GoogleMaps.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = GoogleMaps.bundle; path = GoogleMaps.framework/Versions/A/Resources/GoogleMaps.bundle; sourceTree = "<group>"; };
 		203302341AFAB6E200E738BC /* Animator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Animator.swift; sourceTree = "<group>"; };
 		206721311AF40D83009F68F1 /* FlipAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlipAnimator.swift; sourceTree = "<group>"; };
 		206B36E81B06085D00D0F207 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -146,6 +119,8 @@
 		20E4BE181B04102A00A115A9 /* DataSynchronizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DataSynchronizer.swift; path = "kazimir-ios/Data/DataSynchronizer.swift"; sourceTree = SOURCE_ROOT; };
 		20EF81DF1AED89C200B03F87 /* FadeAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FadeAnimator.swift; sourceTree = "<group>"; };
 		20EF81E11AED8E6B00B03F87 /* ItemViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemViewController.swift; sourceTree = "<group>"; };
+		2D1366F839F1B5B828CD39EA /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		3386E40BDF06630BACC1B27D /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -153,19 +128,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				202451D41AE29812000D8022 /* SystemConfiguration.framework in Frameworks */,
-				202451D21AE29806000D8022 /* QuartzCore.framework in Frameworks */,
-				202451D01AE297FD000D8022 /* OpenGLES.framework in Frameworks */,
-				202451CE1AE297F5000D8022 /* libz.dylib in Frameworks */,
-				202451CC1AE297EB000D8022 /* libicucore.dylib in Frameworks */,
-				202451CA1AE297E1000D8022 /* libc++.dylib in Frameworks */,
-				202451C81AE297D3000D8022 /* ImageIO.framework in Frameworks */,
-				202451C61AE297C9000D8022 /* CoreText.framework in Frameworks */,
-				202451C41AE297BF000D8022 /* GLKit.framework in Frameworks */,
-				202451C21AE297BA000D8022 /* CoreLocation.framework in Frameworks */,
-				202451C01AE29793000D8022 /* CoreData.framework in Frameworks */,
-				202451BE1AE29787000D8022 /* AVFoundation.framework in Frameworks */,
-				202451BC1AE296B0000D8022 /* GoogleMaps.framework in Frameworks */,
+				9A550ECC900EFB3B52A8DE70 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -173,12 +136,22 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				20EA31901B2CC36600EEE627 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1F1AF640C3492097448CC874 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				3386E40BDF06630BACC1B27D /* Pods.debug.xcconfig */,
+				2D1366F839F1B5B828CD39EA /* Pods.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		20024FEB1AFFBCA90013DC4D /* Data */ = {
 			isa = PBXGroup;
 			children = (
@@ -214,28 +187,6 @@
 			path = EntityExtensions;
 			sourceTree = "<group>";
 		};
-		202451B91AE2968D000D8022 /* frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				202451D51AE2982C000D8022 /* CoreMedia.framework */,
-				202451D31AE29812000D8022 /* SystemConfiguration.framework */,
-				202451D11AE29806000D8022 /* QuartzCore.framework */,
-				202451CF1AE297FD000D8022 /* OpenGLES.framework */,
-				202451CD1AE297F5000D8022 /* libz.dylib */,
-				202451CB1AE297EB000D8022 /* libicucore.dylib */,
-				202451C91AE297E1000D8022 /* libc++.dylib */,
-				202451C71AE297D3000D8022 /* ImageIO.framework */,
-				202451C51AE297C9000D8022 /* CoreText.framework */,
-				202451C31AE297BF000D8022 /* GLKit.framework */,
-				202451C11AE297BA000D8022 /* CoreLocation.framework */,
-				202451BF1AE29793000D8022 /* CoreData.framework */,
-				202451BD1AE29787000D8022 /* AVFoundation.framework */,
-				202451BA1AE296A3000D8022 /* GoogleMaps.framework */,
-				202451DA1AE29AD6000D8022 /* GoogleMaps.bundle */,
-			);
-			path = frameworks;
-			sourceTree = "<group>";
-		};
 		203302361AFAB7BA00E738BC /* Animation */ = {
 			isa = PBXGroup;
 			children = (
@@ -262,7 +213,8 @@
 				20738B551AE259B80000C808 /* kazimir-ios */,
 				20738B6B1AE259B80000C808 /* kazimir-iosTests */,
 				20738B541AE259B80000C808 /* Products */,
-				202451B91AE2968D000D8022 /* frameworks */,
+				1F1AF640C3492097448CC874 /* Pods */,
+				279D5F3E57FB5E302D47A951 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -292,7 +244,6 @@
 				20738B5F1AE259B80000C808 /* Images.xcassets */,
 				208F3B6E1B08E9F100ED8771 /* Resources.bundle */,
 				20738B781AE25CDE0000C808 /* Fonts */,
-				20EF81E81AED936E00B03F87 /* ObjectiveC */,
 				20738B561AE259B80000C808 /* Supporting Files */,
 			);
 			path = "kazimir-ios";
@@ -353,12 +304,12 @@
 			path = Navigation;
 			sourceTree = "<group>";
 		};
-		20EF81E81AED936E00B03F87 /* ObjectiveC */ = {
+		279D5F3E57FB5E302D47A951 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				202451D71AE299A2000D8022 /* kazimir-ios-Bridging-Header.h */,
+				167D50ED8C3F19A1ED5DDD08 /* libPods.a */,
 			);
-			path = ObjectiveC;
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -368,9 +319,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 20738B721AE259B80000C808 /* Build configuration list for PBXNativeTarget "kazimir-ios" */;
 			buildPhases = (
+				F2ED5E4B1EF4260DEDD289BE /* Check Pods Manifest.lock */,
 				20738B4F1AE259B80000C808 /* Sources */,
 				20738B501AE259B80000C808 /* Frameworks */,
 				20738B511AE259B80000C808 /* Resources */,
+				67E660C2DF7805DA9BD67506 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -457,7 +410,6 @@
 				20738B881AE25D0B0000C808 /* OpenSans-Light.ttf in Resources */,
 				20738B841AE25D0B0000C808 /* OpenSans-BoldItalic.ttf in Resources */,
 				20738B851AE25D0B0000C808 /* OpenSans-ExtraBold.ttf in Resources */,
-				202451DB1AE29AD6000D8022 /* GoogleMaps.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -469,6 +421,39 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		67E660C2DF7805DA9BD67506 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F2ED5E4B1EF4260DEDD289BE /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		20738B4F1AE259B80000C808 /* Sources */ = {
@@ -634,40 +619,36 @@
 		};
 		20738B731AE259B80000C808 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3386E40BDF06630BACC1B27D /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/frameworks",
-				);
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = "kazimir-ios/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "kazimir-ios/ObjectiveC/kazimir-ios-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
 		20738B741AE259B80000C808 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2D1366F839F1B5B828CD39EA /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/frameworks",
-				);
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = "kazimir-ios/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "kazimir-ios/ObjectiveC/kazimir-ios-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 			};
 			name = Release;
 		};
@@ -685,6 +666,7 @@
 				);
 				INFOPLIST_FILE = "kazimir-iosTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/kazimir-ios.app/kazimir-ios";
 			};
@@ -700,6 +682,7 @@
 				);
 				INFOPLIST_FILE = "kazimir-iosTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/kazimir-ios.app/kazimir-ios";
 			};

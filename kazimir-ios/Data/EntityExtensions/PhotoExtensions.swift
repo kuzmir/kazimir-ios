@@ -6,6 +6,8 @@
 //  Copyright (c) 2015 Kazimir. All rights reserved.
 //
 
+import Foundation
+
 enum PhotoRelation: String {
     case Images = "images"
 }

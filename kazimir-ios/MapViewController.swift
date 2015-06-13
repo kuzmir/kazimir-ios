@@ -9,6 +9,7 @@
 import UIKit
 import CoreData
 import CoreLocation
+import GoogleMaps
 
 class MapViewController: UIViewController, NSFetchedResultsControllerDelegate {
 

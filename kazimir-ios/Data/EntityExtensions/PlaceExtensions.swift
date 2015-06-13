@@ -6,6 +6,8 @@
 //  Copyright (c) 2015 Kazimir. All rights reserved.
 //
 
+import Foundation
+
 enum PlaceRelation: String {
     case Photos = "photos"
 }

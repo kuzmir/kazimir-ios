@@ -6,6 +6,8 @@
 //  Copyright (c) 2015 Kazimir. All rights reserved.
 //
 
+import Foundation
+
 typealias DataResult = (data: NSData?, error: NSError?)
 typealias JSONsResult = (jsons: [JSON]?, error: NSError?)
 
