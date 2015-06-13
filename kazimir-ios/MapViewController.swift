@@ -15,6 +15,7 @@ class MapViewController: UIViewController, NSFetchedResultsControllerDelegate {
     @IBOutlet weak var mapView: GMSMapView!
     @IBOutlet weak var pickerView: UIPickerView!
     @IBOutlet weak var slideTransitionHandler: SlideTransitionHandler!
+    @IBOutlet weak var leftArrowButton: UIButton!
     
     var streetsFetchedResultsController: NSFetchedResultsController = Storage.sharedInstance.getStreetsFetchedResultsController()
     var polylines = [GMSPolyline]()
@@ -29,19 +30,26 @@ class MapViewController: UIViewController, NSFetchedResultsControllerDelegate {
         self.navigationController?.popToRootViewControllerAnimated(true)
     }
     
+    @IBAction func leftArrowButtonTapped(sender: UIButton) {
+        self.parentViewController!.performSegueWithIdentifier(ItemContext.Old.getSegueIdentifier(), sender: sender)
+    }
+    
+    @IBAction func rightArrowButtonTapped(sender: UIButton) {
+        self.parentViewController!.performSegueWithIdentifier(ItemContext.New.getSegueIdentifier(), sender: sender)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         slideTransitionHandler.delegate = self
         streetsFetchedResultsController.delegate = self
         streetsFetchedResultsController.performFetch(nil)
         
-        pickerView.transform = CGAffineTransformMakeScale(1, 0.6)
-        
         if CLLocationManager.authorizationStatus() == .NotDetermined {
             CLLocationManager().requestWhenInUseAuthorization()
         }
         
-        mapView.padding = UIEdgeInsetsMake(64, 0, 100, 0)
+        mapView.delegate = self
+        mapView.padding = UIEdgeInsetsMake(64, 0, 162, 0)
         mapView.myLocationEnabled = true
     }
     
@@ -59,11 +67,15 @@ class MapViewController: UIViewController, NSFetchedResultsControllerDelegate {
         
         let duoViewController = segue.destinationViewController as! DuoViewController
         let firstItemViewController = duoViewController.embededViewControllers[0] as! ItemViewController
-        firstItemViewController.context = ItemContext(rawValue: slideTransitionHandler!.transitionDirection.rawValue)
         firstItemViewController.streetFetchedResultsController = Storage.sharedInstance.getStreetFetchedResultsController(streetId: street.id)
+        firstItemViewController.interactiveTransition = !(sender is UIButton)
+        
         let secondItemViewController = duoViewController.embededViewControllers[1] as! ItemViewController
-        secondItemViewController.context = ItemContext(rawValue: slideTransitionHandler!.transitionDirection.getOtherDirection().rawValue)
         secondItemViewController.streetFetchedResultsController = Storage.sharedInstance.getStreetFetchedResultsController(streetId: street.id)
+        secondItemViewController.interactiveTransition = !(sender is UIButton)
+        
+        firstItemViewController.context = (sender is UIButton) ? sender === leftArrowButton ? .Old : .New : ItemContext(rawValue: slideTransitionHandler!.transitionDirection.rawValue)
+        secondItemViewController.context = firstItemViewController.context.getOtherContext()
     }
     
     private func reloadStreetsOnMap() {
@@ -107,6 +119,14 @@ class MapViewController: UIViewController, NSFetchedResultsControllerDelegate {
     }
 }
 
+extension MapViewController: GMSMapViewDelegate {
+    
+    func mapView(mapView: GMSMapView!, didTapOverlay overlay: GMSOverlay!) {
+        let i = 0
+    }
+    
+}
+
 extension MapViewController: UIPickerViewDataSource {
     
     func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
@@ -122,17 +142,12 @@ extension MapViewController: UIPickerViewDataSource {
 
 extension MapViewController: UIPickerViewDelegate {
     
-    func pickerView(pickerView: UIPickerView, rowHeightForComponent component: Int) -> CGFloat {
-        return 52
-    }
-    
     func pickerView(pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusingView view: UIView!) -> UIView {
         let street = streetsFetchedResultsController.objectAtIndexPath(NSIndexPath(forRow: row, inSection: 0)) as! Street
         let label = view as? UILabel ?? UILabel()
         label.text = street.name
         label.font = UIFont(name: "OpenSans-Bold", size: UIFont.systemFontSize())
         label.textAlignment = .Center
-        label.transform = CGAffineTransformMakeScale(1, 1 / 0.6)
         return label
     }
     

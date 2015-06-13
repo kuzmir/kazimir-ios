@@ -41,6 +41,7 @@ class ItemViewController: UIViewController {
     
     var context: ItemContext!
     var streetFetchedResultsController: NSFetchedResultsController!
+    var interactiveTransition: Bool!
     
     var street: Street? {
         return streetFetchedResultsController.fetchedObjects?[0] as? Street

@@ -25,7 +25,7 @@ extension NavigationController: UINavigationControllerDelegate {
         switch ((fromVC, toVC)) {
         case let (_, toVC as DuoViewController) where toVC.visibleViewController is ItemViewController:
             let itemViewController = toVC.visibleViewController as! ItemViewController
-            return SlideTransition(direction: itemViewController.pushDirection, interactive: true)
+            return SlideTransition(direction: itemViewController.pushDirection, interactive: itemViewController.interactiveTransition)
         case let (fromVC as DuoViewController, _) where fromVC.visibleViewController is ItemViewController:
             let itemViewController = fromVC.visibleViewController as! ItemViewController
             return SlideTransition(direction: itemViewController.popDirection, interactive: false)

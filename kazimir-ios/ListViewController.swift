@@ -24,6 +24,14 @@ class ListViewController: UITableViewController, NSFetchedResultsControllerDeleg
         duoViewController.switchViews()
     }
     
+    @IBAction func leftArrowButtonTapped(sender: UIButton) {
+        self.parentViewController!.performSegueWithIdentifier(ItemContext.Old.getSegueIdentifier(), sender: sender)
+    }
+    
+    @IBAction func rightArrowButtonTapped(sender: UIButton) {
+        self.parentViewController!.performSegueWithIdentifier(ItemContext.New.getSegueIdentifier(), sender: sender)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         slideTransitionHandler.delegate = self
@@ -34,16 +42,22 @@ class ListViewController: UITableViewController, NSFetchedResultsControllerDeleg
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         super.prepareForSegue(segue, sender: sender)
         
-        let indexPath = tableView.indexPathForRowAtPoint(slideTransitionHandler.location)!
+        var indexPath: NSIndexPath
+        if sender is UIButton { indexPath = tableView.indexPathForRowAtPoint((sender as! UIButton).convertPoint(CGPointZero, toView: tableView))! }
+        else { indexPath = self.tableView.indexPathForRowAtPoint(slideTransitionHandler.location)! }
         let street = streetsFetchedResultsController.objectAtIndexPath(indexPath) as! Street
         
         let duoViewController = segue.destinationViewController as! DuoViewController
         let firstItemViewController = duoViewController.embededViewControllers[0] as! ItemViewController
-        firstItemViewController.context = ItemContext(rawValue: slideTransitionHandler!.transitionDirection.rawValue)
         firstItemViewController.streetFetchedResultsController = Storage.sharedInstance.getStreetFetchedResultsController(streetId: street.id)
+        firstItemViewController.interactiveTransition = !(sender is UIButton)
+        
         let secondItemViewController = duoViewController.embededViewControllers[1] as! ItemViewController
-        secondItemViewController.context = ItemContext(rawValue: slideTransitionHandler!.transitionDirection.getOtherDirection().rawValue)
         secondItemViewController.streetFetchedResultsController = Storage.sharedInstance.getStreetFetchedResultsController(streetId: street.id)
+        secondItemViewController.interactiveTransition = !(sender is UIButton)
+        
+        firstItemViewController.context = sender is UIButton ? (sender as! UIButton).tag == 3 ? .Old : .New : ItemContext(rawValue: slideTransitionHandler!.transitionDirection.rawValue)
+        secondItemViewController.context = firstItemViewController.context.getOtherContext()
     }
     
     private func getPhotoFromStreet(street: Street) -> Photo? {
