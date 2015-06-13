@@ -43,8 +43,8 @@ class ItemViewController: UIViewController {
     var streetFetchedResultsController: NSFetchedResultsController!
     var interactiveTransition: Bool!
     
-    var street: Street? {
-        return streetFetchedResultsController.fetchedObjects?[0] as? Street
+    var street: Street! {
+        return streetFetchedResultsController.fetchedObjects![0] as! Street
     }
     
     var popDirection: SlideTransitionDirection {
@@ -65,18 +65,21 @@ class ItemViewController: UIViewController {
     }
     
     @IBAction func tapGestureRecognized(sender: UITapGestureRecognizer) {
-        let galleryView = tableView.hitTest(sender.locationInView(tableView), withEvent: nil)?.superview as? GalleryView
-        if galleryView == nil { return }
-        let places = self.getPlacesFromStreet(street!, context: context)
-        let photo = places[galleryView!.seciont!].photos[galleryView!.index] as! Photo
-        self.performSegueWithIdentifier("showPhoto", sender: photo)
+        let indexPath = tableView.indexPathForRowAtPoint(sender.locationInView(tableView))!
+        let cell = tableView.cellForRowAtIndexPath(indexPath)!
+        let galleryView = cell.viewWithTag(1) as! GalleryView
+        if galleryView.frame.contains(sender.locationInView(galleryView.superview)) {
+            let places = self.getPlacesFromStreet(street!, context: context)
+            let photo = places[indexPath.row].photos[galleryView.index] as! Photo
+            self.performSegueWithIdentifier("showPhoto", sender: photo)
+        }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.contentInset = UIEdgeInsets(top: 64, left: 0, bottom: 86, right: 0)
         tableView.rowHeight = UITableViewAutomaticDimension
-        tableView.estimatedRowHeight = 250
+        tableView.estimatedRowHeight = 311
         
         flipButton.setImage(UIImage(named: context.getImageName()), forState: .Normal)
         
@@ -105,9 +108,9 @@ class ItemViewController: UIViewController {
     }
     
     private func getPlacesFromStreet(street: Street, context: ItemContext) -> [Place] {
-        return filter(street.places.array, { (place) -> Bool in
-            return ItemContext.getContextFromPlace(place as! Place) == context
-        }) as! [Place]
+        return (street.places.array as! [Place]).filter {
+            return ItemContext.getContextFromPlace($0) == context
+        }
     }
     
     private func getNameFromPlace(place: Place, locale: String) -> String? {
@@ -128,66 +131,31 @@ class ItemViewController: UIViewController {
 
 extension ItemViewController: UITableViewDataSource {
     
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        if let street = self.street {
-            let places = self.getPlacesFromStreet(street, context: context)
-            return places.count >= 0 ? places.count : 1
-        }
-        else {
-            self.navigationController?.popViewControllerAnimated(true)
-            return 0
-        }
-    }
-    
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return street != nil ? 1 : 0
+        return self.getPlacesFromStreet(street, context: context).count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let places = self.getPlacesFromStreet(street!, context: context)
-        let cellIdentifier = places.count > 0 ? "placeCell" : "inPreparationCell"
-        let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier) as! UITableViewCell
-        if places.count > 0 {
-            let place = places[indexPath.section]
-            
-            let nameLabel = cell.viewWithTag(1) as! UILabel
-            let placeName = self.getNameFromPlace(place, locale: Appearance.getLocale())
-            nameLabel.text = placeName != nil ? placeName : "..."
-            
-            let descriptionLabel = cell.viewWithTag(2) as! UILabel
-            let placeDescription = self.getDescriptionFromPlace(place, locale: Appearance.getLocale())
-            descriptionLabel.text = placeDescription != nil ? placeDescription : "..."
-        }
-        return cell
-    }
-    
-}
-
-extension ItemViewController: UITableViewDelegate {
-    
-    func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let places = self.getPlacesFromStreet(street!, context: context)
-        if places.count == 0 { return nil }
-        let place = places[section]
-        if place.photos.count == 0 { return nil }
+        let cell = tableView.dequeueReusableCellWithIdentifier("placeCell") as! UITableViewCell
+        let place = places[indexPath.row]
         
-        let header = tableView.dequeueReusableCellWithIdentifier("galleryCell") as! UITableViewCell
-        let galleryView = header.viewWithTag(1) as! GalleryView
-        galleryView.seciont = section
-        
+        let galleryView = cell.viewWithTag(1) as! GalleryView
         galleryView.clear()
         for photo in place.photos.array as! [Photo] {
-            let image = UIImage(data: photo.dataMedium)!
+            let image = UIImage(data: photo.dataSmall)!
             galleryView.addImage(image)
         }
-        return header
-    }
-    
-    func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        let places = self.getPlacesFromStreet(street!, context: context)
-        if places.count == 0 { return 0 }
-        let place = places[section]
-        return place.photos.count == 0 ? 0 : 200
+        
+        let nameLabel = cell.viewWithTag(2) as! UILabel
+        let placeName = self.getNameFromPlace(place, locale: Appearance.getLocale())
+        nameLabel.text = placeName != nil ? placeName : "..."
+        
+        let descriptionLabel = cell.viewWithTag(3) as! UILabel
+        let placeDescription = self.getDescriptionFromPlace(place, locale: Appearance.getLocale())
+        descriptionLabel.text = placeDescription != nil ? placeDescription : "..."
+
+        return cell
     }
     
 }

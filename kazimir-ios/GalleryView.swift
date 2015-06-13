@@ -10,7 +10,6 @@ import UIKit
 
 class GalleryView: UIView {
     
-    var seciont: Int?
     var index: Int {
         return pageContol.currentPage
     }
@@ -19,6 +18,7 @@ class GalleryView: UIView {
     private var pageContol = UIPageControl()
     private var scrollView: UIScrollView = {
         let scrollView = UIScrollView()
+        scrollView.showsHorizontalScrollIndicator = false
         scrollView.pagingEnabled = true
         scrollView.bounces = true
         return scrollView
