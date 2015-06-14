@@ -19,7 +19,6 @@
             <string>OpenSans</string>
             <string>OpenSans</string>
             <string>OpenSans</string>
-            <string>OpenSans</string>
         </mutableArray>
     </customFonts>
     <scenes>
@@ -733,24 +732,6 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" selectionStyle="default" indentationWidth="10" reuseIdentifier="inPreparationCell" rowHeight="200" id="5cS-TC-mhQ">
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="5cS-TC-mhQ" id="csW-dL-VKe">
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" text="In preparation" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yvr-Es-4uU">
-                                                    <rect key="frame" x="194" y="78" width="213" height="44"/>
-                                                    <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="32"/>
-                                                    <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstAttribute="centerX" secondItem="Yvr-Es-4uU" secondAttribute="centerX" id="XzN-Tg-0a0"/>
-                                                <constraint firstAttribute="centerY" secondItem="Yvr-Es-4uU" secondAttribute="centerY" id="wfy-wi-UaH"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
                                 </prototypes>
                                 <sections/>
                                 <connections>
@@ -760,7 +741,7 @@
                                 </connections>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AsH-U0-zuf">
-                                <rect key="frame" x="267" y="514" width="66" height="66"/>
+                                <rect key="frame" x="267" y="504" width="66" height="66"/>
                                 <state key="normal" image="button_flip_new">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -774,7 +755,7 @@
                         <constraints>
                             <constraint firstItem="Pfc-D1-icg" firstAttribute="leading" secondItem="HTf-HL-qWe" secondAttribute="leading" id="1AO-f3-V9m"/>
                             <constraint firstAttribute="centerX" secondItem="AsH-U0-zuf" secondAttribute="centerX" id="CVk-8A-ppO"/>
-                            <constraint firstItem="9Vp-ZB-RqC" firstAttribute="top" secondItem="AsH-U0-zuf" secondAttribute="bottom" constant="20" id="DSK-0u-66T"/>
+                            <constraint firstItem="9Vp-ZB-RqC" firstAttribute="top" secondItem="AsH-U0-zuf" secondAttribute="bottom" constant="30" id="DSK-0u-66T"/>
                             <constraint firstItem="9Vp-ZB-RqC" firstAttribute="top" secondItem="Pfc-D1-icg" secondAttribute="bottom" id="H2e-qy-vBA"/>
                             <constraint firstAttribute="trailing" secondItem="Pfc-D1-icg" secondAttribute="trailing" id="LKk-lh-Rdh"/>
                             <constraint firstItem="Pfc-D1-icg" firstAttribute="top" secondItem="HTf-HL-qWe" secondAttribute="top" id="fDt-hj-0Yc"/>

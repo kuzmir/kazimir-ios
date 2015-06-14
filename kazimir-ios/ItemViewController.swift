@@ -21,7 +21,7 @@ extension ItemContext {
     }
     
     func getImageName() -> String {
-        return self == .Old ? "button_flip_old" : "button_flip_new"
+        return self == .Old ? "button_flip_new" : "button_flip_old"
     }
     
     func getSegueIdentifier() -> String {
@@ -65,19 +65,20 @@ class ItemViewController: UIViewController {
     }
     
     @IBAction func tapGestureRecognized(sender: UITapGestureRecognizer) {
-        let indexPath = tableView.indexPathForRowAtPoint(sender.locationInView(tableView))!
-        let cell = tableView.cellForRowAtIndexPath(indexPath)!
-        let galleryView = cell.viewWithTag(1) as! GalleryView
-        if galleryView.frame.contains(sender.locationInView(galleryView.superview)) {
-            let places = self.getPlacesFromStreet(street!, context: context)
-            let photo = places[indexPath.row].photos[galleryView.index] as! Photo
-            self.performSegueWithIdentifier("showPhoto", sender: photo)
+        if let indexPath = tableView.indexPathForRowAtPoint(sender.locationInView(tableView)) {
+            let cell = tableView.cellForRowAtIndexPath(indexPath)!
+            let galleryView = cell.viewWithTag(1) as! GalleryView
+            if galleryView.frame.contains(sender.locationInView(galleryView.superview)) {
+                let places = self.getPlacesFromStreet(street!, context: context)
+                let photo = places[indexPath.row].photos[galleryView.index] as! Photo
+                self.performSegueWithIdentifier("showPhoto", sender: photo)
+            }
         }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableView.contentInset = UIEdgeInsets(top: 64, left: 0, bottom: 86, right: 0)
+        tableView.contentInset = UIEdgeInsets(top: 64, left: 0, bottom: 96, right: 0)
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 311
         
