@@ -25,11 +25,15 @@ class ListViewController: UITableViewController, NSFetchedResultsControllerDeleg
     }
     
     @IBAction func leftArrowButtonTapped(sender: UIButton) {
-        self.parentViewController!.performSegueWithIdentifier(ItemContext.Old.getSegueIdentifier(), sender: sender)
+        let indexPath = tableView.indexPathForRowAtPoint(sender.convertPoint(CGPointZero, toView: tableView))!
+        let cell = tableView.cellForRowAtIndexPath(indexPath)!
+        self.parentViewController!.performSegueWithIdentifier(TimeContext.Old.getSegueIdentifier(), sender: cell)
     }
     
     @IBAction func rightArrowButtonTapped(sender: UIButton) {
-        self.parentViewController!.performSegueWithIdentifier(ItemContext.New.getSegueIdentifier(), sender: sender)
+        let indexPath = tableView.indexPathForRowAtPoint(sender.convertPoint(CGPointZero, toView: tableView))!
+        let cell = tableView.cellForRowAtIndexPath(indexPath)!
+        self.parentViewController!.performSegueWithIdentifier(TimeContext.New.getSegueIdentifier(), sender: cell)
     }
     
     override func viewDidLoad() {
@@ -39,25 +43,27 @@ class ListViewController: UITableViewController, NSFetchedResultsControllerDeleg
         streetsFetchedResultsController.performFetch(nil)
     }
     
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        self.navigationController?.delegate = self
+    }
+    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         super.prepareForSegue(segue, sender: sender)
         
-        var indexPath: NSIndexPath
-        if sender is UIButton { indexPath = tableView.indexPathForRowAtPoint((sender as! UIButton).convertPoint(CGPointZero, toView: tableView))! }
-        else { indexPath = self.tableView.indexPathForRowAtPoint(slideTransitionHandler.location)! }
+        let indexPath = self.tableView.indexPathForCell(sender as! UITableViewCell)!
         let street = streetsFetchedResultsController.objectAtIndexPath(indexPath) as! Street
         
         let duoViewController = segue.destinationViewController as! DuoViewController
-        let firstItemViewController = duoViewController.embededViewControllers[0] as! ItemViewController
-        firstItemViewController.streetFetchedResultsController = Storage.sharedInstance.getStreetFetchedResultsController(streetId: street.id)
-        firstItemViewController.interactiveTransition = !(sender is UIButton)
+        let firstStreetViewController = duoViewController.embededViewControllers[0] as! StreetViewController
+        firstStreetViewController.streetFetchedResultsController = Storage.sharedInstance.getStreetFetchedResultsController(streetId: street.id)
+        firstStreetViewController.interactiveTransition = !(sender is UIButton)
+        firstStreetViewController.timeContext = TimeContext.getTimeContextFromSegueIdentifier(segue.identifier!)
         
-        let secondItemViewController = duoViewController.embededViewControllers[1] as! ItemViewController
-        secondItemViewController.streetFetchedResultsController = Storage.sharedInstance.getStreetFetchedResultsController(streetId: street.id)
-        secondItemViewController.interactiveTransition = !(sender is UIButton)
-        
-        firstItemViewController.context = sender is UIButton ? (sender as! UIButton).tag == 3 ? .Old : .New : ItemContext(rawValue: slideTransitionHandler!.transitionDirection.rawValue)
-        secondItemViewController.context = firstItemViewController.context.getOtherContext()
+        let secondStreetViewController = duoViewController.embededViewControllers[1] as! StreetViewController
+        secondStreetViewController.streetFetchedResultsController = Storage.sharedInstance.getStreetFetchedResultsController(streetId: street.id)
+        secondStreetViewController.interactiveTransition = !(sender is UIButton)
+        secondStreetViewController.timeContext = firstStreetViewController.timeContext.getOppositeTimeContext()
     }
     
     private func getPhotoFromStreet(street: Street) -> Photo? {
@@ -100,21 +106,31 @@ extension ListViewController: NSFetchedResultsControllerDelegate {
 
 extension ListViewController: SlideTransitionHandlerDelegate {
     
-    func viewControllerForSlideTransitionHandler(slideTransitionHandler: SlideTransitionHandler) -> UIViewController {
-        return self.parentViewController!
+    func slideTransitionHandler(slideTransitionHandler: SlideTransitionHandler, shouldBeginInLocation location: CGPoint, withDirection direction: SlideTransitionDirection) -> Bool {
+        return true
     }
     
-    func slideTransitionHandler(slideTransitionHandler: SlideTransitionHandler, shouldBeginInLocation location: CGPoint) -> Bool {
-        return tableView.indexPathForRowAtPoint(location) != nil
+    func slideTransitionHandler(slideTransitionHandler: SlideTransitionHandler, performTransitionWithLocation location: CGPoint, andDirection direction: SlideTransitionDirection) {
+        let indexPath = self.tableView.indexPathForRowAtPoint(location)!
+        let cell = self.tableView.cellForRowAtIndexPath(indexPath)!
+        let segueIdentifier = direction == .Left ? TimeContext.New.getSegueIdentifier() : TimeContext.Old.getSegueIdentifier()
+        self.parentViewController?.performSegueWithIdentifier(segueIdentifier, sender: cell)
     }
     
-    func slideTransitionHandler(slideTransitionHandler: SlideTransitionHandler, segueIdentifierForDirection direction: SlideTransitionDirection) -> String {
-        switch (direction) {
-        case .Left:
-            return ItemContext.Old.getSegueIdentifier()
-        case .Right:
-            return ItemContext.New.getSegueIdentifier()
+}
+
+extension ListViewController: UINavigationControllerDelegate {
+    
+    func navigationController(navigationController: UINavigationController, animationControllerForOperation operation: UINavigationControllerOperation, fromViewController fromVC: UIViewController, toViewController toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        if let toVC = toVC as? DuoViewController {
+            let streetViewController = toVC.getVisibleViewController() as! StreetViewController
+            return SlideTransition(direction: streetViewController.pushDirection, interactive: slideTransitionHandler.percentDrivenInteractiveTransition != nil)
         }
+        return FadeTransition()
+    }
+    
+    func navigationController(navigationController: UINavigationController, interactionControllerForAnimationController animationController: UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning? {
+        return slideTransitionHandler.percentDrivenInteractiveTransition
     }
     
 }

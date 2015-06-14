@@ -12,7 +12,7 @@ enum SlideTransitionDirection: Int {
     case Right
     case Left
     
-    func getOtherDirection() -> SlideTransitionDirection {
+    func getOppositeDirection() -> SlideTransitionDirection {
         return self == .Left ? .Right : .Left
     }
 }
@@ -81,7 +81,7 @@ extension SlideTransition: UIViewControllerAnimatedTransitioning {
             toViewController.navigationController?.navigationBar.barTintColor = (toViewController as! BarTintColorChanging).getBarTintColor()
         }) { (finished) -> Void in
             if (transitionContext.transitionWasCancelled()) {
-                fromViewController.navigationController?.navigationBar.barTintColor = (fromViewController as! BarTintColorChanging).getBarTintColor()
+                toViewController.navigationController?.navigationBar.barTintColor = (fromViewController as! BarTintColorChanging).getBarTintColor()
             }
             transitionContext.completeTransition(!transitionContext.transitionWasCancelled())
         }

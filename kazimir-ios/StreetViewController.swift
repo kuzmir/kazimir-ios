@@ -1,5 +1,5 @@
 //
-//  ItemViewController.swift
+//  StreetViewController.swift
 //  kazimir-ios
 //
 //  Created by Krzysztof Cieplucha on 26/04/15.
@@ -9,37 +9,13 @@
 import UIKit
 import CoreData
 
-enum ItemContext: Int {
-    case Old
-    case New
-}
-
-extension ItemContext {
-    
-    static func getContextFromPlace(place: Place) -> ItemContext {
-        return place.present.boolValue ? ItemContext.New : ItemContext.Old
-    }
-    
-    func getImageName() -> String {
-        return self == .Old ? "button_flip_new" : "button_flip_old"
-    }
-    
-    func getSegueIdentifier() -> String {
-        return self == .Old ? "pushItemViewControllerOld" : "pushItemViewControllerNew"
-    }
-    
-    func getOtherContext() -> ItemContext {
-        return self == .Old ? .New : .Old
-    }
-    
-}
-
-class ItemViewController: UIViewController {
+class StreetViewController: UIViewController {
     
     @IBOutlet weak var flipButton: UIButton!
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var slideTransitionHandler: SlideTransitionHandler!
     
-    var context: ItemContext!
+    var timeContext: TimeContext!
     var streetFetchedResultsController: NSFetchedResultsController!
     var interactiveTransition: Bool!
     
@@ -48,11 +24,11 @@ class ItemViewController: UIViewController {
     }
     
     var popDirection: SlideTransitionDirection {
-        return SlideTransitionDirection(rawValue: context.getOtherContext().rawValue)!
+        return SlideTransitionDirection(rawValue: timeContext.getOppositeTimeContext().rawValue)!
     }
     
     var pushDirection: SlideTransitionDirection {
-        return SlideTransitionDirection(rawValue: context.rawValue)!
+        return SlideTransitionDirection(rawValue: timeContext.rawValue)!
     }
     
     @IBAction func backButtonTapped(sender: AnyObject) {
@@ -69,7 +45,7 @@ class ItemViewController: UIViewController {
             let cell = tableView.cellForRowAtIndexPath(indexPath)!
             let galleryView = cell.viewWithTag(1) as! GalleryView
             if galleryView.frame.contains(sender.locationInView(galleryView.superview)) {
-                let places = self.getPlacesFromStreet(street!, context: context)
+                let places = self.getPlacesFromStreet(street!, timeContext: timeContext)
                 let photo = places[indexPath.row].photos[galleryView.index] as! Photo
                 self.performSegueWithIdentifier("showPhoto", sender: photo)
             }
@@ -78,23 +54,29 @@ class ItemViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        slideTransitionHandler.delegate = self
         tableView.contentInset = UIEdgeInsets(top: 64, left: 0, bottom: 96, right: 0)
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 311
         
-        flipButton.setImage(UIImage(named: context.getImageName()), forState: .Normal)
+        flipButton.setImage(UIImage(named: timeContext.getImageName()), forState: .Normal)
         
         streetFetchedResultsController.delegate = self
         streetFetchedResultsController.performFetch(nil)
         
         self.navigationItem.title = street?.name
         self.navigationItem.hidesBackButton = true
-        if context.rawValue == SlideTransitionDirection.Right.rawValue {
+        if timeContext.rawValue == SlideTransitionDirection.Right.rawValue {
             self.navigationItem.leftBarButtonItem = nil
         }
-        if context.rawValue == SlideTransitionDirection.Left.rawValue {
+        if timeContext.rawValue == SlideTransitionDirection.Left.rawValue {
             self.navigationItem.rightBarButtonItem = nil
         }
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        self.navigationController?.delegate = self
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -108,9 +90,9 @@ class ItemViewController: UIViewController {
         }
     }
     
-    private func getPlacesFromStreet(street: Street, context: ItemContext) -> [Place] {
+    private func getPlacesFromStreet(street: Street, timeContext: TimeContext) -> [Place] {
         return (street.places.array as! [Place]).filter {
-            return ItemContext.getContextFromPlace($0) == context
+            return TimeContext.getTimeContextForPlace($0) == timeContext
         }
     }
     
@@ -130,14 +112,14 @@ class ItemViewController: UIViewController {
     
 }
 
-extension ItemViewController: UITableViewDataSource {
+extension StreetViewController: UITableViewDataSource {
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.getPlacesFromStreet(street, context: context).count
+        return self.getPlacesFromStreet(street, timeContext: timeContext).count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let places = self.getPlacesFromStreet(street!, context: context)
+        let places = self.getPlacesFromStreet(street!, timeContext: timeContext)
         let cell = tableView.dequeueReusableCellWithIdentifier("placeCell") as! UITableViewCell
         let place = places[indexPath.row]
         
@@ -161,7 +143,7 @@ extension ItemViewController: UITableViewDataSource {
     
 }
 
-extension ItemViewController: NSFetchedResultsControllerDelegate {
+extension StreetViewController: NSFetchedResultsControllerDelegate {
     
     func controllerDidChangeContent(controller: NSFetchedResultsController) {
         self.navigationItem.title = street?.name
@@ -170,10 +152,34 @@ extension ItemViewController: NSFetchedResultsControllerDelegate {
     
 }
 
-extension ItemViewController: BarTintColorChanging {
+extension StreetViewController: SlideTransitionHandlerDelegate {
+    
+    func slideTransitionHandler(slideTransitionHandler: SlideTransitionHandler, shouldBeginInLocation location: CGPoint, withDirection direction: SlideTransitionDirection) -> Bool {
+        return direction != self.pushDirection
+    }
+    
+    func slideTransitionHandler(slideTransitionHandler: SlideTransitionHandler, performTransitionWithLocation location: CGPoint, andDirection direction: SlideTransitionDirection) {
+        self.navigationController?.popViewControllerAnimated(true)
+    }
+    
+}
+
+extension StreetViewController: UINavigationControllerDelegate {
+    
+    func navigationController(navigationController: UINavigationController, animationControllerForOperation operation: UINavigationControllerOperation, fromViewController fromVC: UIViewController, toViewController toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        return SlideTransition(direction: self.pushDirection.getOppositeDirection(), interactive: slideTransitionHandler.percentDrivenInteractiveTransition != nil)
+    }
+    
+    func navigationController(navigationController: UINavigationController, interactionControllerForAnimationController animationController: UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning? {
+        return slideTransitionHandler.percentDrivenInteractiveTransition
+    }
+    
+}
+
+extension StreetViewController: BarTintColorChanging {
     
     func getBarTintColor() -> UIColor {
-        return context == .Old ? Appearance.oldColor : Appearance.newColor
+        return timeContext == .Old ? Appearance.oldColor : Appearance.newColor
     }
     
 }

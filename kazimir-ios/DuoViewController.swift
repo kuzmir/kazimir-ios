@@ -17,15 +17,20 @@ class DuoViewController: UIViewController {
     
     @IBOutlet var animator: Animator!
     
-    var embededViewControllers = [UIViewController]()
-    var visibleViewControllerIndex = 0
-    var visibleViewController: UIViewController {
+    private(set) var embededViewControllers = [UIViewController]()
+    private(set) var visibleViewControllerIndex = 0
+    
+    func getVisibleViewController() -> UIViewController {
         return embededViewControllers[visibleViewControllerIndex]
+    }
+    
+    func getHiddenViewController() -> UIViewController {
+        return embededViewControllers[(visibleViewControllerIndex + 1) % 2]
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let viewController = visibleViewController
+        let viewController = self.getVisibleViewController()
         self.addChildViewController(viewController)
         self.view.addSubview(viewController.view)
         self.setNavigationItem(viewController.navigationItem)
@@ -57,26 +62,25 @@ class DuoViewController: UIViewController {
     }
     
     func switchViews() {
-        let newVisibleViewControllerIndex = (visibleViewControllerIndex + 1) % 2
-        let visibleViewController = embededViewControllers[visibleViewControllerIndex]
-        let newVisibleViewController = embededViewControllers[newVisibleViewControllerIndex]
+        let visibleViewController = self.getVisibleViewController()
+        let hiddenViewController = self.getHiddenViewController()
         
-        self.addChildViewController(newVisibleViewController)
-        self.view.addSubview(newVisibleViewController.view)
+        self.addChildViewController(hiddenViewController)
+        self.view.addSubview(hiddenViewController.view)
         
-        animator.animate(fromViewController: visibleViewController, toViewController: newVisibleViewController) { (finished) -> Void in
+        animator.animate(fromViewController: visibleViewController, toViewController: hiddenViewController) { (finished) -> Void in
             if (finished) {
                 visibleViewController.willMoveToParentViewController(nil)
                 visibleViewController.view.removeFromSuperview()
                 visibleViewController.removeFromParentViewController()
                 
-                newVisibleViewController.didMoveToParentViewController(self)
-                self.setNavigationItem(newVisibleViewController.navigationItem)
-                self.visibleViewControllerIndex = newVisibleViewControllerIndex
+                hiddenViewController.didMoveToParentViewController(self)
+                self.setNavigationItem(hiddenViewController.navigationItem)
+                self.visibleViewControllerIndex = (self.visibleViewControllerIndex + 1) % 2
             }
             else {
-                newVisibleViewController.view.removeFromSuperview()
-                newVisibleViewController.removeFromParentViewController()
+                hiddenViewController.view.removeFromSuperview()
+                hiddenViewController.removeFromParentViewController()
             }
         }
     }
@@ -85,7 +89,7 @@ class DuoViewController: UIViewController {
 extension DuoViewController: BarTintColorChanging {
     
     func getBarTintColor() -> UIColor {
-        return (self.visibleViewController as! BarTintColorChanging).getBarTintColor()
+        return (self.getVisibleViewController() as! BarTintColorChanging).getBarTintColor()
     }
     
 }

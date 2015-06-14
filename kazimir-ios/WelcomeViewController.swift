@@ -37,6 +37,11 @@ class WelcomeViewController: UIViewController {
         self.navigationController?.setNavigationBarHidden(true, animated: true)
     }
     
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        self.navigationController?.delegate = self
+    }
+    
     override func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(animated)
         self.navigationController?.setNavigationBarHidden(false, animated: true)
@@ -67,6 +72,14 @@ extension WelcomeViewController: NSFetchedResultsControllerDelegate {
     
     func controllerDidChangeContent(controller: NSFetchedResultsController) {
         discoverButton.enabled = controller.fetchedObjects?.count > 0
+    }
+    
+}
+
+extension WelcomeViewController: UINavigationControllerDelegate {
+    
+    func navigationController(navigationController: UINavigationController, animationControllerForOperation operation: UINavigationControllerOperation, fromViewController fromVC: UIViewController, toViewController toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        return FadeTransition()
     }
     
 }

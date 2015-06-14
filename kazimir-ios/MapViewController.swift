@@ -32,11 +32,11 @@ class MapViewController: UIViewController, NSFetchedResultsControllerDelegate {
     }
     
     @IBAction func leftArrowButtonTapped(sender: UIButton) {
-        self.parentViewController!.performSegueWithIdentifier(ItemContext.Old.getSegueIdentifier(), sender: sender)
+        self.parentViewController!.performSegueWithIdentifier(TimeContext.Old.getSegueIdentifier(), sender: sender)
     }
     
     @IBAction func rightArrowButtonTapped(sender: UIButton) {
-        self.parentViewController!.performSegueWithIdentifier(ItemContext.New.getSegueIdentifier(), sender: sender)
+        self.parentViewController!.performSegueWithIdentifier(TimeContext.New.getSegueIdentifier(), sender: sender)
     }
     
     override func viewDidLoad() {
@@ -56,6 +56,7 @@ class MapViewController: UIViewController, NSFetchedResultsControllerDelegate {
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
+        self.navigationController?.delegate = self
         if viewAppearsForFirstTime {
             viewAppearsForFirstTime = false
             self.reloadStreetsOnMap()
@@ -67,16 +68,15 @@ class MapViewController: UIViewController, NSFetchedResultsControllerDelegate {
         let street = streetsFetchedResultsController.objectAtIndexPath(NSIndexPath(forRow: pickerView.selectedRowInComponent(0), inSection: 0)) as! Street
         
         let duoViewController = segue.destinationViewController as! DuoViewController
-        let firstItemViewController = duoViewController.embededViewControllers[0] as! ItemViewController
-        firstItemViewController.streetFetchedResultsController = Storage.sharedInstance.getStreetFetchedResultsController(streetId: street.id)
-        firstItemViewController.interactiveTransition = !(sender is UIButton)
+        let firstStreetViewController = duoViewController.embededViewControllers[0] as! StreetViewController
+        firstStreetViewController.streetFetchedResultsController = Storage.sharedInstance.getStreetFetchedResultsController(streetId: street.id)
+        firstStreetViewController.interactiveTransition = !(sender is UIButton)
+        firstStreetViewController.timeContext = TimeContext.getTimeContextFromSegueIdentifier(segue.identifier!)
         
-        let secondItemViewController = duoViewController.embededViewControllers[1] as! ItemViewController
-        secondItemViewController.streetFetchedResultsController = Storage.sharedInstance.getStreetFetchedResultsController(streetId: street.id)
-        secondItemViewController.interactiveTransition = !(sender is UIButton)
-        
-        firstItemViewController.context = (sender is UIButton) ? sender === leftArrowButton ? .Old : .New : ItemContext(rawValue: slideTransitionHandler!.transitionDirection.rawValue)
-        secondItemViewController.context = firstItemViewController.context.getOtherContext()
+        let secondStreetViewController = duoViewController.embededViewControllers[1] as! StreetViewController
+        secondStreetViewController.streetFetchedResultsController = Storage.sharedInstance.getStreetFetchedResultsController(streetId: street.id)
+        secondStreetViewController.interactiveTransition = !(sender is UIButton)
+        secondStreetViewController.timeContext = firstStreetViewController.timeContext.getOppositeTimeContext()
     }
     
     private func reloadStreetsOnMap() {
@@ -181,21 +181,29 @@ extension MapViewController: NSFetchedResultsControllerDelegate {
 
 extension MapViewController: SlideTransitionHandlerDelegate {
     
-    func viewControllerForSlideTransitionHandler(slideTransitionHandler: SlideTransitionHandler) -> UIViewController {
-        return self.parentViewController!
-    }
-    
-    func slideTransitionHandler(slideTransitionHandler: SlideTransitionHandler, shouldBeginInLocation location: CGPoint) -> Bool {
+    func slideTransitionHandler(slideTransitionHandler: SlideTransitionHandler, shouldBeginInLocation location: CGPoint, withDirection direction: SlideTransitionDirection) -> Bool {
         return true
     }
     
-    func slideTransitionHandler(slideTransitionHandler: SlideTransitionHandler, segueIdentifierForDirection direction: SlideTransitionDirection) -> String {
-        switch (direction) {
-        case .Left:
-            return ItemContext.Old.getSegueIdentifier()
-        case .Right:
-            return ItemContext.New.getSegueIdentifier()
+    func slideTransitionHandler(slideTransitionHandler: SlideTransitionHandler, performTransitionWithLocation location: CGPoint, andDirection direction: SlideTransitionDirection) {
+        let segueIdentifier = direction == .Left ? TimeContext.New.getSegueIdentifier() : TimeContext.Old.getSegueIdentifier()
+        self.parentViewController?.performSegueWithIdentifier(segueIdentifier, sender: nil)
+    }
+    
+}
+
+extension MapViewController: UINavigationControllerDelegate {
+    
+    func navigationController(navigationController: UINavigationController, animationControllerForOperation operation: UINavigationControllerOperation, fromViewController fromVC: UIViewController, toViewController toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        if let toVC = toVC as? DuoViewController {
+            let streetViewController = toVC.getVisibleViewController() as! StreetViewController
+            return SlideTransition(direction: streetViewController.pushDirection, interactive: slideTransitionHandler.percentDrivenInteractiveTransition != nil)
         }
+        return FadeTransition()
+    }
+    
+    func navigationController(navigationController: UINavigationController, interactionControllerForAnimationController animationController: UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning? {
+        return slideTransitionHandler.percentDrivenInteractiveTransition
     }
     
 }

@@ -10,41 +10,41 @@ import UIKit
 
 protocol SlideTransitionHandlerDelegate {
     
-    func viewControllerForSlideTransitionHandler(slideTransitionHandler: SlideTransitionHandler) -> UIViewController
-    func slideTransitionHandler(slideTransitionHandler: SlideTransitionHandler, shouldBeginInLocation location: CGPoint) -> Bool
-    func slideTransitionHandler(slideTransitionHandler: SlideTransitionHandler, segueIdentifierForDirection direction: SlideTransitionDirection) -> String
+    func slideTransitionHandler(slideTransitionHandler: SlideTransitionHandler, shouldBeginInLocation location: CGPoint, withDirection direction: SlideTransitionDirection) -> Bool
+    func slideTransitionHandler(slideTransitionHandler: SlideTransitionHandler, performTransitionWithLocation location: CGPoint, andDirection direction: SlideTransitionDirection)
     
 }
 
 class SlideTransitionHandler: NSObject {
     
+    private(set) var percentDrivenInteractiveTransition: UIPercentDrivenInteractiveTransition?
+    private(set) var direction: SlideTransitionDirection?
+    private(set) var location: CGPoint?
+    
     var delegate: SlideTransitionHandlerDelegate!
-    var location: CGPoint!
-    var transitionDirection: SlideTransitionDirection!
+    
     
     @IBAction func panGestureRecognized(sender: UIPanGestureRecognizer) {
-        let viewController = delegate.viewControllerForSlideTransitionHandler(self)
-        let interactionTransition = (viewController.navigationController as? NavigationController)?.interactionTransition
-        let gestureDirection: SlideTransitionDirection = sender.velocityInView(sender.view).x > 0 ? .Right : .Left
+        let gestureLocation = sender.locationInView(sender.view!)
+        let gestureVelocity = sender.velocityInView(sender.view!)
+        let gestureDirection = gestureVelocity.x > 0 ? SlideTransitionDirection.Right : .Left
         
         switch (sender.state) {
         case .Began:
-            transitionDirection = gestureDirection
-            let segueIdentifier = delegate.slideTransitionHandler(self, segueIdentifierForDirection: transitionDirection!)
-            viewController.performSegueWithIdentifier(segueIdentifier, sender: viewController)
+            location = gestureLocation
+            direction = gestureDirection
+            percentDrivenInteractiveTransition = UIPercentDrivenInteractiveTransition()
+            delegate.slideTransitionHandler(self, performTransitionWithLocation: location!, andDirection: direction!)
         case .Changed:
-            var progress = sender.translationInView(viewController.view).x / viewController.view.bounds.size.width
-            if (transitionDirection! == .Left) {
-                progress = -progress
-            }
-            interactionTransition?.updateInteractiveTransition(progress)
+            var progress = sender.translationInView(sender.view!).x / sender.view!.bounds.size.width
+            progress = direction! == .Left ? -progress : progress
+            percentDrivenInteractiveTransition?.updateInteractiveTransition(progress)
         case .Ended, .Cancelled:
-            switch ((transitionDirection, gestureDirection)) {
-            case let (transitionDirection, gestureDirection) where transitionDirection == gestureDirection:
-                interactionTransition?.finishInteractiveTransition()
-            default:
-                interactionTransition?.cancelInteractiveTransition()
-            }
+            if direction == gestureDirection { percentDrivenInteractiveTransition?.finishInteractiveTransition() }
+            else { percentDrivenInteractiveTransition?.cancelInteractiveTransition() }
+            percentDrivenInteractiveTransition = nil
+            location = nil
+            direction = nil
         default: break
         }
     }
@@ -55,15 +55,14 @@ extension SlideTransitionHandler: UIGestureRecognizerDelegate {
     
     func gestureRecognizerShouldBegin(gestureRecognizer:UIGestureRecognizer) -> Bool {
         if let panGestureRecognizer = gestureRecognizer as? UIPanGestureRecognizer {
-            let velocity = panGestureRecognizer.velocityInView(panGestureRecognizer.view)
-            if abs(velocity.x) > abs(velocity.y) {
-                let location = panGestureRecognizer.locationInView(panGestureRecognizer.view)
-                if delegate.slideTransitionHandler(self, shouldBeginInLocation: location) {
-                    self.location = location
-                    return true
-                }
+            let gestureVelocity = panGestureRecognizer.velocityInView(panGestureRecognizer.view)
+            if abs(gestureVelocity.x) > abs(gestureVelocity.y) {
+                let gestureLocation = panGestureRecognizer.locationInView(panGestureRecognizer.view)
+                let gestureDirection = gestureVelocity.x > 0 ? SlideTransitionDirection.Right : .Left
+                return delegate.slideTransitionHandler(self, shouldBeginInLocation: gestureLocation, withDirection: gestureDirection)
             }
         }
         return false;
     }
+    
 }
