@@ -19,8 +19,8 @@ class StreetViewController: UIViewController {
     var streetFetchedResultsController: NSFetchedResultsController!
     var interactiveTransition: Bool!
     
-    var street: Street! {
-        return streetFetchedResultsController.fetchedObjects![0] as! Street
+    var street: Street? {
+        return streetFetchedResultsController.fetchedObjects?[0] as? Street
     }
     
     var popDirection: SlideTransitionDirection {
@@ -45,9 +45,11 @@ class StreetViewController: UIViewController {
             let cell = tableView.cellForRowAtIndexPath(indexPath)!
             let galleryView = cell.viewWithTag(1) as! GalleryView
             if galleryView.frame.contains(sender.locationInView(galleryView.superview)) {
-                let places = self.getPlacesFromStreet(street!, timeContext: timeContext)
-                let photo = places[indexPath.row].photos[galleryView.index] as! Photo
-                self.performSegueWithIdentifier("showPhoto", sender: photo)
+                let places = self.getPlacesFromStreet(street, timeContext: timeContext)
+                if places![indexPath.row].photos.count > 0 {
+                    let photo = places![indexPath.row].photos[galleryView.index] as? Photo
+                    self.performSegueWithIdentifier("showPhoto", sender: photo)
+                }
             }
         }
     }
@@ -90,8 +92,9 @@ class StreetViewController: UIViewController {
         }
     }
     
-    private func getPlacesFromStreet(street: Street, timeContext: TimeContext) -> [Place] {
-        return (street.places.array as! [Place]).filter {
+    private func getPlacesFromStreet(street: Street?, timeContext: TimeContext) -> [Place]? {
+        if street == nil { return nil }
+        return (street!.places.array as! [Place]).filter {
             return TimeContext.getTimeContextForPlace($0) == timeContext
         }
     }
@@ -115,11 +118,11 @@ class StreetViewController: UIViewController {
 extension StreetViewController: UITableViewDataSource {
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.getPlacesFromStreet(street, timeContext: timeContext).count
+        return self.getPlacesFromStreet(street, timeContext: timeContext)?.count ?? 0
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let places = self.getPlacesFromStreet(street!, timeContext: timeContext)
+        let places = self.getPlacesFromStreet(street!, timeContext: timeContext)!
         let cell = tableView.dequeueReusableCellWithIdentifier("placeCell") as! UITableViewCell
         let place = places[indexPath.row]
         
@@ -146,8 +149,13 @@ extension StreetViewController: UITableViewDataSource {
 extension StreetViewController: NSFetchedResultsControllerDelegate {
     
     func controllerDidChangeContent(controller: NSFetchedResultsController) {
-        self.navigationItem.title = street?.name
-        self.tableView.reloadData()
+        if let unwrappedStreet = street {
+            self.navigationItem.title = unwrappedStreet.name
+            self.tableView.reloadData()
+        }
+        else {
+            self.dismissViewControllerAnimated(true, completion: nil)
+        }
     }
     
 }

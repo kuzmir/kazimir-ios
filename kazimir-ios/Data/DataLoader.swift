@@ -8,15 +8,11 @@
 
 import CoreData
 
-typealias StreetProcessResult = (street: Street?, error: NSError?)
-typealias PlacesProcessResult = (places: [Place]?, error: NSError?)
-typealias PhotosProcessResult = (photos: [Photo]?, error: NSError?)
-
 class DataLoader {
     
     static let sharedInstance = DataLoader()
     
-    let downloadError = NSError(domain: "kazimir", code: 3, userInfo: nil)
+    let loadError = NSError(domain: "kazimir", code: 3, userInfo: nil)
     
     private init() {}
     
@@ -26,9 +22,9 @@ class DataLoader {
         
         var streets = [Street]()
         for json in result.jsons! {
-            let streetProcessResult = self.processStreet(json, context: context)
-            if streetProcessResult.error != nil { return streetProcessResult.error }
-            streets.append(streetProcessResult.street!)
+            let street = self.processStreet(json, context: context)
+            if street == nil { return loadError }
+            streets.append(street!)
             if !progress() { return nil }
         }
         
@@ -49,82 +45,92 @@ class DataLoader {
         return nil
     }
     
-    private func processStreet(json: JSON, context: NSManagedObjectContext) -> StreetProcessResult {
-        let storateResult = Storage.sharedInstance.storeEntityFromJSON(json, context: context) as StorageResult<Street>
-        if storateResult.error != nil { return  (nil, storateResult.error) }
+    private func processStreet(json: JSON, context: NSManagedObjectContext) -> Street? {
+        let storageResult = Storage.sharedInstance.storeEntityFromJSON(json, context: context) as StorageResult<Street>
+        if storageResult.error != nil { return nil }
         
         var places = [Place]()
         let presentPlacesRelationInfo = Street.getPresentPlacesJSON(json: json)
-        if presentPlacesRelationInfo.error != nil { return (nil, presentPlacesRelationInfo.error) }
-        let presentPlacesProcessResult = self.processPlacesForStreet(storateResult.entity!, jsons:presentPlacesRelationInfo.jsons!, present: true, context: context)
-        if presentPlacesProcessResult.error != nil { return  (nil, presentPlacesProcessResult.error) }
-        places = places + presentPlacesProcessResult.places!
+        if presentPlacesRelationInfo.error != nil { return nil }
+        for json in presentPlacesRelationInfo.jsons! {
+            let place = self.processPlace(json, context: context)
+            if place == nil { return nil }
+            place!.present = true
+            places.append(place!)
+        }
         
         let pastPlacesRelationInfo = Street.getPastPlacesJSON(json: json)
-        if pastPlacesRelationInfo.error != nil { return (nil, pastPlacesRelationInfo.error) }
-        let pastPlacesProcessResult = self.processPlacesForStreet(storateResult.entity!, jsons:pastPlacesRelationInfo.jsons!, present: false, context: context)
-        if pastPlacesProcessResult.error != nil { return  (nil, pastPlacesProcessResult.error) }
-        places = places + pastPlacesProcessResult.places!
-        storateResult.entity!.places = NSOrderedSet(array: places)
+        if pastPlacesRelationInfo.error != nil { return nil }
+        for json in pastPlacesRelationInfo.jsons! {
+            let place = self.processPlace(json, context: context)
+            if place == nil { return nil }
+            place!.present = false
+            places.append(place!)
+        }
         
-        return (storateResult.entity!, nil)
-    }
-    
-    private func processPlacesForStreet(street: Street, jsons: [JSON], present: Bool,  context: NSManagedObjectContext) -> PlacesProcessResult {
-        var places = [Place]()
-        for json in jsons {
-            let storageResult = Storage.sharedInstance.storeEntityFromJSON(json, context: context) as StorageResult<Place>
-            if storageResult.error != nil { return  (nil, storageResult.error) }
-            places.append(storageResult.entity!)
-            
-            storageResult.entity!.present = NSNumber(bool: present)
-            
-            let photosRelationInfo = Place.getPhotosJSON(json: json)
-            if photosRelationInfo.error != nil { return (nil, photosRelationInfo.error) }
-            let photosProcessResult = self.processPhotosForPlace(storageResult.entity!, jsons: photosRelationInfo.jsons!, context: context)
-            if photosProcessResult.error != nil { return (nil, photosProcessResult.error) }
-            storageResult.entity!.photos = NSOrderedSet(array: photosProcessResult.photos!)
+        for place in storageResult.entity!.places.array as! [Place] {
+            if !contains(places, place) { context.deleteObject(place) }
         }
-        return (places, nil)
+        storageResult.entity!.places = NSOrderedSet(array: places)
+        
+        return storageResult.entity
     }
     
-    private func processPhotosForPlace(place: Place, jsons: [JSON], context: NSManagedObjectContext) -> PhotosProcessResult {
+    private func processPlace(json: JSON, context: NSManagedObjectContext) -> Place? {
+        let storageResult = Storage.sharedInstance.storeEntityFromJSON(json, context: context) as StorageResult<Place>
+        if storageResult.error != nil { return  nil }
+        
         var photos = [Photo]()
-        for json in jsons {
-            let storageResult = Storage.sharedInstance.storeEntityFromJSON(json, context: context) as StorageResult<Photo>
-            if storageResult.error != nil { return  (nil, storageResult.error) }
-            photos.append(storageResult.entity!)
-            
-            if storageResult.updated! {
-                let thumbImageDataResult = self.loadImage(type: "thumb", withPhotoJSON: json)
-                if thumbImageDataResult.error != nil { return (nil, thumbImageDataResult.error) }
-                storageResult.entity!.dataThumb = thumbImageDataResult.data!
-                
-                let tinyImageDataResult = self.loadImage(type: "tiny", withPhotoJSON: json)
-                if tinyImageDataResult.error != nil { return (nil, tinyImageDataResult.error) }
-                storageResult.entity!.dataTiny = tinyImageDataResult.data!
-                
-                let smallImageDataResult = self.loadImage(type: "small", withPhotoJSON: json)
-                if smallImageDataResult.error != nil { return (nil, smallImageDataResult.error) }
-                storageResult.entity!.dataSmall = smallImageDataResult.data!
-                
-                let mediumImageDataResult = self.loadImage(type: "medium", withPhotoJSON: json)
-                if mediumImageDataResult.error != nil { return (nil, mediumImageDataResult.error) }
-                storageResult.entity!.dataMedium = mediumImageDataResult.data!
-                
-                let largeImageDataResult = self.loadImage(type: "large", withPhotoJSON: json)
-                if largeImageDataResult.error != nil { return (nil, largeImageDataResult.error) }
-                storageResult.entity!.dataLarge = largeImageDataResult.data!
-            }
+        let photosRelationInfo = Place.getPhotosJSON(json: json)
+        if photosRelationInfo.error != nil { return nil }
+        for json in photosRelationInfo.jsons! {
+            let photo = self.processPhoto(json, context: context)
+            if photo == nil { return nil }
+            photos.append(photo!)
         }
-        return (photos, nil)
+        
+        for photo in storageResult.entity!.photos.array as! [Photo] {
+            if !contains(photos, photo) { context.deleteObject(photo) }
+        }
+        storageResult.entity!.photos = NSOrderedSet(array: photos)
+        
+        return storageResult.entity
+    }
+    
+    private func processPhoto(json: JSON, context: NSManagedObjectContext) -> Photo? {
+        let storageResult = Storage.sharedInstance.storeEntityFromJSON(json, context: context) as StorageResult<Photo>
+        if storageResult.error != nil { return nil }
+        
+        if storageResult.updated! {
+            let thumbImageDataResult = self.loadImage(type: "thumb", withPhotoJSON: json)
+            if thumbImageDataResult.error != nil { return nil }
+            storageResult.entity!.dataThumb = thumbImageDataResult.data!
+            
+            let tinyImageDataResult = self.loadImage(type: "tiny", withPhotoJSON: json)
+            if tinyImageDataResult.error != nil { return nil }
+            storageResult.entity!.dataTiny = tinyImageDataResult.data!
+            
+            let smallImageDataResult = self.loadImage(type: "small", withPhotoJSON: json)
+            if smallImageDataResult.error != nil { return nil }
+            storageResult.entity!.dataSmall = smallImageDataResult.data!
+            
+            let mediumImageDataResult = self.loadImage(type: "medium", withPhotoJSON: json)
+            if mediumImageDataResult.error != nil { return nil }
+            storageResult.entity!.dataMedium = mediumImageDataResult.data!
+            
+            let largeImageDataResult = self.loadImage(type: "large", withPhotoJSON: json)
+            if largeImageDataResult.error != nil { return nil }
+            storageResult.entity!.dataLarge = largeImageDataResult.data!
+        }
+        
+        return storageResult.entity
     }
     
     private func loadImage(#type: String, withPhotoJSON json: JSON) -> DataResult {
         let imagesRelationInfo = Photo.getImagesJSON(json: json)
         if imagesRelationInfo.error != nil { return (nil, imagesRelationInfo.error) }
         let photoString = imagesRelationInfo.jsons![0][type] as? String
-        if photoString == nil { return (nil, downloadError) }
+        if photoString == nil { return (nil, loadError) }
         return Client.sharedInstance.getImageData(urlString: photoString!)
     }
     
